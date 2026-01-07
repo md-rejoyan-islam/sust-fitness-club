@@ -1,0 +1,316 @@
+{
+  "metadata": {
+    "title": "SUST Fitness Club",
+    "description": "Official Fitness Club of Shahjalal University of Science and Technology"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About Us",
+    "programs": "Programs",
+    "trainers": "Trainers",
+    "gallery": "Gallery",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "joinNow": "Join Now",
+    "members": "Members",
+    "executiveCommittee": "Executive Committee",
+    "generalMembers": "General Members",
+    "foundingMembers": "Founding Members",
+    "advisors": "Advisors"
+  },
+  "hero": {
+    "title": "Start Your Fitness Journey",
+    "subtitle": "Welcome to SUST Fitness Club. We help you stay healthy and fit.",
+    "cta": "Join Now",
+    "learnMore": "Learn More"
+  },
+  "features": {
+    "title": "Why Choose Us",
+    "subtitle": "What you get at our club",
+    "items": [
+      {
+        "title": "Modern Gym Facilities",
+        "description": "Well-equipped gym with modern equipment"
+      },
+      {
+        "title": "Expert Trainers",
+        "description": "Supervision by skilled and experienced trainers"
+      },
+      {
+        "title": "Group Workouts",
+        "description": "Exercise together, get motivated"
+      },
+      {
+        "title": "Nutrition Advice",
+        "description": "Proper diet and nutrition planning"
+      }
+    ]
+  },
+  "programs": {
+    "title": "Our Programs",
+    "subtitle": "Choose a program according to your goals",
+    "items": [
+      {
+        "title": "Weight Training",
+        "description": "Build strength and muscle",
+        "duration": "60 min"
+      },
+      {
+        "title": "Cardio",
+        "description": "Keep your heart healthy and burn calories",
+        "duration": "45 min"
+      },
+      {
+        "title": "Yoga",
+        "description": "Achieve mental peace and flexibility",
+        "duration": "60 min"
+      },
+      {
+        "title": "CrossFit",
+        "description": "Full body workout",
+        "duration": "50 min"
+      }
+    ],
+    "viewAll": "View All Programs"
+  },
+  "trainers": {
+    "title": "Our Trainers",
+    "subtitle": "Experienced and trained team",
+    "items": [
+      {
+        "name": "Mohammad Rashed",
+        "role": "Head Trainer",
+        "specialty": "Weight Training"
+      },
+      {
+        "name": "Fatima Akter",
+        "role": "Fitness Coach",
+        "specialty": "Yoga"
+      },
+      {
+        "name": "Ahmed Hasan",
+        "role": "Cardio Specialist",
+        "specialty": "Cardio Training"
+      }
+    ],
+    "viewAll": "View All Trainers"
+  },
+  "stats": {
+    "members": "Active Members",
+    "trainers": "Trainers",
+    "programs": "Programs",
+    "years": "Years of Experience"
+  },
+  "cta": {
+    "title": "Start Your Fitness Journey Today",
+    "subtitle": "Become a member of SUST Fitness Club and start a healthy lifestyle.",
+    "button": "Become a Member"
+  },
+  "footer": {
+    "description": "Official Fitness Club of Shahjalal University of Science and Technology.",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "followUs": "Follow Us",
+    "rights": "All rights reserved",
+    "address": "Shahjalal University of Science and Technology, Sylhet",
+    "email": "fitness@sust.edu",
+    "phone": "+880 1712-345678"
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "The Story of SUST Fitness Club",
+    "description": "SUST Fitness Club was established in 2018 with the aim of increasing health awareness and providing fitness training to the students of Shahjalal University of Science and Technology. Our goal is to help every member reach their fitness goals.",
+    "mission": {
+      "title": "Our Mission",
+      "description": "To help every student of the university stay healthy and fit."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To be established as the best university fitness club in Bangladesh."
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with us",
+    "form": {
+      "name": "Your Name",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Send"
+    },
+    "info": {
+      "title": "Contact Information",
+      "address": "Address",
+      "email": "Email",
+      "phone": "Phone"
+    }
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "toggle": "Toggle theme"
+  },
+  "language": {
+    "switchTo": "বাংলা",
+    "current": "English"
+  },
+  "common": {
+    "readMore": "Read More",
+    "learnMore": "Learn More",
+    "viewAll": "View All",
+    "backToHome": "Back to Home"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to common questions about SUST Fitness Club",
+    "categories": {
+      "membership": "Membership",
+      "facilities": "Facilities",
+      "training": "Training",
+      "general": "General"
+    },
+    "items": [
+      {
+        "category": "membership",
+        "question": "Who can join SUST Fitness Club?",
+        "answer": "SUST Fitness Club is open to all current students, faculty members, and staff of Shahjalal University of Science and Technology. You need a valid university ID to register."
+      },
+      {
+        "category": "membership",
+        "question": "Is membership free for students?",
+        "answer": "Yes! Membership is completely free for all SUST students. We believe fitness should be accessible to everyone in our university community."
+      },
+      {
+        "category": "membership",
+        "question": "How do I register for membership?",
+        "answer": "You can register online through our website or visit our office at the gymnasium building. Bring your student ID and a passport-sized photo for registration."
+      },
+      {
+        "category": "facilities",
+        "question": "What equipment is available at the gym?",
+        "answer": "Our gym is equipped with treadmills, exercise bikes, rowing machines, free weights (dumbbells and barbells), weight machines, yoga mats, and stretching areas."
+      },
+      {
+        "category": "facilities",
+        "question": "What are the gym operating hours?",
+        "answer": "The gym is open from 6:00 AM to 10:00 PM on weekdays and 7:00 AM to 8:00 PM on weekends. We are closed on public holidays."
+      },
+      {
+        "category": "facilities",
+        "question": "Are there separate sessions for male and female members?",
+        "answer": "Yes, we have dedicated time slots for female members. Morning 6:00-8:00 AM and evening 4:00-6:00 PM are reserved exclusively for female members."
+      },
+      {
+        "category": "training",
+        "question": "Do you provide personal training?",
+        "answer": "Yes, we offer personal training sessions with our certified trainers. You can book sessions based on your schedule and fitness goals."
+      },
+      {
+        "category": "training",
+        "question": "What types of group classes are available?",
+        "answer": "We offer various group classes including Yoga, Zumba, CrossFit, HIIT, and Aerobics. Check our schedule for class timings and availability."
+      },
+      {
+        "category": "training",
+        "question": "Can beginners join the training programs?",
+        "answer": "Absolutely! Our programs are designed for all fitness levels. Our trainers will create a personalized plan based on your current fitness level and goals."
+      },
+      {
+        "category": "general",
+        "question": "What should I bring to the gym?",
+        "answer": "Bring comfortable workout clothes, sports shoes, a water bottle, and a small towel. Lockers are available for storing your belongings."
+      },
+      {
+        "category": "general",
+        "question": "Is there a nutrition counseling service?",
+        "answer": "Yes, we provide basic nutrition guidance as part of our membership. For detailed diet plans, our trainers can help you create a personalized nutrition plan."
+      },
+      {
+        "category": "general",
+        "question": "How can I participate in fitness competitions?",
+        "answer": "We organize inter-departmental and university-level fitness competitions throughout the year. Members are notified about upcoming events through our social media and notice board."
+      }
+    ],
+    "contact": {
+      "title": "Still have questions?",
+      "description": "Can't find the answer you're looking for? Please contact our support team.",
+      "button": "Contact Us"
+    }
+  },
+  "executiveCommittee": {
+    "title": "Executive Committee",
+    "subtitle": "Meet our dedicated leadership team",
+    "selectCommittee": "Select Committee",
+    "currentCommittee": "Current Committee",
+    "roles": {
+      "president": "President",
+      "vicePresident": "Vice President",
+      "generalSecretary": "General Secretary",
+      "jointSecretary": "Joint Secretary",
+      "treasurer": "Treasurer",
+      "organizingSecretary": "Organizing Secretary",
+      "publicationSecretary": "Publication Secretary",
+      "culturalSecretary": "Cultural Secretary",
+      "executiveMember": "Executive Member"
+    }
+  },
+  "generalMembers": {
+    "title": "General Members",
+    "subtitle": "Our valued club members",
+    "totalMembers": "Total Members",
+    "searchPlaceholder": "Search members...",
+    "filterByDepartment": "Filter by Department",
+    "allDepartments": "All Departments",
+    "memberSince": "Member Since",
+    "department": "Department",
+    "session": "Session",
+    "bloodGroup": "Blood Group",
+    "noResults": "No members found"
+  },
+  "foundingMembers": {
+    "title": "Founding Members",
+    "subtitle": "The visionaries who started it all",
+    "description": "These dedicated individuals laid the foundation of SUST Fitness Club with their vision, passion, and commitment to promoting health and fitness among university students.",
+    "founderNote": "Founder's Note",
+    "session": "Session",
+    "department": "Department"
+  },
+  "advisors": {
+    "title": "Our Advisors",
+    "subtitle": "Guidance from distinguished faculty members",
+    "description": "Our advisors provide valuable guidance and support to help the club achieve its goals and maintain high standards.",
+    "currentAdvisors": "Current Advisors",
+    "formerAdvisors": "Former Advisors",
+    "department": "Department",
+    "designation": "Designation",
+    "message": "Message"
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome Back",
+      "subtitle": "Sign in to your account to continue",
+      "email": "Email",
+      "password": "Password",
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot password?",
+      "submit": "Sign In",
+      "noAccount": "Don't have an account?",
+      "signUp": "Create Account"
+    },
+    "register": {
+      "title": "Create Account",
+      "subtitle": "Join SUST Fitness Club today",
+      "fullName": "Full Name",
+      "email": "Email",
+      "studentId": "Student ID",
+      "department": "Department",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "terms": "I agree to the Terms of Service and Privacy Policy",
+      "submit": "Create Account",
+      "hasAccount": "Already have an account?",
+      "signIn": "Sign In"
+    }
+  }
+}
