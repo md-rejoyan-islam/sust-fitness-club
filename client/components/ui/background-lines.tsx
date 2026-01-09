@@ -1,7 +1,26 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { memo, useMemo } from 'react';
+import { memo, useMemo, useState, useEffect } from 'react';
+
+// Check if device is mobile/low-power
+function isMobileDevice(): boolean {
+  if (typeof window === 'undefined') return false;
+
+  // Check screen width
+  if (window.innerWidth < 768) return true;
+
+  // Check for touch device
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return true;
+
+  // Check user agent for mobile
+  const userAgent = navigator.userAgent.toLowerCase();
+  if (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent)) {
+    return true;
+  }
+
+  return false;
+}
 
 export const BackgroundLines = memo(
   ({
@@ -15,6 +34,29 @@ export const BackgroundLines = memo(
       duration?: number;
     };
   }) => {
+    const [isMobile, setIsMobile] = useState(true); // Default to true to prevent flash
+
+    useEffect(() => {
+      setIsMobile(isMobileDevice());
+
+      const handleResize = () => {
+        setIsMobile(isMobileDevice());
+      };
+
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    // On mobile, render a simple static gradient instead of animated SVG paths
+    if (isMobile) {
+      return (
+        <div className={cn('absolute inset-0 w-full h-full', className)}>
+          <div className="absolute inset-0 bg-linear-to-br from-[#5ce1e6]/5 via-transparent to-[#2ecc71]/5" />
+          {children}
+        </div>
+      );
+    }
+
     return (
       <div className={cn('absolute inset-0 w-full h-full', className)}>
         <SVG duration={svgOptions?.duration} />

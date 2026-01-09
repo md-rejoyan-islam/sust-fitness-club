@@ -12,6 +12,7 @@ import {
   Dumbbell,
   GraduationCap,
   Heart,
+  Images,
   Star,
   Target,
   Trophy,
@@ -20,6 +21,11 @@ import {
   Zap,
 } from "lucide-react";
 import Link from "next/link";
+
+// Simple Section Divider - clean gradient transition
+const SectionDivider = ({ className = "" }: { className?: string }) => (
+  <div className={`h-16 md:h-24 ${className}`} />
+);
 
 export default async function HomePage({
   params,
@@ -178,18 +184,31 @@ export default async function HomePage({
 
   return (
     <div className="overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center py-20 px-4">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#2ecc71]/10 via-transparent to-[#1e3a5f]/10 dark:from-[#2ecc71]/5 dark:via-transparent dark:to-[#5ce1e6]/5" />
-        <div className="absolute top-20 left-10 w-72 h-72 bg-[#2ecc71]/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#1e3a5f]/20 dark:bg-[#5ce1e6]/10 rounded-full blur-3xl" />
+      {/* Hero Section - Premium Design */}
+      <section className="relative min-h-screen flex items-center justify-center pt-32 py-20 px-4 bg-white dark:bg-[#0d1117]">
+        {/* Grid pattern with fade */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-size-[4rem_4rem] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]" />
+
+        {/* Decorative gradient orbs */}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-[#2ecc71]/30 to-[#27ae60]/10 rounded-full blur-3xl animate-wave-slow" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-[#1e3a5f]/20 to-[#5ce1e6]/10 dark:from-[#5ce1e6]/15 dark:to-[#2ecc71]/10 rounded-full blur-3xl animate-wave-reverse" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-[#2ecc71]/5 to-[#1e3a5f]/5 dark:from-[#5ce1e6]/5 dark:to-[#2ecc71]/5 rounded-full blur-3xl" />
 
         <div className="relative max-w-7xl mx-auto text-center z-10">
           <div className="space-y-8">
+            {/* Premium badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#2ecc71]/10 to-[#1e3a5f]/10 dark:from-[#5ce1e6]/20 dark:to-[#2ecc71]/10 backdrop-blur-sm border border-[#2ecc71]/20 dark:border-[#5ce1e6]/30">
+              <span className="w-2 h-2 bg-[#2ecc71] dark:bg-[#5ce1e6] rounded-full animate-pulse" />
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#27ae60] dark:text-[#5ce1e6]">
+                {lang === "bn"
+                  ? "সাস্ট এর অফিসিয়াল ফিটনেস ক্লাব"
+                  : "Official Fitness Club of SUST"}
+              </span>
+            </div>
+
             {/* Main Title */}
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight">
-              <span className="text-gradient">
+              <span className="text-gradient bg-gradient-to-r from-[#1e3a5f] via-[#2ecc71] to-[#1e3a5f] dark:from-[#5ce1e6] dark:via-[#2ecc71] dark:to-[#5ce1e6] bg-clip-text text-transparent bg-size-[200%_auto] animate-gradient">
                 {dict.hero.title.split(" ").slice(0, 2).join(" ")}
               </span>
               <br />
@@ -199,54 +218,54 @@ export default async function HomePage({
             </h1>
 
             {/* Subtitle */}
-            <p className="max-w-2xl mx-auto text-lg sm:text-xl text-gray-600 dark:text-gray-400">
+            <p className="max-w-2xl mx-auto text-lg sm:text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
               {dict.hero.subtitle}
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Link href={`/${lang}/contact`}>
-                <button className="btn-primary flex items-center justify-center gap-2 text-lg px-8 py-4">
+              <Link href={`/${lang}/register`}>
+                <button className="flex items-center justify-center gap-2 text-lg px-8 py-4 rounded-xl bg-gradient-to-r from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] text-white dark:text-[#0d1117] font-semibold shadow-lg shadow-[#2ecc71]/30 dark:shadow-[#5ce1e6]/30 hover:shadow-xl hover:shadow-[#2ecc71]/40 dark:hover:shadow-[#5ce1e6]/40 transition-all duration-300 hover:-translate-y-0.5">
                   {dict.hero.cta}
                   <ArrowRight className="w-5 h-5" />
                 </button>
               </Link>
               <Link href={`/${lang}/about`}>
-                <button className="btn-secondary text-lg px-8 py-4">
+                <button className="text-lg px-8 py-4 rounded-xl border-2 border-dashed border-[#2ecc71]/50! dark:border-[#5ce1e6]/50! bg-gray-100 dark:bg-[#161b22] text-gray-700 dark:text-gray-300 font-semibold hover:bg-[#2ecc71]/10 dark:hover:bg-[#5ce1e6]/10 hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] hover:text-[#2ecc71] dark:hover:text-[#5ce1e6] transition-all duration-300">
                   {dict.hero.learnMore}
                 </button>
               </Link>
             </div>
 
-            {/* Stats Row */}
-            <div className="pt-12 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
-              <div className="text-center p-4 rounded-2xl bg-white/50 dark:bg-[#71e8de10] backdrop-blur-sm border border-gray-200/50 dark:border-[#2d3f50]">
-                <div className="text-3xl sm:text-4xl font-bold text-[#2ecc71]">
-                  200+
+            {/* Stats Row - with dashed border cards */}
+            <div className="pt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+              <div className="text-center p-5 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white/50 dark:bg-[#161b22]/50 backdrop-blur-sm hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-colors">
+                <div className="text-3xl sm:text-4xl font-bold text-[#2ecc71] dark:text-[#5ce1e6]">
+                  {lang === "bn" ? "২০০+" : "200+"}
                 </div>
                 <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
                   {dict.stats.members}
                 </div>
               </div>
-              <div className="text-center p-4 rounded-2xl bg-white/50 dark:bg-[#71e8de10] backdrop-blur-sm border border-gray-200/50 dark:border-[#2d3f50]">
-                <div className="text-3xl sm:text-4xl font-bold text-[#1e3a5f] dark:text-[#5ce1e6]">
-                  5+
+              <div className="text-center p-5 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white/50 dark:bg-[#161b22]/50 backdrop-blur-sm hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-colors">
+                <div className="text-3xl sm:text-4xl font-bold text-[#2ecc71] dark:text-[#5ce1e6]">
+                  {lang === "bn" ? "৫+" : "5+"}
                 </div>
                 <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
                   {dict.stats.trainers}
                 </div>
               </div>
-              <div className="text-center p-4 rounded-2xl bg-white/50 dark:bg-[#71e8de10] backdrop-blur-sm border border-gray-200/50 dark:border-[#2d3f50]">
-                <div className="text-3xl sm:text-4xl font-bold text-[#2ecc71]">
-                  6+
+              <div className="text-center p-5 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white/50 dark:bg-[#161b22]/50 backdrop-blur-sm hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-colors">
+                <div className="text-3xl sm:text-4xl font-bold text-[#2ecc71] dark:text-[#5ce1e6]">
+                  {lang === "bn" ? "৬+" : "6+"}
                 </div>
                 <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
                   {dict.stats.programs}
                 </div>
               </div>
-              <div className="text-center p-4 rounded-2xl bg-white/50 dark:bg-[#71e8de10] backdrop-blur-sm border border-gray-200/50 dark:border-[#2d3f50]">
-                <div className="text-3xl sm:text-4xl font-bold text-[#1e3a5f] dark:text-[#5ce1e6]">
-                  1+
+              <div className="text-center p-5 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white/50 dark:bg-[#161b22]/50 backdrop-blur-sm hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-colors">
+                <div className="text-3xl sm:text-4xl font-bold text-[#2ecc71] dark:text-[#5ce1e6]">
+                  {lang === "bn" ? "১+" : "1+"}
                 </div>
                 <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
                   {dict.stats.years}
@@ -257,10 +276,16 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* Programs Section */}
-      <section className="py-12 sm:py-16 md:py-24 px-4 programs-section">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+      {/* Section Divider */}
+      <SectionDivider className="bg-linear-to-b from-white to-gray-50 dark:from-[#0d1117] dark:to-[#0d1117]" />
+
+      {/* Programs Section - Premium */}
+      <section className="relative py-4 px-4 bg-gray-50 dark:bg-[#0d1117]">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
+              {lang === "bn" ? "আমাদের প্রোগ্রাম" : "Our Programs"}
+            </span>
             <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
               {dict.programs.title}
             </h2>
@@ -275,22 +300,22 @@ export default async function HomePage({
               return (
                 <div
                   key={index}
-                  className="card p-6 hover:shadow-2xl transition-all group cursor-pointer relative overflow-hidden bg-[#2ecc71]/5 dark:bg-[#71e8de10] border-[#2ecc71]/20 dark:border-[#2d3f50] hover:-translate-y-2"
+                  className="relative p-6 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white dark:bg-[#161b22] hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-all hover:-translate-y-2 group"
                 >
                   {/* FREE Badge */}
-                  <div className="absolute top-4 right-4 bg-[#2ecc71] dark:bg-[#5ce1e6] text-white dark:text-[#0d1117] text-xs font-bold px-3 py-1 rounded-full z-10">
+                  <div className="absolute -top-3 right-4 bg-gradient-to-r from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] text-white dark:text-[#0d1117] text-xs font-bold px-3 py-1 rounded-full shadow-lg">
                     {lang === "bn" ? "ফ্রি" : "FREE"}
                   </div>
-                  <div className="relative z-10 w-14 h-14 rounded-2xl bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#2ecc71]/10 to-[#27ae60]/5 dark:from-[#5ce1e6]/20 dark:to-[#5ce1e6]/5 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
                     <Icon className="w-7 h-7 text-[#27ae60] dark:text-[#5ce1e6]" />
                   </div>
-                  <h3 className="relative z-10 text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                     {program.title}
                   </h3>
-                  <p className="relative z-10 text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">
+                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">
                     {program.description}
                   </p>
-                  <div className="relative z-10 flex items-center gap-2 text-sm font-medium text-gray-900 dark:text-white">
+                  <div className="flex items-center gap-2 text-sm font-medium text-[#2ecc71] dark:text-[#5ce1e6]">
                     <Clock className="w-4 h-4" />
                     {program.duration}
                   </div>
@@ -301,10 +326,16 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* Schedule Section */}
-      <section className="py-12 sm:py-16 md:py-24 px-4 bg-white dark:bg-neutral-900/50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+      {/* Section Divider */}
+      <SectionDivider className="bg-linear-to-b from-gray-50 to-white dark:from-[#0d1117] dark:to-[#0d1117]" />
+
+      {/* Schedule Section - Premium */}
+      <section className="relative py-4 px-4 bg-white dark:bg-[#0d1117]">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
+              {lang === "bn" ? "সময়সূচি" : "Schedule"}
+            </span>
             <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
               {lang === "bn" ? "প্রশিক্ষণের সময়সূচি" : "Training Schedule"}
             </h2>
@@ -317,33 +348,31 @@ export default async function HomePage({
 
           <div className="grid md:grid-cols-3 gap-6">
             {schedule.map((session, index) => (
-              <div
-                key={index}
-                className="card p-6 hover:shadow-xl transition-all border-t-4 border-[#2ecc71] dark:border-t-[#5ce1e6] relative overflow-hidden dark:bg-[#71e8de10] dark:border-[#2d3f50] hover:-translate-y-1"
-              >
-                <div className="relative z-10 flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/20 flex items-center justify-center">
-                    <Clock className="w-6 h-6 text-[#2ecc71] dark:text-[#5ce1e6]" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white">
+              <div key={index} className="relative pt-4">
+                {/* Floating label */}
+                <div className="absolute -top-0 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] text-white dark:text-[#0d1117] text-sm font-semibold rounded-full shadow-lg z-10">
+                  {session.time}
+                </div>
+                <div className="p-6 pt-8 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white dark:bg-[#161b22] hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-all">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#2ecc71]/10 to-[#27ae60]/5 dark:from-[#5ce1e6]/20 dark:to-[#5ce1e6]/5 flex items-center justify-center">
+                      <Clock className="w-6 h-6 text-[#2ecc71] dark:text-[#5ce1e6]" />
+                    </div>
+                    <h3 className="font-semibold text-lg text-gray-900 dark:text-white">
                       {session.name}
                     </h3>
-                    <p className="text-sm text-[#2ecc71] dark:text-[#5ce1e6] font-medium">
-                      {session.time}
-                    </p>
                   </div>
-                </div>
-                <div className="relative z-10 space-y-2">
-                  {session.programs.map((program, pIndex) => (
-                    <div
-                      key={pIndex}
-                      className="flex items-center gap-2 text-gray-600 dark:text-gray-400"
-                    >
-                      <Check className="w-4 h-4 text-[#2ecc71] dark:text-[#5ce1e6]" />
-                      <span>{program}</span>
-                    </div>
-                  ))}
+                  <div className="space-y-2">
+                    {session.programs.map((program, pIndex) => (
+                      <div
+                        key={pIndex}
+                        className="flex items-center gap-2 text-gray-600 dark:text-gray-400"
+                      >
+                        <Check className="w-4 h-4 text-[#2ecc71] dark:text-[#5ce1e6]" />
+                        <span>{program}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
@@ -351,10 +380,16 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-12 sm:py-16 md:py-24 px-4 bg-gray-50 dark:bg-neutral-900/30">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+      {/* Section Divider */}
+      <SectionDivider className="bg-linear-to-b from-white to-gray-50 dark:from-[#0d1117] dark:to-[#0d1117]" />
+
+      {/* Features Section - Premium */}
+      <section className="relative py-4 px-4 bg-gray-50 dark:bg-[#0d1117]">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
+              {lang === "bn" ? "বৈশিষ্ট্য" : "Features"}
+            </span>
             <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
               {dict.features.title}
             </h2>
@@ -366,15 +401,15 @@ export default async function HomePage({
               return (
                 <div
                   key={index}
-                  className="card p-6 hover:shadow-xl transition-shadow relative overflow-hidden dark:bg-[#71e8de10] dark:border-[#2d3f50] hover:-translate-y-1"
+                  className="p-6 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white dark:bg-[#161b22] hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-all hover:-translate-y-1 group"
                 >
-                  <div className="relative z-10 w-12 h-12 rounded-xl bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/20 flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#2ecc71]/10 to-[#27ae60]/5 dark:from-[#5ce1e6]/20 dark:to-[#5ce1e6]/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <Icon className="w-6 h-6 text-[#27ae60] dark:text-[#5ce1e6]" />
                   </div>
-                  <h3 className="relative z-10 text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                     {feature.title}
                   </h3>
-                  <p className="relative z-10 text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
                     {feature.description}
                   </p>
                 </div>
@@ -384,10 +419,16 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* Membership Benefits Section */}
-      <section className="py-12 sm:py-16 md:py-24 px-4 bg-white dark:bg-neutral-900/50 border-y border-gray-100 dark:border-neutral-800">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+      {/* Section Divider */}
+      <SectionDivider className="bg-linear-to-b from-gray-50 to-white dark:from-[#0d1117] dark:to-[#0d1117]" />
+
+      {/* Membership Benefits Section - Premium */}
+      <section className="relative py-4 px-4 bg-white dark:bg-[#0d1117]">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
+              {lang === "bn" ? "সুবিধাসমূহ" : "Benefits"}
+            </span>
             <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
               {lang === "bn" ? "সদস্য সুবিধাসমূহ" : "Member Benefits"}
             </h2>
@@ -404,12 +445,12 @@ export default async function HomePage({
               return (
                 <div
                   key={index}
-                  className="card p-6 hover:shadow-xl transition-all flex items-start gap-4 relative overflow-hidden dark:bg-[#71e8de10] dark:border-[#2d3f50] hover:-translate-y-1"
+                  className="p-6 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white dark:bg-[#161b22] hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-all hover:-translate-y-1 flex items-start gap-4 group"
                 >
-                  <div className="relative z-10 w-12 h-12 rounded-xl bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/20 flex items-center justify-center shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#2ecc71]/10 to-[#27ae60]/5 dark:from-[#5ce1e6]/20 dark:to-[#5ce1e6]/5 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                     <Icon className="w-6 h-6 text-[#2ecc71] dark:text-[#5ce1e6]" />
                   </div>
-                  <div className="relative z-10">
+                  <div>
                     <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
                       {benefit.title}
                     </h3>
@@ -424,12 +465,16 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <section className="py-12 sm:py-16 md:py-24 px-4 bg-gray-50 dark:bg-neutral-900/30 relative overflow-hidden">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-radial from-[#2ecc71]/5 via-transparent to-transparent" />
+      {/* Section Divider */}
+      <SectionDivider className="bg-linear-to-b from-white to-gray-50 dark:from-[#0d1117] dark:to-[#0d1117]" />
+
+      {/* Gallery Section - Premium */}
+      <section className="relative py-4 px-4 bg-gray-50 dark:bg-[#0d1117]">
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
+              {lang === "bn" ? "ছবি" : "Photos"}
+            </span>
             <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
               {lang === "bn" ? "গ্যালারি" : "Gallery"}
             </h2>
@@ -444,24 +489,44 @@ export default async function HomePage({
             {galleryImages.map((image, index) => (
               <div
                 key={index}
-                className="relative aspect-video rounded-2xl overflow-hidden group cursor-pointer hover:scale-[1.03] transition-transform"
+                className="relative aspect-video rounded-2xl overflow-hidden group cursor-pointer border-2 border-transparent hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-all"
               >
                 <img
                   src={image}
                   alt={`Gallery ${index + 1}`}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
+                  <span className="px-4 py-2 bg-white dark:bg-[#0d1117] text-gray-900 dark:text-white rounded-xl text-sm font-medium shadow-lg">
+                    <Images className="w-4 h-4 inline mr-2" />
+                    {lang === "bn" ? "দেখুন" : "View"}
+                  </span>
+                </div>
               </div>
             ))}
+          </div>
+
+          <div className="mt-8 text-center">
+            <Link href={`/${lang}/gallery`}>
+              <button className="inline-flex items-center gap-2 px-8 py-3 rounded-xl border-2 border-dashed border-[#2ecc71]/50! dark:border-[#5ce1e6]/50 bg-white dark:bg-[#161b22] text-gray-700 dark:text-gray-300 font-semibold hover:bg-[#2ecc71]/10 dark:hover:bg-[#5ce1e6]/10 hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] hover:text-[#2ecc71] dark:hover:text-[#5ce1e6] transition-all">
+                <Images className="w-5 h-5" />
+                {lang === "bn" ? "সব ছবি দেখুন" : "View All Photos"}
+              </button>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-12 sm:py-16 md:py-24 px-6 sm:px-4 bg-white dark:bg-neutral-900/50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+      {/* Section Divider */}
+      <SectionDivider className="bg-linear-to-b from-gray-50 to-white dark:from-[#0d1117] dark:to-[#0d1117]" />
+
+      {/* Testimonials Section - Premium */}
+      <section className="relative py-4 px-6 sm:px-4 bg-white dark:bg-[#0d1117]">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
+              {lang === "bn" ? "মতামত" : "Testimonials"}
+            </span>
             <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
               {lang === "bn" ? "সদস্যদের মতামত" : "What Members Say"}
             </h2>
@@ -478,8 +543,14 @@ export default async function HomePage({
         </div>
       </section>
 
+      {/* Section Divider */}
+      <SectionDivider className="bg-linear-to-b from-white to-gray-50 dark:from-[#0d1117] dark:to-[#0d1117]" />
+
       {/* Achievements Section */}
       <AchievementsSection lang={lang} />
+
+      {/* Section Divider */}
+      <SectionDivider className="bg-linear-to-b from-gray-50 to-white dark:from-[#0d1117] dark:to-[#0d1117]" />
 
       {/* CTA Section */}
       <CTASection lang={lang} dictionary={dict.cta} />

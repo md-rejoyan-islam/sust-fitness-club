@@ -1,163 +1,197 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface ShaderBackgroundProps {
   className?: string;
 }
 
+// Check if device is mobile/low-power
+function isMobileDevice(): boolean {
+  if (typeof window === 'undefined') return false;
+
+  // Check screen width
+  if (window.innerWidth < 768) return true;
+
+  // Check for touch device
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return true;
+
+  // Check user agent for mobile
+  const userAgent = navigator.userAgent.toLowerCase();
+  if (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent)) {
+    return true;
+  }
+
+  return false;
+}
+
+const vsSource = `
+  attribute vec4 aVertexPosition;
+  void main() {
+    gl_Position = aVertexPosition;
+  }
+`;
+
+const fsSource = `
+  precision highp float;
+  uniform vec2 iResolution;
+  uniform float iTime;
+
+  const float overallSpeed = 0.2;
+  const float gridSmoothWidth = 0.015;
+  const float axisWidth = 0.05;
+  const float majorLineWidth = 0.025;
+  const float minorLineWidth = 0.0125;
+  const float majorLineFrequency = 5.0;
+  const float minorLineFrequency = 1.0;
+  const vec4 gridColor = vec4(0.5);
+  const float scale = 5.0;
+  const vec4 lineColor = vec4(0.18, 0.8, 0.44, 1.0);
+  const float minLineWidth = 0.01;
+  const float maxLineWidth = 0.2;
+  const float lineSpeed = 1.0 * overallSpeed;
+  const float lineAmplitude = 1.0;
+  const float lineFrequency = 0.2;
+  const float warpSpeed = 0.2 * overallSpeed;
+  const float warpFrequency = 0.5;
+  const float warpAmplitude = 1.0;
+  const float offsetFrequency = 0.5;
+  const float offsetSpeed = 1.33 * overallSpeed;
+  const float minOffsetSpread = 0.6;
+  const float maxOffsetSpread = 2.0;
+  const int linesPerGroup = 16;
+
+  #define drawCircle(pos, radius, coord) smoothstep(radius + gridSmoothWidth, radius, length(coord - (pos)))
+  #define drawSmoothLine(pos, halfWidth, t) smoothstep(halfWidth, 0.0, abs(pos - (t)))
+  #define drawCrispLine(pos, halfWidth, t) smoothstep(halfWidth + gridSmoothWidth, halfWidth, abs(pos - (t)))
+  #define drawPeriodicLine(freq, width, t) drawCrispLine(freq / 2.0, width, abs(mod(t, freq) - (freq) / 2.0))
+
+  float drawGridLines(float axis) {
+    return drawCrispLine(0.0, axisWidth, axis)
+          + drawPeriodicLine(majorLineFrequency, majorLineWidth, axis)
+          + drawPeriodicLine(minorLineFrequency, minorLineWidth, axis);
+  }
+
+  float drawGrid(vec2 space) {
+    return min(1.0, drawGridLines(space.x) + drawGridLines(space.y));
+  }
+
+  float random(float t) {
+    return (cos(t) + cos(t * 1.3 + 1.3) + cos(t * 1.4 + 1.4)) / 3.0;
+  }
+
+  float getPlasmaY(float x, float horizontalFade, float offset) {
+    return random(x * lineFrequency + iTime * lineSpeed) * horizontalFade * lineAmplitude + offset;
+  }
+
+  void main() {
+    vec2 fragCoord = gl_FragCoord.xy;
+    vec4 fragColor;
+    vec2 uv = fragCoord.xy / iResolution.xy;
+    vec2 space = (fragCoord - iResolution.xy / 2.0) / iResolution.x * 2.0 * scale;
+
+    float horizontalFade = 1.0 - (cos(uv.x * 6.28) * 0.5 + 0.5);
+    float verticalFade = 1.0 - (cos(uv.y * 6.28) * 0.5 + 0.5);
+
+    space.y += random(space.x * warpFrequency + iTime * warpSpeed) * warpAmplitude * (0.5 + horizontalFade);
+    space.x += random(space.y * warpFrequency + iTime * warpSpeed + 2.0) * warpAmplitude * horizontalFade;
+
+    vec4 lines = vec4(0.0);
+
+    for(int l = 0; l < linesPerGroup; l++) {
+      float normalizedLineIndex = float(l) / float(linesPerGroup);
+      float offsetTime = iTime * offsetSpeed;
+      float offsetPosition = float(l) + space.x * offsetFrequency;
+      float rand = random(offsetPosition + offsetTime) * 0.5 + 0.5;
+      float halfWidth = mix(minLineWidth, maxLineWidth, rand * horizontalFade) / 2.0;
+      float offset = random(offsetPosition + offsetTime * (1.0 + normalizedLineIndex)) * mix(minOffsetSpread, maxOffsetSpread, horizontalFade);
+      float linePosition = getPlasmaY(space.x, horizontalFade, offset);
+      float line = drawSmoothLine(linePosition, halfWidth, space.y) / 2.0 + drawCrispLine(linePosition, halfWidth * 0.15, space.y);
+
+      float circleX = mod(float(l) + iTime * lineSpeed, 25.0) - 12.0;
+      vec2 circlePosition = vec2(circleX, getPlasmaY(circleX, horizontalFade, offset));
+      float circle = drawCircle(circlePosition, 0.01, space) * 4.0;
+
+      line = line + circle;
+      lines += line * lineColor * rand;
+    }
+
+    float alpha = (lines.r + lines.g + lines.b) / 3.0;
+    alpha = min(alpha * 0.15, 0.08);
+
+    fragColor = vec4(lines.rgb, alpha * verticalFade);
+
+    gl_FragColor = fragColor;
+  }
+`;
+
+function loadShader(
+  gl: WebGLRenderingContext,
+  type: number,
+  source: string
+): WebGLShader | null {
+  const shader = gl.createShader(type);
+  if (!shader) return null;
+
+  gl.shaderSource(shader, source);
+  gl.compileShader(shader);
+
+  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+    console.error('Shader compile error: ', gl.getShaderInfoLog(shader));
+    gl.deleteShader(shader);
+    return null;
+  }
+
+  return shader;
+}
+
+function initShaderProgram(
+  gl: WebGLRenderingContext
+): WebGLProgram | null {
+  const vertexShader = loadShader(gl, gl.VERTEX_SHADER, vsSource);
+  const fragmentShader = loadShader(gl, gl.FRAGMENT_SHADER, fsSource);
+
+  if (!vertexShader || !fragmentShader) return null;
+
+  const shaderProgram = gl.createProgram();
+  if (!shaderProgram) return null;
+
+  gl.attachShader(shaderProgram, vertexShader);
+  gl.attachShader(shaderProgram, fragmentShader);
+  gl.linkProgram(shaderProgram);
+
+  if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
+    console.error(
+      'Shader program link error: ',
+      gl.getProgramInfoLog(shaderProgram)
+    );
+    return null;
+  }
+
+  return shaderProgram;
+}
+
 export function ShaderBackground({ className }: ShaderBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [isMobile, setIsMobile] = useState(true); // Default to true to prevent flash
 
-  const vsSource = `
-    attribute vec4 aVertexPosition;
-    void main() {
-      gl_Position = aVertexPosition;
-    }
-  `;
-
-  const fsSource = `
-    precision highp float;
-    uniform vec2 iResolution;
-    uniform float iTime;
-
-    const float overallSpeed = 0.2;
-    const float gridSmoothWidth = 0.015;
-    const float axisWidth = 0.05;
-    const float majorLineWidth = 0.025;
-    const float minorLineWidth = 0.0125;
-    const float majorLineFrequency = 5.0;
-    const float minorLineFrequency = 1.0;
-    const vec4 gridColor = vec4(0.5);
-    const float scale = 5.0;
-    const vec4 lineColor = vec4(0.18, 0.8, 0.44, 1.0);
-    const float minLineWidth = 0.01;
-    const float maxLineWidth = 0.2;
-    const float lineSpeed = 1.0 * overallSpeed;
-    const float lineAmplitude = 1.0;
-    const float lineFrequency = 0.2;
-    const float warpSpeed = 0.2 * overallSpeed;
-    const float warpFrequency = 0.5;
-    const float warpAmplitude = 1.0;
-    const float offsetFrequency = 0.5;
-    const float offsetSpeed = 1.33 * overallSpeed;
-    const float minOffsetSpread = 0.6;
-    const float maxOffsetSpread = 2.0;
-    const int linesPerGroup = 16;
-
-    #define drawCircle(pos, radius, coord) smoothstep(radius + gridSmoothWidth, radius, length(coord - (pos)))
-    #define drawSmoothLine(pos, halfWidth, t) smoothstep(halfWidth, 0.0, abs(pos - (t)))
-    #define drawCrispLine(pos, halfWidth, t) smoothstep(halfWidth + gridSmoothWidth, halfWidth, abs(pos - (t)))
-    #define drawPeriodicLine(freq, width, t) drawCrispLine(freq / 2.0, width, abs(mod(t, freq) - (freq) / 2.0))
-
-    float drawGridLines(float axis) {
-      return drawCrispLine(0.0, axisWidth, axis)
-            + drawPeriodicLine(majorLineFrequency, majorLineWidth, axis)
-            + drawPeriodicLine(minorLineFrequency, minorLineWidth, axis);
-    }
-
-    float drawGrid(vec2 space) {
-      return min(1.0, drawGridLines(space.x) + drawGridLines(space.y));
-    }
-
-    float random(float t) {
-      return (cos(t) + cos(t * 1.3 + 1.3) + cos(t * 1.4 + 1.4)) / 3.0;
-    }
-
-    float getPlasmaY(float x, float horizontalFade, float offset) {
-      return random(x * lineFrequency + iTime * lineSpeed) * horizontalFade * lineAmplitude + offset;
-    }
-
-    void main() {
-      vec2 fragCoord = gl_FragCoord.xy;
-      vec4 fragColor;
-      vec2 uv = fragCoord.xy / iResolution.xy;
-      vec2 space = (fragCoord - iResolution.xy / 2.0) / iResolution.x * 2.0 * scale;
-
-      float horizontalFade = 1.0 - (cos(uv.x * 6.28) * 0.5 + 0.5);
-      float verticalFade = 1.0 - (cos(uv.y * 6.28) * 0.5 + 0.5);
-
-      space.y += random(space.x * warpFrequency + iTime * warpSpeed) * warpAmplitude * (0.5 + horizontalFade);
-      space.x += random(space.y * warpFrequency + iTime * warpSpeed + 2.0) * warpAmplitude * horizontalFade;
-
-      vec4 lines = vec4(0.0);
-
-      for(int l = 0; l < linesPerGroup; l++) {
-        float normalizedLineIndex = float(l) / float(linesPerGroup);
-        float offsetTime = iTime * offsetSpeed;
-        float offsetPosition = float(l) + space.x * offsetFrequency;
-        float rand = random(offsetPosition + offsetTime) * 0.5 + 0.5;
-        float halfWidth = mix(minLineWidth, maxLineWidth, rand * horizontalFade) / 2.0;
-        float offset = random(offsetPosition + offsetTime * (1.0 + normalizedLineIndex)) * mix(minOffsetSpread, maxOffsetSpread, horizontalFade);
-        float linePosition = getPlasmaY(space.x, horizontalFade, offset);
-        float line = drawSmoothLine(linePosition, halfWidth, space.y) / 2.0 + drawCrispLine(linePosition, halfWidth * 0.15, space.y);
-
-        float circleX = mod(float(l) + iTime * lineSpeed, 25.0) - 12.0;
-        vec2 circlePosition = vec2(circleX, getPlasmaY(circleX, horizontalFade, offset));
-        float circle = drawCircle(circlePosition, 0.01, space) * 4.0;
-
-        line = line + circle;
-        lines += line * lineColor * rand;
-      }
-
-      float alpha = (lines.r + lines.g + lines.b) / 3.0;
-      alpha = min(alpha * 0.15, 0.08);
-
-      fragColor = vec4(lines.rgb, alpha * verticalFade);
-
-      gl_FragColor = fragColor;
-    }
-  `;
-
-  const loadShader = (
-    gl: WebGLRenderingContext,
-    type: number,
-    source: string
-  ): WebGLShader | null => {
-    const shader = gl.createShader(type);
-    if (!shader) return null;
-
-    gl.shaderSource(shader, source);
-    gl.compileShader(shader);
-
-    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-      console.error('Shader compile error: ', gl.getShaderInfoLog(shader));
-      gl.deleteShader(shader);
-      return null;
-    }
-
-    return shader;
-  };
-
-  const initShaderProgram = (
-    gl: WebGLRenderingContext,
-    vsSource: string,
-    fsSource: string
-  ): WebGLProgram | null => {
-    const vertexShader = loadShader(gl, gl.VERTEX_SHADER, vsSource);
-    const fragmentShader = loadShader(gl, gl.FRAGMENT_SHADER, fsSource);
-
-    if (!vertexShader || !fragmentShader) return null;
-
-    const shaderProgram = gl.createProgram();
-    if (!shaderProgram) return null;
-
-    gl.attachShader(shaderProgram, vertexShader);
-    gl.attachShader(shaderProgram, fragmentShader);
-    gl.linkProgram(shaderProgram);
-
-    if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
-      console.error(
-        'Shader program link error: ',
-        gl.getProgramInfoLog(shaderProgram)
-      );
-      return null;
-    }
-
-    return shaderProgram;
-  };
-
+  // Check for mobile on mount
   useEffect(() => {
+    setIsMobile(isMobileDevice());
+
+    const handleResize = () => {
+      setIsMobile(isMobileDevice());
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // WebGL animation effect - only runs on desktop
+  useEffect(() => {
+    // Skip WebGL on mobile
+    if (isMobile) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -170,7 +204,7 @@ export function ShaderBackground({ className }: ShaderBackgroundProps) {
       return;
     }
 
-    const shaderProgram = initShaderProgram(gl, vsSource, fsSource);
+    const shaderProgram = initShaderProgram(gl);
     if (!shaderProgram) return;
 
     const positionBuffer = gl.createBuffer();
@@ -243,7 +277,16 @@ export function ShaderBackground({ className }: ShaderBackgroundProps) {
       window.removeEventListener('resize', resizeCanvas);
       cancelAnimationFrame(animationId);
     };
-  }, []);
+  }, [isMobile]);
+
+  // Render gradient fallback on mobile, canvas on desktop
+  if (isMobile) {
+    return (
+      <div
+        className={`absolute inset-0 w-full h-full pointer-events-none -z-10 bg-linear-to-br from-[#2ecc71]/5 via-transparent to-[#5ce1e6]/5 ${className || ''}`}
+      />
+    );
+  }
 
   return (
     <canvas
