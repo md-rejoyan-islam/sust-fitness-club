@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 
 export interface LightboxImage {
@@ -18,6 +18,11 @@ interface LightboxModalProps {
   onNext: () => void;
 }
 
+// Helper for client-side mounting detection without useEffect setState
+const emptySubscribe = () => () => {};
+const getClientSnapshot = () => true;
+const getServerSnapshot = () => false;
+
 export function LightboxModal({
   images,
   currentIndex,
@@ -26,12 +31,12 @@ export function LightboxModal({
   onPrev,
   onNext,
 }: LightboxModalProps) {
-  const [mounted, setMounted] = useState(false);
-
-  // Ensure portal only renders on client
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  // Use useSyncExternalStore for hydration-safe client detection
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    getClientSnapshot,
+    getServerSnapshot
+  );
 
   // Handle keyboard navigation
   useEffect(() => {
@@ -58,7 +63,7 @@ export function LightboxModal({
 
   const modalContent = (
     <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 backdrop-blur-sm"
+      className="fixed inset-0 z-9999 flex items-center justify-center bg-black/90 backdrop-blur-sm"
       onClick={onClose}
     >
       {/* Close button */}
@@ -133,11 +138,15 @@ export function useLightbox(imagesLength: number) {
   }, []);
 
   const goToPrev = useCallback(() => {
-    setCurrentIndex((prev) => (prev === 0 ? imagesLength - 1 : prev - 1));
+    setCurrentIndex((prev: number) =>
+      prev === 0 ? imagesLength - 1 : prev - 1
+    );
   }, [imagesLength]);
 
   const goToNext = useCallback(() => {
-    setCurrentIndex((prev) => (prev === imagesLength - 1 ? 0 : prev + 1));
+    setCurrentIndex((prev: number) =>
+      prev === imagesLength - 1 ? 0 : prev + 1
+    );
   }, [imagesLength]);
 
   return {

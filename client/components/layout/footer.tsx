@@ -93,7 +93,7 @@ export function Footer({ locale, dictionary }: FooterProps) {
             </h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-400">
-                <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#1e3a5f] dark:text-[#2ecc71]" />
+                <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-[#1e3a5f] dark:text-[#2ecc71]" />
                 <a
                   href="https://maps.google.com/?q=Shahjalal+University+of+Science+and+Technology+Sylhet"
                   target="_blank"
@@ -104,7 +104,7 @@ export function Footer({ locale, dictionary }: FooterProps) {
                 </a>
               </li>
               <li className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
-                <Mail className="w-4 h-4 flex-shrink-0 text-[#1e3a5f] dark:text-[#2ecc71]" />
+                <Mail className="w-4 h-4 shrink-0 text-[#1e3a5f] dark:text-[#2ecc71]" />
                 <a
                   href="mailto:fitness@sust.edu"
                   target="_blank"
@@ -115,7 +115,7 @@ export function Footer({ locale, dictionary }: FooterProps) {
                 </a>
               </li>
               <li className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
-                <Phone className="w-4 h-4 flex-shrink-0 text-[#1e3a5f] dark:text-[#2ecc71]" />
+                <Phone className="w-4 h-4 shrink-0 text-[#1e3a5f] dark:text-[#2ecc71]" />
                 <a
                   href="tel:+8801712345678"
                   target="_blank"

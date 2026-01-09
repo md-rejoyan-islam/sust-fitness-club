@@ -1,22 +1,22 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import Image from "next/image";
-import {
-  Users,
-  Search,
-  Filter,
-  GraduationCap,
-  Calendar,
-  Droplets,
-  ChevronDown,
-} from "lucide-react";
-import type { Locale } from "@/lib/i18n/config";
 import {
   AnimatedFadeIn,
   AnimatedPageCards,
   AnimatedPageHero,
 } from "@/components/ui/page-animations";
+import type { Locale } from "@/lib/i18n/config";
+import {
+  Calendar,
+  ChevronDown,
+  Droplets,
+  Filter,
+  GraduationCap,
+  Search,
+  Users,
+} from "lucide-react";
+import Image from "next/image";
+import { useMemo, useState } from "react";
 
 interface Member {
   id: string;
@@ -268,16 +268,16 @@ export function GeneralMembersContent({
       {/* Hero Section - White Background */}
       <section className="relative pt-28 sm:pt-32 px-4 bg-white dark:bg-[#0d1117]">
         {/* Grid pattern with fade */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-size-[4rem_4rem] [mask-image:linear-gradient(to_bottom,black_30%,transparent_90%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[linear-gradient(to_bottom,black_30%,transparent_90%)]" />
 
         {/* Decorative gradient orbs */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-[#2ecc71]/30 to-[#27ae60]/10 rounded-full blur-3xl animate-wave-slow" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-[#1e3a5f]/20 to-[#5ce1e6]/10 dark:from-[#5ce1e6]/15 dark:to-[#2ecc71]/10 rounded-full blur-3xl animate-wave-reverse" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-linear-to-br from-[#2ecc71]/30 to-[#27ae60]/10 rounded-full blur-3xl animate-wave-slow" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-linear-to-br from-[#1e3a5f]/20 to-[#5ce1e6]/10 dark:from-[#5ce1e6]/15 dark:to-[#2ecc71]/10 rounded-full blur-3xl animate-wave-reverse" />
 
         <AnimatedPageHero>
           <div className="relative max-w-4xl mx-auto text-center z-10">
             {/* Premium badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-gradient-to-r from-[#2ecc71]/10 to-[#1e3a5f]/10 dark:from-[#5ce1e6]/20 dark:to-[#2ecc71]/10 backdrop-blur-sm border border-[#2ecc71]/20 dark:border-[#5ce1e6]/30">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-linear-to-r from-[#2ecc71]/10 to-[#1e3a5f]/10 dark:from-[#5ce1e6]/20 dark:to-[#2ecc71]/10 backdrop-blur-sm border border-[#2ecc71]/20 dark:border-[#5ce1e6]/30">
               <span className="w-2 h-2 bg-[#2ecc71] dark:bg-[#5ce1e6] rounded-full animate-pulse" />
               <span className="text-xs font-semibold uppercase tracking-wider text-[#27ae60] dark:text-[#5ce1e6]">
                 {lang === "bn" ? "সদস্যবৃন্দ" : "Members"}
@@ -285,7 +285,7 @@ export function GeneralMembersContent({
             </div>
 
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-              <span className="text-gradient bg-gradient-to-r from-[#1e3a5f] via-[#2ecc71] to-[#1e3a5f] dark:from-[#5ce1e6] dark:via-[#2ecc71] dark:to-[#5ce1e6] bg-clip-text text-transparent bg-size-[200%_auto] animate-gradient">
+              <span className="text-gradient bg-linear-to-r from-[#1e3a5f] via-[#2ecc71] to-[#1e3a5f] dark:from-[#5ce1e6] dark:via-[#2ecc71] dark:to-[#5ce1e6] bg-clip-text text-transparent bg-size-[200%_auto] animate-gradient">
                 {dictionary.title}
               </span>
             </h1>
@@ -305,87 +305,88 @@ export function GeneralMembersContent({
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Search and Filter */}
           <AnimatedFadeIn>
-          <div className="flex flex-col sm:flex-row gap-4 mb-12 max-w-3xl mx-auto">
-            {/* Search */}
-            <div className="flex-1 relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-              <input
-                type="text"
-                placeholder={dictionary.searchPlaceholder}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 bg-white dark:bg-[#161b22] rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 focus:border-[#2ecc71] dark:focus:border-[#5ce1e6] focus:outline-none transition-colors"
-              />
-            </div>
+            <div className="flex flex-col sm:flex-row gap-4 mb-12 max-w-3xl mx-auto">
+              {/* Search */}
+              <div className="flex-1 relative">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <input
+                  type="text"
+                  placeholder={dictionary.searchPlaceholder}
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-12 pr-4 py-4 bg-white dark:bg-[#161b22] rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 focus:border-[#2ecc71] dark:focus:border-[#5ce1e6] focus:outline-none transition-colors"
+                />
+              </div>
 
-            {/* Filter Dropdown */}
-            <div className="relative">
-              <button
-                onClick={() => setIsFilterOpen(!isFilterOpen)}
-                className="flex items-center gap-3 px-6 py-4 bg-white dark:bg-[#161b22] rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 hover:shadow-lg transition-all min-w-[220px]"
-              >
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] flex items-center justify-center">
-                  <Filter className="w-4 h-4 text-white dark:text-[#0d1117]" />
-                </div>
-                <span className="flex-1 text-left text-gray-700 dark:text-gray-300 text-sm">
-                  {selectedDepartment
-                    ? lang === "bn"
-                      ? departments.find((d) => d.en === selectedDepartment)?.bn
-                      : selectedDepartment
-                    : dictionary.allDepartments}
-                </span>
-                <div
-                  className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
-                    isFilterOpen
-                      ? "bg-[#2ecc71] dark:bg-[#5ce1e6]"
-                      : "bg-gray-100 dark:bg-[#2d3f50]"
-                  }`}
+              {/* Filter Dropdown */}
+              <div className="relative">
+                <button
+                  onClick={() => setIsFilterOpen(!isFilterOpen)}
+                  className="flex items-center gap-3 px-6 py-4 bg-white dark:bg-[#161b22] rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 hover:shadow-lg transition-all min-w-[220px]"
                 >
-                  <ChevronDown
-                    className={`w-5 h-5 transition-transform duration-300 ${
+                  <div className="w-8 h-8 rounded-lg bg-linear-to-br from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] flex items-center justify-center">
+                    <Filter className="w-4 h-4 text-white dark:text-[#0d1117]" />
+                  </div>
+                  <span className="flex-1 text-left text-gray-700 dark:text-gray-300 text-sm">
+                    {selectedDepartment
+                      ? lang === "bn"
+                        ? departments.find((d) => d.en === selectedDepartment)
+                            ?.bn
+                        : selectedDepartment
+                      : dictionary.allDepartments}
+                  </span>
+                  <div
+                    className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
                       isFilterOpen
-                        ? "rotate-180 text-white dark:text-[#0d1117]"
-                        : "text-gray-500 dark:text-gray-400"
-                    }`}
-                  />
-                </div>
-              </button>
-
-              {isFilterOpen && (
-                <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-[#161b22] rounded-2xl border border-gray-200 dark:border-[#2d3f50] shadow-xl overflow-hidden z-50 max-h-64 overflow-y-auto">
-                  <button
-                    onClick={() => {
-                      setSelectedDepartment("");
-                      setIsFilterOpen(false);
-                    }}
-                    className={`w-full px-4 py-3 text-left hover:bg-gray-50 dark:hover:bg-[#1a2332] transition-colors ${
-                      !selectedDepartment
-                        ? "bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10"
-                        : ""
+                        ? "bg-[#2ecc71] dark:bg-[#5ce1e6]"
+                        : "bg-gray-100 dark:bg-[#2d3f50]"
                     }`}
                   >
-                    {dictionary.allDepartments}
-                  </button>
-                  {departments.map((dept) => (
+                    <ChevronDown
+                      className={`w-5 h-5 transition-transform duration-300 ${
+                        isFilterOpen
+                          ? "rotate-180 text-white dark:text-[#0d1117]"
+                          : "text-gray-500 dark:text-gray-400"
+                      }`}
+                    />
+                  </div>
+                </button>
+
+                {isFilterOpen && (
+                  <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-[#161b22] rounded-2xl border border-gray-200 dark:border-[#2d3f50] shadow-xl overflow-hidden z-50 max-h-64 overflow-y-auto">
                     <button
-                      key={dept.en}
                       onClick={() => {
-                        setSelectedDepartment(dept.en);
+                        setSelectedDepartment("");
                         setIsFilterOpen(false);
                       }}
-                      className={`w-full px-4 py-3 text-left hover:bg-gray-50 dark:hover:bg-[#1a2332] transition-colors text-sm ${
-                        selectedDepartment === dept.en
+                      className={`w-full px-4 py-3 text-left hover:bg-gray-50 dark:hover:bg-[#1a2332] transition-colors ${
+                        !selectedDepartment
                           ? "bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10"
                           : ""
                       }`}
                     >
-                      {lang === "bn" ? dept.bn : dept.en}
+                      {dictionary.allDepartments}
                     </button>
-                  ))}
-                </div>
-              )}
+                    {departments.map((dept) => (
+                      <button
+                        key={dept.en}
+                        onClick={() => {
+                          setSelectedDepartment(dept.en);
+                          setIsFilterOpen(false);
+                        }}
+                        className={`w-full px-4 py-3 text-left hover:bg-gray-50 dark:hover:bg-[#1a2332] transition-colors text-sm ${
+                          selectedDepartment === dept.en
+                            ? "bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10"
+                            : ""
+                        }`}
+                      >
+                        {lang === "bn" ? dept.bn : dept.en}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
           </AnimatedFadeIn>
 
           {/* Members Grid */}
@@ -455,7 +456,7 @@ export function GeneralMembersContent({
                   </div>
 
                   {/* Hover effect */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#2ecc71]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none rounded-2xl" />
+                  <div className="absolute inset-0 bg-linear-to-t from-[#2ecc71]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none rounded-2xl" />
                 </div>
               ))}
             </AnimatedPageCards>

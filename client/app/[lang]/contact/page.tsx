@@ -1,9 +1,10 @@
 import {
-  AnimatedFadeIn,
   AnimatedPageCards,
   AnimatedPageHero,
   AnimatedPageSection,
 } from "@/components/ui/page-animations";
+import type { Locale } from "@/lib/i18n/config";
+import { getDictionary } from "@/lib/i18n/get-dictionary";
 import {
   Calendar,
   Clock,
@@ -14,6 +15,7 @@ import {
   Send,
   Users,
 } from "lucide-react";
+import type { Metadata } from "next";
 
 // Facebook icon component (lucide Facebook is deprecated)
 const FacebookIcon = ({ className }: { className?: string }) => (
@@ -26,9 +28,6 @@ const FacebookIcon = ({ className }: { className?: string }) => (
     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
   </svg>
 );
-import { getDictionary } from "@/lib/i18n/get-dictionary";
-import type { Locale } from "@/lib/i18n/config";
-import type { Metadata } from "next";
 
 export async function generateMetadata({
   params,
@@ -96,8 +95,7 @@ export default async function ContactPage({
           },
           {
             title: "Address",
-            value:
-              "Shahjalal University of Science & Technology, Sylhet",
+            value: "Shahjalal University of Science & Technology, Sylhet",
             link: "https://maps.google.com/?q=Shahjalal+University+of+Science+and+Technology",
             Icon: MapPin,
           },
@@ -131,16 +129,16 @@ export default async function ContactPage({
       {/* Hero Section - White Background */}
       <section className="relative pt-28 sm:pt-32 pb-10 px-4 bg-white dark:bg-[#0d1117]">
         {/* Grid pattern with fade */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-size-[4rem_4rem] [mask-image:linear-gradient(to_bottom,black_30%,transparent_90%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[linear-gradient(to_bottom,black_30%,transparent_90%)]" />
 
         {/* Decorative gradient orbs */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-[#2ecc71]/30 to-[#27ae60]/10 rounded-full blur-3xl animate-wave-slow" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-[#1e3a5f]/20 to-[#5ce1e6]/10 dark:from-[#5ce1e6]/15 dark:to-[#2ecc71]/10 rounded-full blur-3xl animate-wave-reverse" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-linear-to-br from-[#2ecc71]/30 to-[#27ae60]/10 rounded-full blur-3xl animate-wave-slow" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-linear-to-br from-[#1e3a5f]/20 to-[#5ce1e6]/10 dark:from-[#5ce1e6]/15 dark:to-[#2ecc71]/10 rounded-full blur-3xl animate-wave-reverse" />
 
         <AnimatedPageHero>
           <div className="relative max-w-4xl mx-auto text-center z-10">
             {/* Premium badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-gradient-to-r from-[#2ecc71]/10 to-[#1e3a5f]/10 dark:from-[#5ce1e6]/20 dark:to-[#2ecc71]/10 backdrop-blur-sm border border-[#2ecc71]/20 dark:border-[#5ce1e6]/30">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-linear-to-r from-[#2ecc71]/10 to-[#1e3a5f]/10 dark:from-[#5ce1e6]/20 dark:to-[#2ecc71]/10 backdrop-blur-sm border border-[#2ecc71]/20 dark:border-[#5ce1e6]/30">
               <span className="w-2 h-2 bg-[#2ecc71] dark:bg-[#5ce1e6] rounded-full animate-pulse" />
               <span className="text-xs font-semibold uppercase tracking-wider text-[#27ae60] dark:text-[#5ce1e6]">
                 {lang === "bn" ? "আমাদের সাথে যোগাযোগ করুন" : "Get in Touch"}
@@ -148,7 +146,7 @@ export default async function ContactPage({
             </div>
 
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-              <span className="text-gradient bg-gradient-to-r from-[#1e3a5f] via-[#2ecc71] to-[#1e3a5f] dark:from-[#5ce1e6] dark:via-[#2ecc71] dark:to-[#5ce1e6] bg-clip-text text-transparent bg-size-[200%_auto] animate-gradient">
+              <span className="text-gradient bg-linear-to-r from-[#1e3a5f] via-[#2ecc71] to-[#1e3a5f] dark:from-[#5ce1e6] dark:via-[#2ecc71] dark:to-[#5ce1e6] bg-clip-text text-transparent bg-size-[200%_auto] animate-gradient">
                 {dict.contact.title}
               </span>
             </h1>
@@ -160,8 +158,8 @@ export default async function ContactPage({
             </p>
 
             {/* Contact badge */}
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-gradient-to-r from-white to-gray-50 dark:from-[#1a2332] dark:to-[#0d1117] border border-gray-200 dark:border-[#2d3f50] shadow-lg">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] flex items-center justify-center shadow-lg shadow-[#2ecc71]/30 dark:shadow-[#5ce1e6]/30">
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-linear-to-r from-white to-gray-50 dark:from-[#1a2332] dark:to-[#0d1117] border border-gray-200 dark:border-[#2d3f50] shadow-lg">
+              <div className="w-10 h-10 rounded-xl bg-linear-to-br from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] flex items-center justify-center shadow-lg shadow-[#2ecc71]/30 dark:shadow-[#5ce1e6]/30">
                 <MessageCircle className="w-5 h-5 text-white dark:text-[#0d1117]" />
               </div>
               <div className="text-left">
@@ -216,8 +214,14 @@ export default async function ContactPage({
                     </div>
                     <a
                       href={info.link}
-                      target={info.link.startsWith("http") ? "_blank" : undefined}
-                      rel={info.link.startsWith("http") ? "noopener noreferrer" : undefined}
+                      target={
+                        info.link.startsWith("http") ? "_blank" : undefined
+                      }
+                      rel={
+                        info.link.startsWith("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
                       className="block text-gray-600 text-lg dark:text-gray-400 hover:text-[#2ecc71] dark:hover:text-[#5ce1e6] transition-colors"
                     >
                       {info.value}
@@ -261,7 +265,7 @@ export default async function ContactPage({
 
               <div className="grid sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
                 <div className="flex items-center justify-center gap-3 p-4 rounded-xl bg-white dark:bg-[#0d1117] border border-gray-200 dark:border-[#2d3f50]">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full bg-linear-to-br from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] flex items-center justify-center">
                     <Calendar className="w-5 h-5 text-white dark:text-[#0d1117]" />
                   </div>
                   <div className="text-left">
@@ -275,7 +279,7 @@ export default async function ContactPage({
                 </div>
 
                 <div className="flex items-center justify-center gap-3 p-4 rounded-xl bg-white dark:bg-[#0d1117] border border-gray-200 dark:border-[#2d3f50]">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full bg-linear-to-br from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] flex items-center justify-center">
                     <Clock className="w-5 h-5 text-white dark:text-[#0d1117]" />
                   </div>
                   <div className="text-left">
@@ -289,7 +293,7 @@ export default async function ContactPage({
                 </div>
 
                 <div className="flex items-center justify-center gap-3 p-4 rounded-xl bg-white dark:bg-[#0d1117] border border-gray-200 dark:border-[#2d3f50]">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full bg-linear-to-br from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] flex items-center justify-center">
                     <MapPin className="w-5 h-5 text-white dark:text-[#0d1117]" />
                   </div>
                   <div className="text-left">
@@ -418,9 +422,7 @@ export default async function ContactPage({
                           {social.name}
                         </h3>
                         <p className="text-sm text-gray-600 dark:text-gray-400">
-                          {lang === "bn"
-                            ? "আমাদের পেজে যান"
-                            : "Visit our page"}
+                          {lang === "bn" ? "আমাদের পেজে যান" : "Visit our page"}
                         </p>
                       </div>
                     </a>
@@ -466,7 +468,7 @@ export default async function ContactPage({
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="p-6 sm:p-8 rounded-2xl border bg-white dark:bg-[#161b22]">
             <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] flex items-center justify-center">
+              <div className="shrink-0 w-10 h-10 rounded-full bg-linear-to-br from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] flex items-center justify-center">
                 <MessageCircle className="w-5 h-5 text-white dark:text-[#0d1117]" />
               </div>
               <div>

@@ -2,11 +2,11 @@ import {
   AnimatedPageCards,
   AnimatedPageHero,
   AnimatedPageSection,
-} from '@/components/ui/page-animations';
-import { Users, Award, Star, Mail } from 'lucide-react';
-import { getDictionary } from '@/lib/i18n/get-dictionary';
-import type { Locale } from '@/lib/i18n/config';
-import type { Metadata } from 'next';
+} from "@/components/ui/page-animations";
+import type { Locale } from "@/lib/i18n/config";
+import { getDictionary } from "@/lib/i18n/get-dictionary";
+import { Award, Mail, Star, Users } from "lucide-react";
+import type { Metadata } from "next";
 
 export async function generateMetadata({
   params,
@@ -32,98 +32,136 @@ export default async function TrainersPage({
   const lang = langParam as Locale;
   const dict = await getDictionary(lang);
 
-  const trainers = lang === 'bn' ? [
-    {
-      name: 'রাফি আহমেদ',
-      role: 'প্রধান প্রশিক্ষক',
-      specialty: 'ওয়েট ট্রেনিং',
-      image: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=300&h=300&fit=crop&crop=face',
-    },
-    {
-      name: 'সাদিয়া রহমান',
-      role: 'যোগ প্রশিক্ষক',
-      specialty: 'যোগব্যায়াম',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop&crop=face',
-    },
-    {
-      name: 'তানভীর হাসান',
-      role: 'শক্তি প্রশিক্ষক',
-      specialty: 'স্ট্রেংথ ট্রেনিং',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face',
-    },
-    {
-      name: 'নুসরাত জাহান',
-      role: 'পুষ্টি বিশেষজ্ঞ',
-      specialty: 'পুষ্টি পরামর্শ',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face',
-    },
-    {
-      name: 'সাইফুল ইসলাম',
-      role: 'ক্রসফিট কোচ',
-      specialty: 'ক্রসফিট',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face',
-    },
-    {
-      name: 'রাকিব হাসান',
-      role: 'ফিটনেস ট্রেইনার',
-      specialty: 'কার্ডিও',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face',
-    },
-  ] : [
-    {
-      name: 'Rafi Ahmed',
-      role: 'Head Trainer',
-      specialty: 'Weight Training',
-      image: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=300&h=300&fit=crop&crop=face',
-    },
-    {
-      name: 'Sadia Rahman',
-      role: 'Yoga Instructor',
-      specialty: 'Yoga',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop&crop=face',
-    },
-    {
-      name: 'Tanvir Hasan',
-      role: 'Strength Coach',
-      specialty: 'Strength Training',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face',
-    },
-    {
-      name: 'Nusrat Jahan',
-      role: 'Nutrition Expert',
-      specialty: 'Nutrition',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face',
-    },
-    {
-      name: 'Saiful Islam',
-      role: 'CrossFit Coach',
-      specialty: 'CrossFit',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face',
-    },
-    {
-      name: 'Rakib Hasan',
-      role: 'Fitness Trainer',
-      specialty: 'Cardio',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face',
-    },
-  ];
+  const trainers =
+    lang === "bn"
+      ? [
+          {
+            name: "রাফি আহমেদ",
+            role: "প্রধান প্রশিক্ষক",
+            specialty: "ওয়েট ট্রেনিং",
+            image:
+              "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=300&h=300&fit=crop&crop=face",
+          },
+          {
+            name: "সাদিয়া রহমান",
+            role: "যোগ প্রশিক্ষক",
+            specialty: "যোগব্যায়াম",
+            image:
+              "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop&crop=face",
+          },
+          {
+            name: "তানভীর হাসান",
+            role: "শক্তি প্রশিক্ষক",
+            specialty: "স্ট্রেংথ ট্রেনিং",
+            image:
+              "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
+          },
+          {
+            name: "নুসরাত জাহান",
+            role: "পুষ্টি বিশেষজ্ঞ",
+            specialty: "পুষ্টি পরামর্শ",
+            image:
+              "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face",
+          },
+          {
+            name: "সাইফুল ইসলাম",
+            role: "ক্রসফিট কোচ",
+            specialty: "ক্রসফিট",
+            image:
+              "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face",
+          },
+          {
+            name: "রাকিব হাসান",
+            role: "ফিটনেস ট্রেইনার",
+            specialty: "কার্ডিও",
+            image:
+              "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
+          },
+        ]
+      : [
+          {
+            name: "Rafi Ahmed",
+            role: "Head Trainer",
+            specialty: "Weight Training",
+            image:
+              "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=300&h=300&fit=crop&crop=face",
+          },
+          {
+            name: "Sadia Rahman",
+            role: "Yoga Instructor",
+            specialty: "Yoga",
+            image:
+              "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop&crop=face",
+          },
+          {
+            name: "Tanvir Hasan",
+            role: "Strength Coach",
+            specialty: "Strength Training",
+            image:
+              "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
+          },
+          {
+            name: "Nusrat Jahan",
+            role: "Nutrition Expert",
+            specialty: "Nutrition",
+            image:
+              "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face",
+          },
+          {
+            name: "Saiful Islam",
+            role: "CrossFit Coach",
+            specialty: "CrossFit",
+            image:
+              "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face",
+          },
+          {
+            name: "Rakib Hasan",
+            role: "Fitness Trainer",
+            specialty: "Cardio",
+            image:
+              "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
+          },
+        ];
 
-  const features = lang === 'bn' ? [
-    { title: 'সার্টিফাইড', description: 'সকল প্রশিক্ষক সার্টিফাইড ও প্রশিক্ষিত', Icon: Award },
-    { title: 'অভিজ্ঞ', description: 'বছরের পর বছর অভিজ্ঞতা', Icon: Star },
-    { title: 'সহায়ক', description: 'সবসময় সাহায্যের জন্য প্রস্তুত', Icon: Users },
-  ] : [
-    { title: 'Certified', description: 'All trainers are certified and trained', Icon: Award },
-    { title: 'Experienced', description: 'Years of experience', Icon: Star },
-    { title: 'Supportive', description: 'Always ready to help', Icon: Users },
-  ];
+  const features =
+    lang === "bn"
+      ? [
+          {
+            title: "সার্টিফাইড",
+            description: "সকল প্রশিক্ষক সার্টিফাইড ও প্রশিক্ষিত",
+            Icon: Award,
+          },
+          { title: "অভিজ্ঞ", description: "বছরের পর বছর অভিজ্ঞতা", Icon: Star },
+          {
+            title: "সহায়ক",
+            description: "সবসময় সাহায্যের জন্য প্রস্তুত",
+            Icon: Users,
+          },
+        ]
+      : [
+          {
+            title: "Certified",
+            description: "All trainers are certified and trained",
+            Icon: Award,
+          },
+          {
+            title: "Experienced",
+            description: "Years of experience",
+            Icon: Star,
+          },
+          {
+            title: "Supportive",
+            description: "Always ready to help",
+            Icon: Users,
+          },
+        ];
 
   return (
     <div className="overflow-hidden">
       {/* Hero Section */}
       <section className="relative py-16 sm:py-20 px-4">
         {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#2ecc71]/10 via-transparent to-[#1e3a5f]/10 dark:from-[#2ecc71]/5 dark:via-transparent dark:to-[#5ce1e6]/5" />
+        <div className="absolute inset-0 bg-linear-to-br from-[#2ecc71]/10 via-transparent to-[#1e3a5f]/10 dark:from-[#2ecc71]/5 dark:via-transparent dark:to-[#5ce1e6]/5" />
         <div className="absolute top-10 left-10 w-64 h-64 bg-[#2ecc71]/20 rounded-full blur-3xl" />
         <div className="absolute bottom-10 right-10 w-80 h-80 bg-[#1e3a5f]/20 dark:bg-[#5ce1e6]/10 rounded-full blur-3xl" />
 
@@ -185,7 +223,7 @@ export default async function TrainersPage({
                 <div className="absolute inset-0 flex items-center justify-center bg-[#1e3a5f]/80 dark:bg-[#0d1117]/80 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl">
                   <button className="flex items-center gap-2 px-6 py-3 bg-[#2ecc71] dark:bg-[#5ce1e6] text-white dark:text-[#0d1117] rounded-xl font-medium hover:shadow-lg transition-shadow">
                     <Mail className="h-4 w-4" />
-                    {lang === 'bn' ? 'যোগাযোগ' : 'Contact'}
+                    {lang === "bn" ? "যোগাযোগ" : "Contact"}
                   </button>
                 </div>
               </div>
@@ -200,9 +238,9 @@ export default async function TrainersPage({
           <AnimatedPageSection>
             <div className="text-center mb-16">
               <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-                {lang === 'bn'
-                  ? 'কেন আমাদের প্রশিক্ষকরা সেরা'
-                  : 'Why Our Trainers Are The Best'}
+                {lang === "bn"
+                  ? "কেন আমাদের প্রশিক্ষকরা সেরা"
+                  : "Why Our Trainers Are The Best"}
               </h2>
             </div>
           </AnimatedPageSection>

@@ -185,18 +185,18 @@ export default async function HomePage({
       {/* Hero Section - Premium Design */}
       <section className="relative min-h-screen flex items-center justify-center pt-32 py-20 px-4 bg-white dark:bg-[#0d1117]">
         {/* Grid pattern with fade */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-size-[4rem_4rem] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_at_center,black_20%,transparent_70%)]" />
 
         {/* Decorative gradient orbs */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-[#2ecc71]/30 to-[#27ae60]/10 rounded-full blur-3xl animate-wave-slow" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-[#1e3a5f]/20 to-[#5ce1e6]/10 dark:from-[#5ce1e6]/15 dark:to-[#2ecc71]/10 rounded-full blur-3xl animate-wave-reverse" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-[#2ecc71]/5 to-[#1e3a5f]/5 dark:from-[#5ce1e6]/5 dark:to-[#2ecc71]/5 rounded-full blur-3xl" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-linear-to-br from-[#2ecc71]/30 to-[#27ae60]/10 rounded-full blur-3xl animate-wave-slow" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-linear-to-br from-[#1e3a5f]/20 to-[#5ce1e6]/10 dark:from-[#5ce1e6]/15 dark:to-[#2ecc71]/10 rounded-full blur-3xl animate-wave-reverse" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-linear-to-br from-[#2ecc71]/5 to-[#1e3a5f]/5 dark:from-[#5ce1e6]/5 dark:to-[#2ecc71]/5 rounded-full blur-3xl" />
 
         <AnimatedHero>
           <div className="relative max-w-7xl mx-auto text-center z-10">
             <div className="space-y-8">
               {/* Premium badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#2ecc71]/10 to-[#1e3a5f]/10 dark:from-[#5ce1e6]/20 dark:to-[#2ecc71]/10 backdrop-blur-sm border border-[#2ecc71]/20 dark:border-[#5ce1e6]/30">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-linear-to-r from-[#2ecc71]/10 to-[#1e3a5f]/10 dark:from-[#5ce1e6]/20 dark:to-[#2ecc71]/10 backdrop-blur-sm border border-[#2ecc71]/20 dark:border-[#5ce1e6]/30">
                 <span className="w-2 h-2 bg-[#2ecc71] dark:bg-[#5ce1e6] rounded-full animate-pulse" />
                 <span className="text-xs font-semibold uppercase tracking-wider text-[#27ae60] dark:text-[#5ce1e6]">
                   {lang === "bn"
@@ -207,7 +207,7 @@ export default async function HomePage({
 
               {/* Main Title */}
               <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight">
-                <span className="text-gradient bg-gradient-to-r from-[#1e3a5f] via-[#2ecc71] to-[#1e3a5f] dark:from-[#5ce1e6] dark:via-[#2ecc71] dark:to-[#5ce1e6] bg-clip-text text-transparent bg-size-[200%_auto] animate-gradient">
+                <span className="text-gradient bg-linear-to-r from-[#1e3a5f] via-[#2ecc71] to-[#1e3a5f] dark:from-[#5ce1e6] dark:via-[#2ecc71] dark:to-[#5ce1e6] bg-clip-text text-transparent bg-size-[200%_auto] animate-gradient">
                   {dict.hero.title.split(" ").slice(0, 2).join(" ")}
                 </span>
                 <br />
@@ -224,7 +224,7 @@ export default async function HomePage({
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
                 <Link href={`/${lang}/register`}>
-                  <button className="flex items-center justify-center gap-2 text-lg px-8 py-4 rounded-xl bg-gradient-to-r from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] text-white dark:text-[#0d1117] font-semibold shadow-lg shadow-[#2ecc71]/30 dark:shadow-[#5ce1e6]/30 hover:shadow-xl hover:shadow-[#2ecc71]/40 dark:hover:shadow-[#5ce1e6]/40 transition-all duration-300 hover:-translate-y-0.5">
+                  <button className="flex items-center justify-center gap-2 text-lg px-8 py-4 rounded-xl bg-linear-to-r from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] text-white dark:text-[#0d1117] font-semibold shadow-lg shadow-[#2ecc71]/30 dark:shadow-[#5ce1e6]/30 hover:shadow-xl hover:shadow-[#2ecc71]/40 dark:hover:shadow-[#5ce1e6]/40 transition-all duration-300 hover:-translate-y-0.5">
                     {dict.hero.cta}
                     <ArrowRight className="w-5 h-5" />
                   </button>
@@ -272,10 +272,10 @@ export default async function HomePage({
                   className="relative p-6 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white dark:bg-[#161b22] hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-all hover:-translate-y-2 group"
                 >
                   {/* FREE Badge */}
-                  <div className="absolute -top-3 right-4 bg-gradient-to-r from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] text-white dark:text-[#0d1117] text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                  <div className="absolute -top-3 right-4 bg-linear-to-r from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] text-white dark:text-[#0d1117] text-xs font-bold px-3 py-1 rounded-full shadow-lg">
                     {lang === "bn" ? "ফ্রি" : "FREE"}
                   </div>
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#2ecc71]/10 to-[#27ae60]/5 dark:from-[#5ce1e6]/20 dark:to-[#5ce1e6]/5 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                  <div className="w-14 h-14 rounded-2xl bg-linear-to-br from-[#2ecc71]/10 to-[#27ae60]/5 dark:from-[#5ce1e6]/20 dark:to-[#5ce1e6]/5 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
                     <Icon className="w-7 h-7 text-[#27ae60] dark:text-[#5ce1e6]" />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
@@ -321,12 +321,12 @@ export default async function HomePage({
             {schedule.map((session, index) => (
               <div key={index} className="relative pt-4 h-full">
                 {/* Floating label */}
-                <div className="absolute -top-0 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] text-white dark:text-[#0d1117] text-sm font-semibold rounded-full shadow-lg z-10">
+                <div className="absolute -top-0 left-1/2 -translate-x-1/2 px-4 py-1 bg-linear-to-r from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] text-white dark:text-[#0d1117] text-sm font-semibold rounded-full shadow-lg z-10">
                   {session.time}
                 </div>
                 <div className="p-6 pt-8 h-full rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white dark:bg-[#161b22] hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-all">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#2ecc71]/10 to-[#27ae60]/5 dark:from-[#5ce1e6]/20 dark:to-[#5ce1e6]/5 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#2ecc71]/10 to-[#27ae60]/5 dark:from-[#5ce1e6]/20 dark:to-[#5ce1e6]/5 flex items-center justify-center">
                       <Clock className="w-6 h-6 text-[#2ecc71] dark:text-[#5ce1e6]" />
                     </div>
                     <h3 className="font-semibold text-lg text-gray-900 dark:text-white">
@@ -376,7 +376,7 @@ export default async function HomePage({
                   key={index}
                   className="p-6 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white dark:bg-[#161b22] hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-all hover:-translate-y-1 group"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#2ecc71]/10 to-[#27ae60]/5 dark:from-[#5ce1e6]/20 dark:to-[#5ce1e6]/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#2ecc71]/10 to-[#27ae60]/5 dark:from-[#5ce1e6]/20 dark:to-[#5ce1e6]/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <Icon className="w-6 h-6 text-[#27ae60] dark:text-[#5ce1e6]" />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
@@ -422,7 +422,7 @@ export default async function HomePage({
                   key={index}
                   className="p-6 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white dark:bg-[#161b22] hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-all hover:-translate-y-1 flex items-start gap-4 group"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#2ecc71]/10 to-[#27ae60]/5 dark:from-[#5ce1e6]/20 dark:to-[#5ce1e6]/5 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#2ecc71]/10 to-[#27ae60]/5 dark:from-[#5ce1e6]/20 dark:to-[#5ce1e6]/5 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                     <Icon className="w-6 h-6 text-[#2ecc71] dark:text-[#5ce1e6]" />
                   </div>
                   <div>

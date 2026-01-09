@@ -46,7 +46,7 @@ export function TestimonialsSlider({ testimonials }: TestimonialsSliderProps) {
                 <Quote className="font-serif size-12 text-gray-200 dark:text-[#2d3f50]" />
               </div>
               <div className="relative z-10 flex items-center gap-4 mt-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-gray-300 to-gray-400 dark:from-[#5ce1e6]/30 dark:to-[#5ce1e6]/50 flex items-center justify-center text-white dark:text-[#5ce1e6] font-semibold text-lg">
+                <div className="w-12 h-12 rounded-full bg-linear-to-br from-gray-300 to-gray-400 dark:from-[#5ce1e6]/30 dark:to-[#5ce1e6]/50 flex items-center justify-center text-white dark:text-[#5ce1e6] font-semibold text-lg">
                   {testimonial.name.charAt(0)}
                 </div>
                 <div>
