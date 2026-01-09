@@ -324,7 +324,7 @@ export default async function HomePage({
                 <div className="absolute -top-0 left-1/2 -translate-x-1/2 px-4 py-1 bg-linear-to-r from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] text-white dark:text-[#0d1117] text-sm font-semibold rounded-full shadow-lg z-10">
                   {session.time}
                 </div>
-                <div className="p-6 pt-8 h-full rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white dark:bg-[#161b22] hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-all">
+                <div className="p-6 pt-8 h-full rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-gray-50/30 dark:bg-[#161b22] hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-all">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#2ecc71]/10 to-[#27ae60]/5 dark:from-[#5ce1e6]/20 dark:to-[#5ce1e6]/5 flex items-center justify-center">
                       <Clock className="w-6 h-6 text-[#2ecc71] dark:text-[#5ce1e6]" />
@@ -420,7 +420,7 @@ export default async function HomePage({
               return (
                 <div
                   key={index}
-                  className="p-6 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white dark:bg-[#161b22] hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-all hover:-translate-y-1 flex items-start gap-4 group"
+                  className="p-6 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-slate-50/40 dark:bg-[#161b22] hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-all hover:-translate-y-1 flex items-start gap-4 group "
                 >
                   <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#2ecc71]/10 to-[#27ae60]/5 dark:from-[#5ce1e6]/20 dark:to-[#5ce1e6]/5 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                     <Icon className="w-6 h-6 text-[#2ecc71] dark:text-[#5ce1e6]" />
