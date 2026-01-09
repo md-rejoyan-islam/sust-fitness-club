@@ -1,20 +1,5 @@
 import { i18n } from "@/lib/i18n/config";
-import { match } from "@formatjs/intl-localematcher";
-import Negotiator from "negotiator";
 import { NextRequest, NextResponse } from "next/server";
-
-function getLocale(request: NextRequest): string {
-  const headers = {
-    "accept-language": request.headers.get("accept-language") || "",
-  };
-  const languages = new Negotiator({ headers }).languages();
-
-  try {
-    return match(languages, [...i18n.locales], i18n.defaultLocale);
-  } catch {
-    return i18n.defaultLocale;
-  }
-}
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -36,9 +21,8 @@ export function proxy(request: NextRequest) {
     return;
   }
 
-  // Redirect to locale-prefixed path (default: bn)
-  const locale = getLocale(request);
-  request.nextUrl.pathname = `/${locale}${pathname}`;
+  // Redirect to locale-prefixed path (always use default: bn)
+  request.nextUrl.pathname = `/${i18n.defaultLocale}${pathname}`;
 
   return NextResponse.redirect(request.nextUrl);
 }
