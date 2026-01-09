@@ -96,7 +96,7 @@ export function Header({ locale, dictionary }: HeaderProps) {
   };
 
   return (
-    <nav className="fixed top-0 backdrop-blur-[2px] left-0 right-0 z-50 glass border-b">
+    <nav className="fixed top-0 backdrop-blur-[2px] left-0 right-0 z-20 glass border-b">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -249,7 +249,7 @@ export function Header({ locale, dictionary }: HeaderProps) {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="lg:hidden border-t overflow-hidden bg-white/95 dark:bg-[#141414]/95 backdrop-blur-xl">
-          <div className="px-4 py-2 space-y-1">
+          <div className="px-4 py-2 pb-6 space-y-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -257,7 +257,7 @@ export function Header({ locale, dictionary }: HeaderProps) {
                 onClick={() => setIsMenuOpen(false)}
                 className={`block py-2 px-4 rounded-xl transition-colors ${
                   isActive(link.href)
-                    ? "bg-gray-100 dark:bg-neutral-800 text-gray-900 dark:text-white"
+                    ? "bg-gray-200/70 dark:bg-[#000615] text-gray-900 dark:text-white"
                     : "text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-neutral-800/50"
                 }`}
               >

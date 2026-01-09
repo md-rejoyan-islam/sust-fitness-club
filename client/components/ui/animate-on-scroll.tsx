@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 
 type AnimationType = 'fade-up' | 'fade-down' | 'fade-left' | 'fade-right' | 'fade-in' | 'scale-in' | 'blur-in';
@@ -53,7 +53,7 @@ export function AnimateOnScroll({
   animation = 'fade-up',
   delay = 0,
   duration = 500,
-  threshold = 0.1,
+  threshold = 0,
   once = true,
 }: AnimateOnScrollProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -78,12 +78,19 @@ export function AnimateOnScroll({
           setIsVisible(false);
         }
       },
-      { threshold, rootMargin: '0px 0px -50px 0px' }
+      { threshold: 0, rootMargin: '100px 0px 0px 0px' }
     );
 
     const currentRef = ref.current;
     if (currentRef) {
       observer.observe(currentRef);
+
+      // Check if element is already in viewport on mount
+      const rect = currentRef.getBoundingClientRect();
+      const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+      if (isInViewport) {
+        setIsVisible(true);
+      }
     }
 
     return () => {
@@ -91,7 +98,7 @@ export function AnimateOnScroll({
         observer.unobserve(currentRef);
       }
     };
-  }, [threshold, once]);
+  }, [once]);
 
   const { initial, animate } = animationClasses[animation];
 
@@ -189,6 +196,141 @@ export function StaggerContainer({
             </div>
           ))
         : children}
+    </div>
+  );
+}
+
+// Staggered animation for grid items - each card animates one by one
+interface StaggerGridProps {
+  children: React.ReactNode[];
+  className?: string;
+  staggerDelay?: number;
+  animation?: AnimationType;
+  duration?: number;
+  threshold?: number;
+  once?: boolean;
+}
+
+// Animation styles for inline usage
+const animationStyles: Record<AnimationType, { initial: React.CSSProperties; animate: React.CSSProperties }> = {
+  'fade-up': {
+    initial: { opacity: 0, transform: 'translateY(30px)' },
+    animate: { opacity: 1, transform: 'translateY(0)' },
+  },
+  'fade-down': {
+    initial: { opacity: 0, transform: 'translateY(-30px)' },
+    animate: { opacity: 1, transform: 'translateY(0)' },
+  },
+  'fade-left': {
+    initial: { opacity: 0, transform: 'translateX(30px)' },
+    animate: { opacity: 1, transform: 'translateX(0)' },
+  },
+  'fade-right': {
+    initial: { opacity: 0, transform: 'translateX(-30px)' },
+    animate: { opacity: 1, transform: 'translateX(0)' },
+  },
+  'fade-in': {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+  },
+  'scale-in': {
+    initial: { opacity: 0, transform: 'scale(0.95)' },
+    animate: { opacity: 1, transform: 'scale(1)' },
+  },
+  'blur-in': {
+    initial: { opacity: 0, filter: 'blur(4px)' },
+    animate: { opacity: 1, filter: 'blur(0)' },
+  },
+};
+
+// Individual grid item that animates when visible
+function AnimatedGridItem({
+  children,
+  animation,
+  duration,
+  once,
+}: {
+  children: React.ReactNode;
+  animation: AnimationType;
+  duration: number;
+  once: boolean;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      setIsVisible(true);
+      return;
+    }
+
+    const currentRef = ref.current;
+    if (!currentRef) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
+          if (once) {
+            observer.disconnect();
+          }
+        }
+      },
+      { threshold: 0, rootMargin: '50px 0px 0px 0px' }
+    );
+
+    observer.observe(currentRef);
+
+    // Check if already in viewport on mount
+    const rect = currentRef.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      setIsVisible(true);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [once, isVisible]);
+
+  const styles = animationStyles[animation];
+
+  return (
+    <div
+      ref={ref}
+      className="h-full"
+      style={{
+        ...(isVisible ? styles.animate : styles.initial),
+        transition: `opacity ${duration}ms cubic-bezier(0.4, 0, 0.2, 1), transform ${duration}ms cubic-bezier(0.4, 0, 0.2, 1), filter ${duration}ms cubic-bezier(0.4, 0, 0.2, 1)`,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+export function StaggerGrid({
+  children,
+  className,
+  animation = 'fade-up',
+  duration = 600,
+  once = true,
+}: StaggerGridProps) {
+  // Flatten children array to handle mapped children properly
+  const childrenArray = React.Children.toArray(children);
+
+  return (
+    <div className={className}>
+      {childrenArray.map((child, index) => (
+        <AnimatedGridItem
+          key={index}
+          animation={animation}
+          duration={duration}
+          once={once}
+        >
+          {child}
+        </AnimatedGridItem>
+      ))}
     </div>
   );
 }

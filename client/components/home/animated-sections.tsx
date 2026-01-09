@@ -1,6 +1,6 @@
 'use client';
 
-import { AnimateOnScroll, StaggerContainer } from '@/components/ui/animate-on-scroll';
+import { AnimateOnScroll, StaggerGrid } from '@/components/ui/animate-on-scroll';
 import { ReactNode } from 'react';
 
 // Wrapper for section headers
@@ -21,7 +21,7 @@ export function AnimatedHero({ children }: { children: ReactNode }) {
   );
 }
 
-// Wrapper for staggered cards grid
+// Wrapper for staggered cards grid - each card animates one by one
 interface AnimatedCardsGridProps {
   children: ReactNode[];
   className?: string;
@@ -31,17 +31,17 @@ interface AnimatedCardsGridProps {
 export function AnimatedCardsGrid({
   children,
   className,
-  staggerDelay = 100
+  staggerDelay = 150
 }: AnimatedCardsGridProps) {
   return (
-    <StaggerContainer
+    <StaggerGrid
       className={className}
       staggerDelay={staggerDelay}
       animation="fade-up"
-      duration={500}
+      duration={600}
     >
       {children}
-    </StaggerContainer>
+    </StaggerGrid>
   );
 }
 

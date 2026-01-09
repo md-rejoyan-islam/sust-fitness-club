@@ -1,6 +1,6 @@
 'use client';
 
-import { AnimateOnScroll, StaggerContainer } from './animate-on-scroll';
+import { AnimateOnScroll, StaggerGrid } from './animate-on-scroll';
 import { ReactNode } from 'react';
 
 // Hero section animation - fades up with longer duration
@@ -21,7 +21,7 @@ export function AnimatedPageSection({ children, className }: { children: ReactNo
   );
 }
 
-// Cards grid with staggered animation
+// Cards grid with staggered animation - each card animates one by one
 interface AnimatedPageCardsProps {
   children: ReactNode[];
   className?: string;
@@ -31,17 +31,17 @@ interface AnimatedPageCardsProps {
 export function AnimatedPageCards({
   children,
   className,
-  staggerDelay = 100
+  staggerDelay = 150
 }: AnimatedPageCardsProps) {
   return (
-    <StaggerContainer
+    <StaggerGrid
       className={className}
       staggerDelay={staggerDelay}
       animation="fade-up"
-      duration={500}
+      duration={600}
     >
       {children}
-    </StaggerContainer>
+    </StaggerGrid>
   );
 }
 
@@ -112,5 +112,29 @@ export function AnimatedSlideRight({
     <AnimateOnScroll animation="fade-left" delay={delay} className={className}>
       {children}
     </AnimateOnScroll>
+  );
+}
+
+// Staggered grid animation - cards animate one by one
+interface AnimatedStaggerGridProps {
+  children: ReactNode[];
+  className?: string;
+  staggerDelay?: number;
+}
+
+export function AnimatedStaggerGrid({
+  children,
+  className,
+  staggerDelay = 100
+}: AnimatedStaggerGridProps) {
+  return (
+    <StaggerGrid
+      className={className}
+      staggerDelay={staggerDelay}
+      animation="fade-up"
+      duration={500}
+    >
+      {children}
+    </StaggerGrid>
   );
 }

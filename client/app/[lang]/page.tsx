@@ -6,6 +6,8 @@ import {
   AnimatedSectionHeader,
 } from "@/components/home/animated-sections";
 import { CTASection } from "@/components/home/cta-section";
+import { HomeGallery } from "@/components/home/home-gallery";
+import { StatsCounter } from "@/components/home/stats-counter";
 import { TestimonialsSlider } from "@/components/home/testimonials-slider";
 import type { Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
@@ -16,10 +18,8 @@ import {
   Check,
   Clock,
   Dumbbell,
-  Expand,
   GraduationCap,
   Heart,
-  Images,
   Star,
   Target,
   Trophy,
@@ -46,15 +46,6 @@ export default async function HomePage({
   const featureIcons = [Target, Dumbbell, Heart, Zap];
   const programIcons = [Dumbbell, Activity, Heart, Trophy];
   const benefitIcons = [Star, GraduationCap, Utensils, Trophy, Award, Users];
-
-  const galleryImages = [
-    "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=400&fit=crop",
-    "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&h=400&fit=crop",
-    "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&h=400&fit=crop",
-    "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=600&h=400&fit=crop",
-    "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&h=400&fit=crop",
-    "https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&h=400&fit=crop",
-  ];
 
   const schedule =
     lang === "bn"
@@ -245,41 +236,8 @@ export default async function HomePage({
                 </Link>
               </div>
 
-              {/* Stats Row - with dashed border cards */}
-              <div className="pt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-                <div className="text-center p-5 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white/50 dark:bg-[#161b22]/50 backdrop-blur-sm hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-colors">
-                  <div className="text-3xl sm:text-4xl font-bold text-[#2ecc71] dark:text-[#5ce1e6]">
-                    {lang === "bn" ? "২০০+" : "200+"}
-                  </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                    {dict.stats.members}
-                  </div>
-                </div>
-                <div className="text-center p-5 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white/50 dark:bg-[#161b22]/50 backdrop-blur-sm hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-colors">
-                  <div className="text-3xl sm:text-4xl font-bold text-[#2ecc71] dark:text-[#5ce1e6]">
-                    {lang === "bn" ? "৫+" : "5+"}
-                  </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                    {dict.stats.trainers}
-                  </div>
-                </div>
-                <div className="text-center p-5 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white/50 dark:bg-[#161b22]/50 backdrop-blur-sm hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-colors">
-                  <div className="text-3xl sm:text-4xl font-bold text-[#2ecc71] dark:text-[#5ce1e6]">
-                    {lang === "bn" ? "৬+" : "6+"}
-                  </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                    {dict.stats.programs}
-                  </div>
-                </div>
-                <div className="text-center p-5 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white/50 dark:bg-[#161b22]/50 backdrop-blur-sm hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-colors">
-                  <div className="text-3xl sm:text-4xl font-bold text-[#2ecc71] dark:text-[#5ce1e6]">
-                    {lang === "bn" ? "১+" : "1+"}
-                  </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                    {dict.stats.years}
-                  </div>
-                </div>
-              </div>
+              {/* Stats Row - with count up animation */}
+              <StatsCounter lang={lang} stats={dict.stats} />
             </div>
           </div>
         </AnimatedHero>
@@ -504,40 +462,7 @@ export default async function HomePage({
             </div>
           </AnimatedSectionHeader>
 
-          <AnimatedCardsGrid className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {galleryImages.map((image, index) => (
-              <Link key={index} href={`/${lang}/gallery`}>
-                <div className="relative aspect-video rounded-2xl overflow-hidden group cursor-pointer border-2 border-transparent hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-all">
-                  <img
-                    src={image}
-                    alt={`Gallery ${index + 1}`}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
-                    <span className="px-4 py-2 bg-white dark:bg-[#0d1117] text-gray-900 dark:text-white rounded-xl text-sm font-medium shadow-lg">
-                      <Images className="w-4 h-4 inline mr-2" />
-                      {lang === "bn" ? "দেখুন" : "View"}
-                    </span>
-                  </div>
-                  {/* Expand icon overlay */}
-                  <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="w-8 h-8 rounded-full bg-[#2ecc71] dark:bg-[#5ce1e6] flex items-center justify-center">
-                      <Expand className="w-4 h-4 text-white dark:text-[#0d1117]" />
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </AnimatedCardsGrid>
-
-          <AnimatedSection delay={300} className="mt-8 text-center">
-            <Link href={`/${lang}/gallery`}>
-              <button className="inline-flex items-center gap-2 px-8 py-3 rounded-xl border-2 border-dashed border-[#2ecc71]/50! dark:border-[#5ce1e6]/50 bg-white dark:bg-[#161b22] text-gray-700 dark:text-gray-300 font-semibold hover:bg-[#2ecc71]/10 dark:hover:bg-[#5ce1e6]/10 hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] hover:text-[#2ecc71] dark:hover:text-[#5ce1e6] transition-all">
-                <Images className="w-5 h-5" />
-                {lang === "bn" ? "সব ছবি দেখুন" : "View All Photos"}
-              </button>
-            </Link>
-          </AnimatedSection>
+          <HomeGallery lang={lang} />
         </div>
       </section>
 
@@ -563,7 +488,7 @@ export default async function HomePage({
             </div>
           </AnimatedSectionHeader>
 
-          <AnimatedSection className="px-8 sm:px-12">
+          <AnimatedSection className="md:px-8 sm:px-12">
             <TestimonialsSlider testimonials={testimonials} />
           </AnimatedSection>
         </div>

@@ -397,7 +397,7 @@ export function GeneralMembersContent({
                   className="group relative overflow-hidden rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white dark:bg-[#161b22] p-6 hover:shadow-xl transition-all duration-300"
                 >
                   {/* Member Image */}
-                  <div className="relative w-24 h-24 mx-auto mb-4">
+                  <div className="relative w-28 h-28 sm:w-32 sm:h-32 mx-auto mb-4">
                     {/* Dotted border ring */}
                     <div className="absolute -inset-px rounded-full border-2 border-dotted border-[#2ecc71]/50 dark:border-[#5ce1e6]/50" />
                     {/* Image container */}
@@ -411,8 +411,8 @@ export function GeneralMembersContent({
                               : "/user.png"
                           }
                           alt={lang === "bn" ? member.nameBn : member.name}
-                          width={96}
-                          height={96}
+                          width={128}
+                          height={128}
                           className="w-full h-full object-cover"
                         />
                       </div>

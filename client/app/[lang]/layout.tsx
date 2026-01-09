@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme/theme-provider';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
+import { ScrollToTop } from '@/components/layout/scroll-to-top';
 import { getDictionary } from '@/lib/i18n/get-dictionary';
 import { i18n, type Locale } from '@/lib/i18n/config';
 import './globals.css';
@@ -138,6 +139,7 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <ScrollToTop />
           <div className="flex min-h-screen flex-col">
             <Header
               locale={lang}

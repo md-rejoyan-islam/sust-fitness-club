@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { Quote } from 'lucide-react';
-import Autoplay from 'embla-carousel-autoplay';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from '@/components/ui/carousel';
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import { Quote } from "lucide-react";
 
 interface Testimonial {
   name: string;
@@ -24,7 +24,7 @@ export function TestimonialsSlider({ testimonials }: TestimonialsSliderProps) {
   return (
     <Carousel
       opts={{
-        align: 'start',
+        align: "start",
         loop: true,
       }}
       plugins={[
@@ -62,8 +62,8 @@ export function TestimonialsSlider({ testimonials }: TestimonialsSliderProps) {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="-left-4 sm:-left-6 w-10 h-10 sm:w-12 sm:h-12 bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm border border-[#2ecc71]/40 dark:border-[#5ce1e6]/40 text-[#2ecc71] dark:text-[#5ce1e6] hover:bg-[#2ecc71] dark:hover:bg-[#5ce1e6] hover:text-white dark:hover:text-[#1a2332] shadow-none" />
-      <CarouselNext className="-right-4 sm:-right-6 w-10 h-10 sm:w-12 sm:h-12 bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm border border-[#2ecc71]/40 dark:border-[#5ce1e6]/40 text-[#2ecc71] dark:text-[#5ce1e6] hover:bg-[#2ecc71] dark:hover:bg-[#5ce1e6] hover:text-white dark:hover:text-[#1a2332] shadow-none" />
+      <CarouselPrevious className="-left-4 sm:-left-6 w-10 h-10 sm:w-12 sm:h-12 bg-[#2ecc7032] text-slate-600 dark:bg-neutral-900/90  border border-[#2ecc707c]! dark:border-[#5ce1e6]/40  dark:text-[#5ce1e6] hover:bg-[#2ecc71] dark:hover:bg-[#5ce1e6] hover:text-white dark:hover:text-[#1a2332] shadow-none" />
+      <CarouselNext className="-right-4 sm:-right-6 w-10 h-10 sm:w-12 sm:h-12 bg-[#2ecc7032] text-slate-600 dark:bg-neutral-900/90  border border-[#2ecc707c]! dark:border-[#5ce1e6]/40  dark:text-[#5ce1e6] hover:bg-[#2ecc71] dark:hover:bg-[#5ce1e6] hover:text-white dark:hover:text-[#1a2332] shadow-none" />
     </Carousel>
   );
 }

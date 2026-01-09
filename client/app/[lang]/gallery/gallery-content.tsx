@@ -1,117 +1,20 @@
 "use client";
 
+import { LightboxModal, useLightbox } from "@/components/ui/lightbox-modal";
 import {
   AnimatedFadeIn,
   AnimatedPageCards,
   AnimatedPageHero,
   AnimatedPageSection,
 } from "@/components/ui/page-animations";
-import { Camera, Images, Play, Video, X, ChevronLeft, ChevronRight } from "lucide-react";
 import type { Locale } from "@/lib/i18n/config";
-import { useState, useCallback, useEffect } from "react";
+import { Camera, Images, Play, Video } from "lucide-react";
+import { useState } from "react";
 
 // Simple Section Divider - clean gradient transition
 const SectionDivider = ({ className = "" }: { className?: string }) => (
   <div className={`h-16 md:h-24 ${className}`} />
 );
-
-// Lightbox Modal Component
-const LightboxModal = ({
-  images,
-  currentIndex,
-  isOpen,
-  onClose,
-  onPrev,
-  onNext,
-}: {
-  images: { src: string; alt: string; category: string }[];
-  currentIndex: number;
-  isOpen: boolean;
-  onClose: () => void;
-  onPrev: () => void;
-  onNext: () => void;
-}) => {
-  // Handle keyboard navigation
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-      if (e.key === "ArrowLeft") onPrev();
-      if (e.key === "ArrowRight") onNext();
-    };
-
-    document.addEventListener("keydown", handleKeyDown);
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "unset";
-    };
-  }, [isOpen, onClose, onPrev, onNext]);
-
-  if (!isOpen) return null;
-
-  const currentImage = images[currentIndex];
-
-  return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
-      onClick={onClose}
-    >
-      {/* Close button */}
-      <button
-        onClick={onClose}
-        className="absolute top-4 right-4 z-50 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-      >
-        <X className="w-6 h-6 text-white" />
-      </button>
-
-      {/* Previous button */}
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          onPrev();
-        }}
-        className="absolute left-4 z-50 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-      >
-        <ChevronLeft className="w-8 h-8 text-white" />
-      </button>
-
-      {/* Next button */}
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          onNext();
-        }}
-        className="absolute right-4 z-50 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-      >
-        <ChevronRight className="w-8 h-8 text-white" />
-      </button>
-
-      {/* Image container */}
-      <div
-        className="relative max-w-[90vw] max-h-[90vh] flex flex-col items-center"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <img
-          src={currentImage.src.replace(/w=\d+&h=\d+/, "w=1920&h=1080")}
-          alt={currentImage.alt}
-          className="max-w-full max-h-[80vh] object-contain rounded-lg"
-        />
-        {/* Caption */}
-        <div className="mt-4 px-6 py-3 bg-white/10 rounded-xl backdrop-blur-sm">
-          <p className="text-white text-lg font-medium text-center">
-            {currentImage.alt}
-          </p>
-          <p className="text-white/60 text-sm text-center mt-1">
-            {currentIndex + 1} / {images.length}
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 interface GalleryContentProps {
   lang: Locale;
@@ -119,8 +22,6 @@ interface GalleryContentProps {
 
 export function GalleryContent({ lang }: GalleryContentProps) {
   const [activeCategory, setActiveCategory] = useState("all");
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const categories =
     lang === "bn"
@@ -200,27 +101,10 @@ export function GalleryContent({ lang }: GalleryContentProps) {
       ? galleryImages
       : galleryImages.filter((img) => img.category === activeCategory);
 
-  // Lightbox handlers
-  const openLightbox = useCallback((index: number) => {
-    setCurrentImageIndex(index);
-    setLightboxOpen(true);
-  }, []);
-
-  const closeLightbox = useCallback(() => {
-    setLightboxOpen(false);
-  }, []);
-
-  const goToPrev = useCallback(() => {
-    setCurrentImageIndex((prev) =>
-      prev === 0 ? filteredImages.length - 1 : prev - 1
-    );
-  }, [filteredImages.length]);
-
-  const goToNext = useCallback(() => {
-    setCurrentImageIndex((prev) =>
-      prev === filteredImages.length - 1 ? 0 : prev + 1
-    );
-  }, [filteredImages.length]);
+  // Use reusable lightbox hook
+  const { isOpen, currentIndex, open, close, goToPrev, goToNext } = useLightbox(
+    filteredImages.length
+  );
 
   const featuredVideos =
     lang === "bn"
@@ -258,9 +142,9 @@ export function GalleryContent({ lang }: GalleryContentProps) {
       {/* Lightbox Modal */}
       <LightboxModal
         images={filteredImages}
-        currentIndex={currentImageIndex}
-        isOpen={lightboxOpen}
-        onClose={closeLightbox}
+        currentIndex={currentIndex}
+        isOpen={isOpen}
+        onClose={close}
         onPrev={goToPrev}
         onNext={goToNext}
       />
@@ -338,7 +222,6 @@ export function GalleryContent({ lang }: GalleryContentProps) {
                 key={category.id}
                 onClick={() => {
                   setActiveCategory(category.id);
-                  setCurrentImageIndex(0);
                 }}
                 className={`px-6 py-2.5 text-sm font-medium rounded-xl transition-all ${
                   activeCategory === category.id
@@ -356,7 +239,7 @@ export function GalleryContent({ lang }: GalleryContentProps) {
             {filteredImages.map((item, index) => (
               <div
                 key={index}
-                onClick={() => openLightbox(index)}
+                onClick={() => open(index)}
                 className={`group relative cursor-pointer overflow-hidden rounded-2xl border-2 border-transparent hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-all ${
                   activeCategory === "all" ? item.span : ""
                 }`}
@@ -371,9 +254,9 @@ export function GalleryContent({ lang }: GalleryContentProps) {
                     {item.alt}
                   </span>
                 </div>
-                {/* Camera icon overlay */}
-                <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="w-8 h-8 rounded-full bg-[#2ecc71] dark:bg-[#5ce1e6] flex items-center justify-center">
+                {/* Camera icon overlay - visible on mobile, hover on desktop */}
+                <div className="absolute top-3 right-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+                  <div className="w-8 h-8 rounded-full bg-[#2ecc7055] dark:bg-[#5ce1e6] flex items-center justify-center">
                     <Camera className="w-4 h-4 text-white dark:text-[#0d1117]" />
                   </div>
                 </div>
@@ -480,23 +363,25 @@ export function GalleryContent({ lang }: GalleryContentProps) {
       <section className="relative py-4 pb-16 px-4 bg-slate-100/50 dark:bg-[#0d1117]">
         <div className="max-w-4xl mx-auto relative z-10">
           <AnimatedFadeIn>
-          <div className="p-6 sm:p-8 rounded-2xl border bg-white dark:bg-[#161b22]">
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] flex items-center justify-center">
-                <Camera className="w-5 h-5 text-white dark:text-[#0d1117]" />
-              </div>
-              <div>
-                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                  {lang === "bn" ? "আপনার ছবি শেয়ার করুন" : "Share Your Photos"}
-                </h4>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                  {lang === "bn"
-                    ? "আপনি যদি আমাদের ইভেন্টে অংশগ্রহণ করে থাকেন এবং ছবি তুলে থাকেন, তাহলে আমাদের ফেসবুক পেজে শেয়ার করুন। আমরা সেগুলো আমাদের গ্যালারিতে যুক্ত করব!"
-                    : "If you have participated in our events and taken photos, share them on our Facebook page. We will add them to our gallery!"}
-                </p>
+            <div className="p-6 sm:p-8 rounded-2xl border bg-white dark:bg-[#161b22]">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] flex items-center justify-center">
+                  <Camera className="w-5 h-5 text-white dark:text-[#0d1117]" />
+                </div>
+                <div>
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                    {lang === "bn"
+                      ? "আপনার ছবি শেয়ার করুন"
+                      : "Share Your Photos"}
+                  </h4>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    {lang === "bn"
+                      ? "আপনি যদি আমাদের ইভেন্টে অংশগ্রহণ করে থাকেন এবং ছবি তুলে থাকেন, তাহলে আমাদের ফেসবুক পেজে শেয়ার করুন। আমরা সেগুলো আমাদের গ্যালারিতে যুক্ত করব!"
+                      : "If you have participated in our events and taken photos, share them on our Facebook page. We will add them to our gallery!"}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
           </AnimatedFadeIn>
         </div>
       </section>

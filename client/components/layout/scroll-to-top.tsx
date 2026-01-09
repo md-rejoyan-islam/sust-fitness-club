@@ -1,0 +1,15 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+import { useLayoutEffect } from "react";
+
+export function ScrollToTop() {
+  const pathname = usePathname();
+
+  // useLayoutEffect runs before browser paint, ensuring page starts at top
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [pathname]);
+
+  return null;
+}
