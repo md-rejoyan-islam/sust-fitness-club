@@ -1,13 +1,6 @@
 import type { Locale } from "@/lib/i18n/config";
-import {
-  Dumbbell,
-  Facebook,
-  Linkedin,
-  Mail,
-  MapPin,
-  Phone,
-  Youtube,
-} from "lucide-react";
+import { Facebook, Linkedin, Mail, MapPin, Phone, Youtube } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 interface FooterProps {
@@ -57,13 +50,19 @@ export function Footer({ locale, dictionary }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href={`/${locale}`} className="flex items-center gap-2 mb-4">
-              <Dumbbell className="w-8 h-8 text-[#1e3a5f] dark:text-[#2ecc71]" />
-              <span className="text-xl font-bold text-gray-900 dark:text-white">
-                {locale === "bn" ? "সাস্ট ফিটনেস" : "SUST Fitness"}
-              </span>
+            <Link
+              href={`/${locale}`}
+              className="flex w-full items-center gap-2 mb-4"
+            >
+              <Image
+                src="/logo.png"
+                alt="SUST Fitness Logo"
+                width={100}
+                height={100}
+                className="h-24  w-fit"
+              />
             </Link>
-            <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed  -mt-3">
               {dictionary.footer.description}
             </p>
           </div>

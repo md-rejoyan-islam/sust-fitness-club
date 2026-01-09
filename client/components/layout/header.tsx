@@ -6,7 +6,6 @@ import type { Locale } from "@/lib/i18n/config";
 import {
   Award,
   ChevronDown,
-  Dumbbell,
   Globe,
   GraduationCap,
   Menu,
@@ -14,6 +13,7 @@ import {
   Users,
   X,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -96,17 +96,24 @@ export function Header({ locale, dictionary }: HeaderProps) {
   };
 
   return (
-    <nav className="fixed top-0 backdrop-blur-[1px] left-0 right-0 z-50 glass border-b">
+    <nav className="fixed top-0 backdrop-blur-[2px] left-0 right-0 z-50 glass border-b">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href={`/${locale}`} className="flex items-center gap-2 group">
-            <div className="transition-transform duration-300 group-hover:rotate-12">
+            <Image
+              src="/logo.png"
+              alt="SUST Fitness Logo"
+              width={400}
+              height={400}
+              className="h-20 w-full"
+            />
+            {/* <div className="transition-transform duration-300 group-hover:rotate-12">
               <Dumbbell className="w-8 h-8 text-[#1e3a5f] dark:text-[#2ecc71]" />
             </div>
             <span className="text-xl font-bold text-gray-900 dark:text-white">
               {locale === "bn" ? "সাস্ট ফিটনেস" : "SUST Fitness"}
-            </span>
+            </span> */}
           </Link>
 
           {/* Desktop Navigation */}

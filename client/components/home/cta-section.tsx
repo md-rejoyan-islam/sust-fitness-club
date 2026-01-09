@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-import { ShaderBackground } from '@/components/ui/shader-background';
-import type { Locale } from '@/lib/i18n/config';
+import { ShaderBackground } from "@/components/ui/shader-background";
+import type { Locale } from "@/lib/i18n/config";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 interface CTASectionProps {
   lang: Locale;
@@ -27,7 +27,7 @@ export function CTASection({ lang, dictionary }: CTASectionProps) {
             className="absolute inset-0"
             style={{
               backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
-              backgroundSize: '24px 24px',
+              backgroundSize: "24px 24px",
             }}
           />
         </div>
