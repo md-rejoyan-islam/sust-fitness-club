@@ -1,4 +1,10 @@
 import { AchievementsSection } from "@/components/home/achievements-section";
+import {
+  AnimatedCardsGrid,
+  AnimatedHero,
+  AnimatedSection,
+  AnimatedSectionHeader,
+} from "@/components/home/animated-sections";
 import { CTASection } from "@/components/home/cta-section";
 import { TestimonialsSlider } from "@/components/home/testimonials-slider";
 import type { Locale } from "@/lib/i18n/config";
@@ -10,6 +16,7 @@ import {
   Check,
   Clock,
   Dumbbell,
+  Expand,
   GraduationCap,
   Heart,
   Images,
@@ -194,86 +201,88 @@ export default async function HomePage({
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-[#1e3a5f]/20 to-[#5ce1e6]/10 dark:from-[#5ce1e6]/15 dark:to-[#2ecc71]/10 rounded-full blur-3xl animate-wave-reverse" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-[#2ecc71]/5 to-[#1e3a5f]/5 dark:from-[#5ce1e6]/5 dark:to-[#2ecc71]/5 rounded-full blur-3xl" />
 
-        <div className="relative max-w-7xl mx-auto text-center z-10">
-          <div className="space-y-8">
-            {/* Premium badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#2ecc71]/10 to-[#1e3a5f]/10 dark:from-[#5ce1e6]/20 dark:to-[#2ecc71]/10 backdrop-blur-sm border border-[#2ecc71]/20 dark:border-[#5ce1e6]/30">
-              <span className="w-2 h-2 bg-[#2ecc71] dark:bg-[#5ce1e6] rounded-full animate-pulse" />
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#27ae60] dark:text-[#5ce1e6]">
-                {lang === "bn"
-                  ? "সাস্ট এর অফিসিয়াল ফিটনেস ক্লাব"
-                  : "Official Fitness Club of SUST"}
-              </span>
-            </div>
-
-            {/* Main Title */}
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight">
-              <span className="text-gradient bg-gradient-to-r from-[#1e3a5f] via-[#2ecc71] to-[#1e3a5f] dark:from-[#5ce1e6] dark:via-[#2ecc71] dark:to-[#5ce1e6] bg-clip-text text-transparent bg-size-[200%_auto] animate-gradient">
-                {dict.hero.title.split(" ").slice(0, 2).join(" ")}
-              </span>
-              <br />
-              <span className="text-gray-900 dark:text-white">
-                {dict.hero.title.split(" ").slice(2).join(" ")}
-              </span>
-            </h1>
-
-            {/* Subtitle */}
-            <p className="max-w-2xl mx-auto text-lg sm:text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
-              {dict.hero.subtitle}
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Link href={`/${lang}/register`}>
-                <button className="flex items-center justify-center gap-2 text-lg px-8 py-4 rounded-xl bg-gradient-to-r from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] text-white dark:text-[#0d1117] font-semibold shadow-lg shadow-[#2ecc71]/30 dark:shadow-[#5ce1e6]/30 hover:shadow-xl hover:shadow-[#2ecc71]/40 dark:hover:shadow-[#5ce1e6]/40 transition-all duration-300 hover:-translate-y-0.5">
-                  {dict.hero.cta}
-                  <ArrowRight className="w-5 h-5" />
-                </button>
-              </Link>
-              <Link href={`/${lang}/about`}>
-                <button className="text-lg px-8 py-4 rounded-xl border-2 border-dashed border-[#2ecc71]/50! dark:border-[#5ce1e6]/50! bg-gray-100 dark:bg-[#161b22] text-gray-700 dark:text-gray-300 font-semibold hover:bg-[#2ecc71]/10 dark:hover:bg-[#5ce1e6]/10 hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] hover:text-[#2ecc71] dark:hover:text-[#5ce1e6] transition-all duration-300">
-                  {dict.hero.learnMore}
-                </button>
-              </Link>
-            </div>
-
-            {/* Stats Row - with dashed border cards */}
-            <div className="pt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-              <div className="text-center p-5 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white/50 dark:bg-[#161b22]/50 backdrop-blur-sm hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-colors">
-                <div className="text-3xl sm:text-4xl font-bold text-[#2ecc71] dark:text-[#5ce1e6]">
-                  {lang === "bn" ? "২০০+" : "200+"}
-                </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                  {dict.stats.members}
-                </div>
+        <AnimatedHero>
+          <div className="relative max-w-7xl mx-auto text-center z-10">
+            <div className="space-y-8">
+              {/* Premium badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#2ecc71]/10 to-[#1e3a5f]/10 dark:from-[#5ce1e6]/20 dark:to-[#2ecc71]/10 backdrop-blur-sm border border-[#2ecc71]/20 dark:border-[#5ce1e6]/30">
+                <span className="w-2 h-2 bg-[#2ecc71] dark:bg-[#5ce1e6] rounded-full animate-pulse" />
+                <span className="text-xs font-semibold uppercase tracking-wider text-[#27ae60] dark:text-[#5ce1e6]">
+                  {lang === "bn"
+                    ? "সাস্ট এর অফিসিয়াল ফিটনেস ক্লাব"
+                    : "Official Fitness Club of SUST"}
+                </span>
               </div>
-              <div className="text-center p-5 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white/50 dark:bg-[#161b22]/50 backdrop-blur-sm hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-colors">
-                <div className="text-3xl sm:text-4xl font-bold text-[#2ecc71] dark:text-[#5ce1e6]">
-                  {lang === "bn" ? "৫+" : "5+"}
-                </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                  {dict.stats.trainers}
-                </div>
+
+              {/* Main Title */}
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight">
+                <span className="text-gradient bg-gradient-to-r from-[#1e3a5f] via-[#2ecc71] to-[#1e3a5f] dark:from-[#5ce1e6] dark:via-[#2ecc71] dark:to-[#5ce1e6] bg-clip-text text-transparent bg-size-[200%_auto] animate-gradient">
+                  {dict.hero.title.split(" ").slice(0, 2).join(" ")}
+                </span>
+                <br />
+                <span className="text-gray-900 dark:text-white">
+                  {dict.hero.title.split(" ").slice(2).join(" ")}
+                </span>
+              </h1>
+
+              {/* Subtitle */}
+              <p className="max-w-2xl mx-auto text-lg sm:text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
+                {dict.hero.subtitle}
+              </p>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+                <Link href={`/${lang}/register`}>
+                  <button className="flex items-center justify-center gap-2 text-lg px-8 py-4 rounded-xl bg-gradient-to-r from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] text-white dark:text-[#0d1117] font-semibold shadow-lg shadow-[#2ecc71]/30 dark:shadow-[#5ce1e6]/30 hover:shadow-xl hover:shadow-[#2ecc71]/40 dark:hover:shadow-[#5ce1e6]/40 transition-all duration-300 hover:-translate-y-0.5">
+                    {dict.hero.cta}
+                    <ArrowRight className="w-5 h-5" />
+                  </button>
+                </Link>
+                <Link href={`/${lang}/about`}>
+                  <button className="text-lg px-8 py-4 rounded-xl border-2 border-dashed border-[#2ecc71]/50! dark:border-[#5ce1e6]/50! bg-gray-100 dark:bg-[#161b22] text-gray-700 dark:text-gray-300 font-semibold hover:bg-[#2ecc71]/10 dark:hover:bg-[#5ce1e6]/10 hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] hover:text-[#2ecc71] dark:hover:text-[#5ce1e6] transition-all duration-300">
+                    {dict.hero.learnMore}
+                  </button>
+                </Link>
               </div>
-              <div className="text-center p-5 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white/50 dark:bg-[#161b22]/50 backdrop-blur-sm hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-colors">
-                <div className="text-3xl sm:text-4xl font-bold text-[#2ecc71] dark:text-[#5ce1e6]">
-                  {lang === "bn" ? "৬+" : "6+"}
+
+              {/* Stats Row - with dashed border cards */}
+              <div className="pt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                <div className="text-center p-5 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white/50 dark:bg-[#161b22]/50 backdrop-blur-sm hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-colors">
+                  <div className="text-3xl sm:text-4xl font-bold text-[#2ecc71] dark:text-[#5ce1e6]">
+                    {lang === "bn" ? "২০০+" : "200+"}
+                  </div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                    {dict.stats.members}
+                  </div>
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                  {dict.stats.programs}
+                <div className="text-center p-5 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white/50 dark:bg-[#161b22]/50 backdrop-blur-sm hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-colors">
+                  <div className="text-3xl sm:text-4xl font-bold text-[#2ecc71] dark:text-[#5ce1e6]">
+                    {lang === "bn" ? "৫+" : "5+"}
+                  </div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                    {dict.stats.trainers}
+                  </div>
                 </div>
-              </div>
-              <div className="text-center p-5 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white/50 dark:bg-[#161b22]/50 backdrop-blur-sm hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-colors">
-                <div className="text-3xl sm:text-4xl font-bold text-[#2ecc71] dark:text-[#5ce1e6]">
-                  {lang === "bn" ? "১+" : "1+"}
+                <div className="text-center p-5 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white/50 dark:bg-[#161b22]/50 backdrop-blur-sm hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-colors">
+                  <div className="text-3xl sm:text-4xl font-bold text-[#2ecc71] dark:text-[#5ce1e6]">
+                    {lang === "bn" ? "৬+" : "6+"}
+                  </div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                    {dict.stats.programs}
+                  </div>
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                  {dict.stats.years}
+                <div className="text-center p-5 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white/50 dark:bg-[#161b22]/50 backdrop-blur-sm hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-colors">
+                  <div className="text-3xl sm:text-4xl font-bold text-[#2ecc71] dark:text-[#5ce1e6]">
+                    {lang === "bn" ? "১+" : "1+"}
+                  </div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                    {dict.stats.years}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </AnimatedHero>
       </section>
 
       {/* Section Divider */}
@@ -282,19 +291,21 @@ export default async function HomePage({
       {/* Programs Section - Premium */}
       <section className="relative py-4 px-4 bg-gray-50 dark:bg-[#0d1117]">
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
-              {lang === "bn" ? "আমাদের প্রোগ্রাম" : "Our Programs"}
-            </span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              {dict.programs.title}
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              {dict.programs.subtitle}
-            </p>
-          </div>
+          <AnimatedSectionHeader>
+            <div className="text-center mb-12">
+              <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
+                {lang === "bn" ? "আমাদের প্রোগ্রাম" : "Our Programs"}
+              </span>
+              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+                {dict.programs.title}
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                {dict.programs.subtitle}
+              </p>
+            </div>
+          </AnimatedSectionHeader>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <AnimatedCardsGrid className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {dict.programs.items.map((program, index) => {
               const Icon = programIcons[index];
               return (
@@ -322,7 +333,7 @@ export default async function HomePage({
                 </div>
               );
             })}
-          </div>
+          </AnimatedCardsGrid>
         </div>
       </section>
 
@@ -332,28 +343,30 @@ export default async function HomePage({
       {/* Schedule Section - Premium */}
       <section className="relative py-4 px-4 bg-white dark:bg-[#0d1117]">
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
-              {lang === "bn" ? "সময়সূচি" : "Schedule"}
-            </span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              {lang === "bn" ? "প্রশিক্ষণের সময়সূচি" : "Training Schedule"}
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400">
-              {lang === "bn"
-                ? "আপনার সুবিধামতো সময় বেছে নিন"
-                : "Choose a time that suits you"}
-            </p>
-          </div>
+          <AnimatedSectionHeader>
+            <div className="text-center mb-12">
+              <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
+                {lang === "bn" ? "সময়সূচি" : "Schedule"}
+              </span>
+              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+                {lang === "bn" ? "প্রশিক্ষণের সময়সূচি" : "Training Schedule"}
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400">
+                {lang === "bn"
+                  ? "আপনার সুবিধামতো সময় বেছে নিন"
+                  : "Choose a time that suits you"}
+              </p>
+            </div>
+          </AnimatedSectionHeader>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <AnimatedCardsGrid className="grid md:grid-cols-3 gap-6">
             {schedule.map((session, index) => (
-              <div key={index} className="relative pt-4">
+              <div key={index} className="relative pt-4 h-full">
                 {/* Floating label */}
                 <div className="absolute -top-0 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] text-white dark:text-[#0d1117] text-sm font-semibold rounded-full shadow-lg z-10">
                   {session.time}
                 </div>
-                <div className="p-6 pt-8 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white dark:bg-[#161b22] hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-all">
+                <div className="p-6 pt-8 h-full rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white dark:bg-[#161b22] hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-all">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#2ecc71]/10 to-[#27ae60]/5 dark:from-[#5ce1e6]/20 dark:to-[#5ce1e6]/5 flex items-center justify-center">
                       <Clock className="w-6 h-6 text-[#2ecc71] dark:text-[#5ce1e6]" />
@@ -376,7 +389,7 @@ export default async function HomePage({
                 </div>
               </div>
             ))}
-          </div>
+          </AnimatedCardsGrid>
         </div>
       </section>
 
@@ -386,16 +399,18 @@ export default async function HomePage({
       {/* Features Section - Premium */}
       <section className="relative py-4 px-4 bg-gray-50 dark:bg-[#0d1117]">
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
-              {lang === "bn" ? "বৈশিষ্ট্য" : "Features"}
-            </span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              {dict.features.title}
-            </h2>
-          </div>
+          <AnimatedSectionHeader>
+            <div className="text-center mb-12">
+              <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
+                {lang === "bn" ? "বৈশিষ্ট্য" : "Features"}
+              </span>
+              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+                {dict.features.title}
+              </h2>
+            </div>
+          </AnimatedSectionHeader>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <AnimatedCardsGrid className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {dict.features.items.map((feature, index) => {
               const Icon = featureIcons[index];
               return (
@@ -415,7 +430,7 @@ export default async function HomePage({
                 </div>
               );
             })}
-          </div>
+          </AnimatedCardsGrid>
         </div>
       </section>
 
@@ -425,21 +440,23 @@ export default async function HomePage({
       {/* Membership Benefits Section - Premium */}
       <section className="relative py-4 px-4 bg-white dark:bg-[#0d1117]">
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
-              {lang === "bn" ? "সুবিধাসমূহ" : "Benefits"}
-            </span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              {lang === "bn" ? "সদস্য সুবিধাসমূহ" : "Member Benefits"}
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400">
-              {lang === "bn"
-                ? "যা পাচ্ছেন আমাদের সাথে"
-                : "What you get with us"}
-            </p>
-          </div>
+          <AnimatedSectionHeader>
+            <div className="text-center mb-12">
+              <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
+                {lang === "bn" ? "সুবিধাসমূহ" : "Benefits"}
+              </span>
+              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+                {lang === "bn" ? "সদস্য সুবিধাসমূহ" : "Member Benefits"}
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400">
+                {lang === "bn"
+                  ? "যা পাচ্ছেন আমাদের সাথে"
+                  : "What you get with us"}
+              </p>
+            </div>
+          </AnimatedSectionHeader>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <AnimatedCardsGrid className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {benefits.map((benefit, index) => {
               const Icon = benefitIcons[index] || Star;
               return (
@@ -461,7 +478,7 @@ export default async function HomePage({
                 </div>
               );
             })}
-          </div>
+          </AnimatedCardsGrid>
         </div>
       </section>
 
@@ -471,49 +488,56 @@ export default async function HomePage({
       {/* Gallery Section - Premium */}
       <section className="relative py-4 px-4 bg-gray-50 dark:bg-[#0d1117]">
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
-              {lang === "bn" ? "ছবি" : "Photos"}
-            </span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              {lang === "bn" ? "গ্যালারি" : "Gallery"}
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400">
-              {lang === "bn"
-                ? "আমাদের কার্যক্রমের কিছু মুহূর্ত"
-                : "Some moments from our activities"}
-            </p>
-          </div>
+          <AnimatedSectionHeader>
+            <div className="text-center mb-12">
+              <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
+                {lang === "bn" ? "ছবি" : "Photos"}
+              </span>
+              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+                {lang === "bn" ? "গ্যালারি" : "Gallery"}
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400">
+                {lang === "bn"
+                  ? "আমাদের কার্যক্রমের কিছু মুহূর্ত"
+                  : "Some moments from our activities"}
+              </p>
+            </div>
+          </AnimatedSectionHeader>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <AnimatedCardsGrid className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {galleryImages.map((image, index) => (
-              <div
-                key={index}
-                className="relative aspect-video rounded-2xl overflow-hidden group cursor-pointer border-2 border-transparent hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-all"
-              >
-                <img
-                  src={image}
-                  alt={`Gallery ${index + 1}`}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
-                  <span className="px-4 py-2 bg-white dark:bg-[#0d1117] text-gray-900 dark:text-white rounded-xl text-sm font-medium shadow-lg">
-                    <Images className="w-4 h-4 inline mr-2" />
-                    {lang === "bn" ? "দেখুন" : "View"}
-                  </span>
+              <Link key={index} href={`/${lang}/gallery`}>
+                <div className="relative aspect-video rounded-2xl overflow-hidden group cursor-pointer border-2 border-transparent hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] transition-all">
+                  <img
+                    src={image}
+                    alt={`Gallery ${index + 1}`}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
+                    <span className="px-4 py-2 bg-white dark:bg-[#0d1117] text-gray-900 dark:text-white rounded-xl text-sm font-medium shadow-lg">
+                      <Images className="w-4 h-4 inline mr-2" />
+                      {lang === "bn" ? "দেখুন" : "View"}
+                    </span>
+                  </div>
+                  {/* Expand icon overlay */}
+                  <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="w-8 h-8 rounded-full bg-[#2ecc71] dark:bg-[#5ce1e6] flex items-center justify-center">
+                      <Expand className="w-4 h-4 text-white dark:text-[#0d1117]" />
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </Link>
             ))}
-          </div>
+          </AnimatedCardsGrid>
 
-          <div className="mt-8 text-center">
+          <AnimatedSection delay={300} className="mt-8 text-center">
             <Link href={`/${lang}/gallery`}>
               <button className="inline-flex items-center gap-2 px-8 py-3 rounded-xl border-2 border-dashed border-[#2ecc71]/50! dark:border-[#5ce1e6]/50 bg-white dark:bg-[#161b22] text-gray-700 dark:text-gray-300 font-semibold hover:bg-[#2ecc71]/10 dark:hover:bg-[#5ce1e6]/10 hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] hover:text-[#2ecc71] dark:hover:text-[#5ce1e6] transition-all">
                 <Images className="w-5 h-5" />
                 {lang === "bn" ? "সব ছবি দেখুন" : "View All Photos"}
               </button>
             </Link>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -523,23 +547,25 @@ export default async function HomePage({
       {/* Testimonials Section - Premium */}
       <section className="relative py-4 px-6 sm:px-4 bg-white dark:bg-[#0d1117]">
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
-              {lang === "bn" ? "মতামত" : "Testimonials"}
-            </span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              {lang === "bn" ? "সদস্যদের মতামত" : "What Members Say"}
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400">
-              {lang === "bn"
-                ? "আমাদের সদস্যদের অভিজ্ঞতা"
-                : "Experience of our members"}
-            </p>
-          </div>
+          <AnimatedSectionHeader>
+            <div className="text-center mb-12">
+              <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
+                {lang === "bn" ? "মতামত" : "Testimonials"}
+              </span>
+              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+                {lang === "bn" ? "সদস্যদের মতামত" : "What Members Say"}
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400">
+                {lang === "bn"
+                  ? "আমাদের সদস্যদের অভিজ্ঞতা"
+                  : "Experience of our members"}
+              </p>
+            </div>
+          </AnimatedSectionHeader>
 
-          <div className="px-8 sm:px-12">
+          <AnimatedSection className="px-8 sm:px-12">
             <TestimonialsSlider testimonials={testimonials} />
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 

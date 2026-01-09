@@ -1,6 +1,7 @@
 import type { Locale } from "@/lib/i18n/config";
 import { ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
+import { AnimatedSection } from "./animated-sections";
 
 interface CTASectionProps {
   lang: Locale;
@@ -14,7 +15,7 @@ interface CTASectionProps {
 export function CTASection({ lang, dictionary }: CTASectionProps) {
   return (
     <section className="relative py-4 pb-16 px-4 bg-white dark:bg-[#0d1117]">
-      <div className="max-w-4xl mx-auto relative z-10">
+      <AnimatedSection className="max-w-4xl mx-auto relative z-10">
         <div className="relative p-8 sm:p-12 rounded-3xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-linear-to-br from-white via-gray-50 to-white dark:from-[#161b22] dark:via-[#0d1117] dark:to-[#161b22] overflow-hidden">
           {/* Decorative elements */}
           <div className="absolute top-0 left-0 w-32 h-32 bg-linear-to-br from-[#2ecc71]/20 to-transparent rounded-full blur-2xl" />
@@ -52,7 +53,7 @@ export function CTASection({ lang, dictionary }: CTASectionProps) {
             </div>
           </div>
         </div>
-      </div>
+      </AnimatedSection>
     </section>
   );
 }

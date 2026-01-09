@@ -1,4 +1,10 @@
 import {
+  AnimatedFadeIn,
+  AnimatedPageCards,
+  AnimatedPageHero,
+  AnimatedPageSection,
+} from "@/components/ui/page-animations";
+import {
   Award,
   Calendar,
   Clock,
@@ -183,42 +189,44 @@ export default async function ProgramsPage({
         <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-[#2ecc71]/30 to-[#27ae60]/10 rounded-full blur-3xl animate-wave-slow" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-[#1e3a5f]/20 to-[#5ce1e6]/10 dark:from-[#5ce1e6]/15 dark:to-[#2ecc71]/10 rounded-full blur-3xl animate-wave-reverse" />
 
-        <div className="relative max-w-4xl mx-auto text-center z-10">
-          {/* Premium badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-gradient-to-r from-[#2ecc71]/10 to-[#1e3a5f]/10 dark:from-[#5ce1e6]/20 dark:to-[#2ecc71]/10 backdrop-blur-sm border border-[#2ecc71]/20 dark:border-[#5ce1e6]/30">
-            <span className="w-2 h-2 bg-[#2ecc71] dark:bg-[#5ce1e6] rounded-full animate-pulse" />
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#27ae60] dark:text-[#5ce1e6]">
-              {lang === "bn" ? "ইভেন্ট ও কার্যক্রম" : "Events & Programs"}
-            </span>
-          </div>
-
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-            <span className="text-gradient bg-gradient-to-r from-[#1e3a5f] via-[#2ecc71] to-[#1e3a5f] dark:from-[#5ce1e6] dark:via-[#2ecc71] dark:to-[#5ce1e6] bg-clip-text text-transparent bg-size-[200%_auto] animate-gradient">
-              {dict.programs.title}
-            </span>
-          </h1>
-
-          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed mb-8">
-            {lang === "bn"
-              ? "SUST Fitness Club বিভিন্ন ম্যারাথন, ফিটনেস সেশন এবং কমিউনিটি ইভেন্ট আয়োজন করে থাকে যা শিক্ষার্থী ও স্থানীয় কমিউনিটির জন্য উন্মুক্ত।"
-              : "SUST Fitness Club organizes various marathons, fitness sessions and community events that are open to students and local community."}
-          </p>
-
-          {/* Upcoming event badge */}
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-gradient-to-r from-white to-gray-50 dark:from-[#1a2332] dark:to-[#0d1117] border border-gray-200 dark:border-[#2d3f50] shadow-lg">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] flex items-center justify-center shadow-lg shadow-[#2ecc71]/30 dark:shadow-[#5ce1e6]/30">
-              <Trophy className="w-5 h-5 text-white dark:text-[#0d1117]" />
-            </div>
-            <div className="text-left">
-              <span className="block text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider">
-                {lang === "bn" ? "মূল ইভেন্ট" : "Main Event"}
-              </span>
-              <span className="block text-sm font-bold text-gray-900 dark:text-white">
-                {lang === "bn" ? "SUST হাফ ম্যারাথন" : "SUST Half Marathon"}
+        <AnimatedPageHero>
+          <div className="relative max-w-4xl mx-auto text-center z-10">
+            {/* Premium badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-gradient-to-r from-[#2ecc71]/10 to-[#1e3a5f]/10 dark:from-[#5ce1e6]/20 dark:to-[#2ecc71]/10 backdrop-blur-sm border border-[#2ecc71]/20 dark:border-[#5ce1e6]/30">
+              <span className="w-2 h-2 bg-[#2ecc71] dark:bg-[#5ce1e6] rounded-full animate-pulse" />
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#27ae60] dark:text-[#5ce1e6]">
+                {lang === "bn" ? "ইভেন্ট ও কার্যক্রম" : "Events & Programs"}
               </span>
             </div>
+
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+              <span className="text-gradient bg-gradient-to-r from-[#1e3a5f] via-[#2ecc71] to-[#1e3a5f] dark:from-[#5ce1e6] dark:via-[#2ecc71] dark:to-[#5ce1e6] bg-clip-text text-transparent bg-size-[200%_auto] animate-gradient">
+                {dict.programs.title}
+              </span>
+            </h1>
+
+            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed mb-8">
+              {lang === "bn"
+                ? "SUST Fitness Club বিভিন্ন ম্যারাথন, ফিটনেস সেশন এবং কমিউনিটি ইভেন্ট আয়োজন করে থাকে যা শিক্ষার্থী ও স্থানীয় কমিউনিটির জন্য উন্মুক্ত।"
+                : "SUST Fitness Club organizes various marathons, fitness sessions and community events that are open to students and local community."}
+            </p>
+
+            {/* Upcoming event badge */}
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-gradient-to-r from-white to-gray-50 dark:from-[#1a2332] dark:to-[#0d1117] border border-gray-200 dark:border-[#2d3f50] shadow-lg">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] flex items-center justify-center shadow-lg shadow-[#2ecc71]/30 dark:shadow-[#5ce1e6]/30">
+                <Trophy className="w-5 h-5 text-white dark:text-[#0d1117]" />
+              </div>
+              <div className="text-left">
+                <span className="block text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider">
+                  {lang === "bn" ? "মূল ইভেন্ট" : "Main Event"}
+                </span>
+                <span className="block text-sm font-bold text-gray-900 dark:text-white">
+                  {lang === "bn" ? "SUST হাফ ম্যারাথন" : "SUST Half Marathon"}
+                </span>
+              </div>
+            </div>
           </div>
-        </div>
+        </AnimatedPageHero>
       </section>
 
       {/* Section Divider */}
@@ -227,21 +235,23 @@ export default async function ProgramsPage({
       {/* SUST Half Marathon Section */}
       <section className="relative py-4 px-4 bg-gray-50 dark:bg-[#0d1117]">
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
-              {lang === "bn" ? "প্রধান ইভেন্ট" : "Main Event"}
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              {lang === "bn" ? "SUST হাফ ম্যারাথন" : "SUST Half Marathon"}
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400">
-              {lang === "bn"
-                ? "বিভিন্ন দূরত্বে রানিং ইভেন্ট - সবার জন্য"
-                : "Running events at various distances - for everyone"}
-            </p>
-          </div>
+          <AnimatedPageSection>
+            <div className="text-center mb-12">
+              <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
+                {lang === "bn" ? "প্রধান ইভেন্ট" : "Main Event"}
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                {lang === "bn" ? "SUST হাফ ম্যারাথন" : "SUST Half Marathon"}
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400">
+                {lang === "bn"
+                  ? "বিভিন্ন দূরত্বে রানিং ইভেন্ট - সবার জন্য"
+                  : "Running events at various distances - for everyone"}
+              </p>
+            </div>
+          </AnimatedPageSection>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <AnimatedPageCards className="grid md:grid-cols-3 gap-6">
             {marathonEvents.map((event, index) => (
               <div key={index} className="relative pt-3">
                 {/* Dashed border outer container for each card */}
@@ -263,7 +273,7 @@ export default async function ProgramsPage({
                 </div>
               </div>
             ))}
-          </div>
+          </AnimatedPageCards>
         </div>
       </section>
 
@@ -282,6 +292,7 @@ export default async function ProgramsPage({
               }}
             />
           </div>
+          <AnimatedPageSection>
           <div className="py-8 px-4 sm:p-8 md:p-12 rounded-3xl bg-gray-50 dark:bg-[#161b22] border border-gray-100 dark:border-[#2d3f50]">
             <div className="text-center">
               <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
@@ -349,6 +360,7 @@ export default async function ProgramsPage({
               </div>
             </div>
           </div>
+          </AnimatedPageSection>
         </div>
       </section>
 
@@ -358,23 +370,25 @@ export default async function ProgramsPage({
       {/* External Marathon Participation Section */}
       <section className="relative py-4 px-4 bg-gray-50 dark:bg-[#161b22]">
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
-              {lang === "bn" ? "বহিরাগত ইভেন্ট" : "External Events"}
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              {lang === "bn"
-                ? "বাহ্যিক ম্যারাথন অংশগ্রহণ"
-                : "External Marathon Participation"}
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400">
-              {lang === "bn"
-                ? "ক্লাবের সদস্যরা বিভিন্ন বাহ্যিক ইভেন্টে অংশ নেয়"
-                : "Club members participate in various external events"}
-            </p>
-          </div>
+          <AnimatedPageSection>
+            <div className="text-center mb-12">
+              <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
+                {lang === "bn" ? "বহিরাগত ইভেন্ট" : "External Events"}
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                {lang === "bn"
+                  ? "বাহ্যিক ম্যারাথন অংশগ্রহণ"
+                  : "External Marathon Participation"}
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400">
+                {lang === "bn"
+                  ? "ক্লাবের সদস্যরা বিভিন্ন বাহ্যিক ইভেন্টে অংশ নেয়"
+                  : "Club members participate in various external events"}
+              </p>
+            </div>
+          </AnimatedPageSection>
 
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <AnimatedPageCards className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {externalEvents.map((event, index) => (
               <div key={index} className="relative pt-3">
                 {/* Dashed border outer container for each card */}
@@ -396,7 +410,7 @@ export default async function ProgramsPage({
                 </div>
               </div>
             ))}
-          </div>
+          </AnimatedPageCards>
         </div>
       </section>
 
@@ -406,35 +420,37 @@ export default async function ProgramsPage({
       {/* Rewards & Certificates Section */}
       <section className="relative py-4 pb-16 px-4 bg-slate-100/50 dark:bg-[#0d1117]">
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
-              {lang === "bn" ? "পুরস্কার" : "Rewards"}
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              {lang === "bn"
-                ? "পুরস্কার ও সার্টিফিকেট"
-                : "Rewards & Certificates"}
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400">
-              {lang === "bn"
-                ? "অংশগ্রহণকারীদের জন্য বিশেষ পুরস্কার"
-                : "Special rewards for participants"}
-            </p>
-          </div>
+          <AnimatedPageSection>
+            <div className="text-center mb-12">
+              <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
+                {lang === "bn" ? "পুরস্কার" : "Rewards"}
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                {lang === "bn"
+                  ? "পুরস্কার ও সার্টিফিকেট"
+                  : "Rewards & Certificates"}
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400">
+                {lang === "bn"
+                  ? "অংশগ্রহণকারীদের জন্য বিশেষ পুরস্কার"
+                  : "Special rewards for participants"}
+              </p>
+            </div>
+          </AnimatedPageSection>
 
           {/* Rewards cards */}
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
+          <AnimatedPageCards className="grid md:grid-cols-3 gap-6 mb-8">
             {rewards.map((reward, index) => (
-              <div key={index} className="relative pt-3">
+              <div key={index} className="relative pt-3 h-full">
                 {/* Dashed border outer container for each card */}
-                <div className="relative p-4 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white dark:bg-[#0d1117]/30">
+                <div className="relative p-4 h-full rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white dark:bg-[#0d1117]/30">
                   {/* Title label - floating centered green pill badge */}
                   <div className="absolute w-fit -top-3.5 left-0 right-0 mx-auto px-3 py-0.5 bg-[#2ecc7072] dark:bg-[#0d1117] flex gap-2 items-center rounded-md">
                     <span className="font-semibold">{reward.title}</span>
                   </div>
 
                   {/* Inner card with icon and description */}
-                  <div className="text-center p-5 rounded-xl bg-white dark:bg-[#161b22] dark:border-[#30363d]">
+                  <div className="text-center h-full p-5 rounded-xl bg-white dark:bg-[#161b22] dark:border-[#30363d]">
                     <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 mb-4">
                       <reward.Icon className="w-6 h-6 text-[#2ecc71] dark:text-[#5ce1e6]" />
                     </div>
@@ -445,9 +461,10 @@ export default async function ProgramsPage({
                 </div>
               </div>
             ))}
-          </div>
+          </AnimatedPageCards>
 
           {/* Commitment box */}
+          <AnimatedFadeIn delay={200}>
           <div className="p-6 sm:p-8 rounded-2xl border bg-white dark:bg-[#161b22]">
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] flex items-center justify-center">
@@ -465,6 +482,7 @@ export default async function ProgramsPage({
               </div>
             </div>
           </div>
+          </AnimatedFadeIn>
         </div>
       </section>
     </div>

@@ -1,5 +1,9 @@
 "use client";
 
+import {
+  AnimatedPageCards,
+  AnimatedPageHero,
+} from "@/components/ui/page-animations";
 import { useState } from "react";
 import Image from "next/image";
 import { Quote, Building, Mail, Phone } from "lucide-react";
@@ -150,25 +154,27 @@ export function AdvisorsContent({ lang, dictionary }: AdvisorsContentProps) {
         <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-[#2ecc71]/30 to-[#27ae60]/10 rounded-full blur-3xl animate-wave-slow" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-[#1e3a5f]/20 to-[#5ce1e6]/10 dark:from-[#5ce1e6]/15 dark:to-[#2ecc71]/10 rounded-full blur-3xl animate-wave-reverse" />
 
-        <div className="relative max-w-4xl mx-auto text-center z-10">
-          {/* Premium badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-gradient-to-r from-[#2ecc71]/10 to-[#1e3a5f]/10 dark:from-[#5ce1e6]/20 dark:to-[#2ecc71]/10 backdrop-blur-sm border border-[#2ecc71]/20 dark:border-[#5ce1e6]/30">
-            <span className="w-2 h-2 bg-[#2ecc71] dark:bg-[#5ce1e6] rounded-full animate-pulse" />
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#27ae60] dark:text-[#5ce1e6]">
-              {lang === "bn" ? "গাইডেন্স" : "Guidance"}
-            </span>
+        <AnimatedPageHero>
+          <div className="relative max-w-4xl mx-auto text-center z-10">
+            {/* Premium badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-gradient-to-r from-[#2ecc71]/10 to-[#1e3a5f]/10 dark:from-[#5ce1e6]/20 dark:to-[#2ecc71]/10 backdrop-blur-sm border border-[#2ecc71]/20 dark:border-[#5ce1e6]/30">
+              <span className="w-2 h-2 bg-[#2ecc71] dark:bg-[#5ce1e6] rounded-full animate-pulse" />
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#27ae60] dark:text-[#5ce1e6]">
+                {lang === "bn" ? "গাইডেন্স" : "Guidance"}
+              </span>
+            </div>
+
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+              <span className="text-gradient bg-gradient-to-r from-[#1e3a5f] via-[#2ecc71] to-[#1e3a5f] dark:from-[#5ce1e6] dark:via-[#2ecc71] dark:to-[#5ce1e6] bg-clip-text text-transparent bg-size-[200%_auto] animate-gradient">
+                {dictionary.title}
+              </span>
+            </h1>
+
+            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+              {dictionary.subtitle}
+            </p>
           </div>
-
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-            <span className="text-gradient bg-gradient-to-r from-[#1e3a5f] via-[#2ecc71] to-[#1e3a5f] dark:from-[#5ce1e6] dark:via-[#2ecc71] dark:to-[#5ce1e6] bg-clip-text text-transparent bg-size-[200%_auto] animate-gradient">
-              {dictionary.title}
-            </span>
-          </h1>
-
-          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            {dictionary.subtitle}
-          </p>
-        </div>
+        </AnimatedPageHero>
       </section>
 
       {/* Section Divider */}
@@ -204,7 +210,7 @@ export function AdvisorsContent({ lang, dictionary }: AdvisorsContentProps) {
           </div>
 
           {/* Advisors Grid */}
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <AnimatedPageCards className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {displayedAdvisors.map((advisor) => (
               <div
                 key={advisor.id}
@@ -292,7 +298,7 @@ export function AdvisorsContent({ lang, dictionary }: AdvisorsContentProps) {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#2ecc71]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none rounded-2xl" />
               </div>
             ))}
-          </div>
+          </AnimatedPageCards>
         </div>
       </section>
 

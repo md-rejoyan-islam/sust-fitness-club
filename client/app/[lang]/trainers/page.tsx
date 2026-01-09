@@ -1,3 +1,8 @@
+import {
+  AnimatedPageCards,
+  AnimatedPageHero,
+  AnimatedPageSection,
+} from '@/components/ui/page-animations';
 import { Users, Award, Star, Mail } from 'lucide-react';
 import { getDictionary } from '@/lib/i18n/get-dictionary';
 import type { Locale } from '@/lib/i18n/config';
@@ -122,20 +127,22 @@ export default async function TrainersPage({
         <div className="absolute top-10 left-10 w-64 h-64 bg-[#2ecc71]/20 rounded-full blur-3xl" />
         <div className="absolute bottom-10 right-10 w-80 h-80 bg-[#1e3a5f]/20 dark:bg-[#5ce1e6]/10 rounded-full blur-3xl" />
 
-        <div className="relative max-w-4xl mx-auto text-center z-10">
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6">
-            <span className="text-gradient">{dict.trainers.title}</span>
-          </h1>
-          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            {dict.trainers.subtitle}
-          </p>
-        </div>
+        <AnimatedPageHero>
+          <div className="relative max-w-4xl mx-auto text-center z-10">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6">
+              <span className="text-gradient">{dict.trainers.title}</span>
+            </h1>
+            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              {dict.trainers.subtitle}
+            </p>
+          </div>
+        </AnimatedPageHero>
       </section>
 
       {/* Trainers Grid */}
       <section className="py-12 sm:py-16 md:py-24 px-4 bg-gray-50 dark:bg-neutral-900/30">
         <div className="max-w-7xl mx-auto">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <AnimatedPageCards className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {trainers.map((trainer, index) => (
               <div
                 key={index}
@@ -183,22 +190,24 @@ export default async function TrainersPage({
                 </div>
               </div>
             ))}
-          </div>
+          </AnimatedPageCards>
         </div>
       </section>
 
       {/* Why Our Trainers */}
       <section className="py-12 sm:py-16 md:py-24 px-4 bg-white dark:bg-neutral-900/50">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              {lang === 'bn'
-                ? 'কেন আমাদের প্রশিক্ষকরা সেরা'
-                : 'Why Our Trainers Are The Best'}
-            </h2>
-          </div>
+          <AnimatedPageSection>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+                {lang === 'bn'
+                  ? 'কেন আমাদের প্রশিক্ষকরা সেরা'
+                  : 'Why Our Trainers Are The Best'}
+              </h2>
+            </div>
+          </AnimatedPageSection>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <AnimatedPageCards className="grid md:grid-cols-3 gap-8">
             {features.map((item, index) => (
               <div
                 key={index}
@@ -215,7 +224,7 @@ export default async function TrainersPage({
                 </p>
               </div>
             ))}
-          </div>
+          </AnimatedPageCards>
         </div>
       </section>
     </div>

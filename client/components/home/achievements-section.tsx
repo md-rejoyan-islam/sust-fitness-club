@@ -1,5 +1,6 @@
 import { Medal, Trophy } from 'lucide-react';
 import type { Locale } from '@/lib/i18n/config';
+import { AnimatedCardsGrid, AnimatedSectionHeader } from './animated-sections';
 
 interface AchievementsSectionProps {
   lang: Locale;
@@ -64,20 +65,22 @@ export function AchievementsSection({ lang }: AchievementsSectionProps) {
   return (
     <section className="relative py-4 px-4 bg-gray-50 dark:bg-[#0d1117]">
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-12">
-          <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
-            <Trophy className="w-4 h-4 inline mr-2" />
-            {lang === 'bn' ? 'অর্জন' : 'Achievements'}
-          </span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            {lang === 'bn' ? 'আমাদের অর্জন' : 'Our Achievements'}
-          </h2>
-          <p className="text-gray-600 dark:text-gray-400">
-            {lang === 'bn' ? 'গর্বের সাথে অর্জিত সাফল্য' : 'Proudly achieved success'}
-          </p>
-        </div>
+        <AnimatedSectionHeader>
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
+              <Trophy className="w-4 h-4 inline mr-2" />
+              {lang === 'bn' ? 'অর্জন' : 'Achievements'}
+            </span>
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+              {lang === 'bn' ? 'আমাদের অর্জন' : 'Our Achievements'}
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400">
+              {lang === 'bn' ? 'গর্বের সাথে অর্জিত সাফল্য' : 'Proudly achieved success'}
+            </p>
+          </div>
+        </AnimatedSectionHeader>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <AnimatedCardsGrid className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {achievements.map((achievement, index) => (
             <div
               key={index}
@@ -103,7 +106,7 @@ export function AchievementsSection({ lang }: AchievementsSectionProps) {
               </div>
             </div>
           ))}
-        </div>
+        </AnimatedCardsGrid>
       </div>
     </section>
   );

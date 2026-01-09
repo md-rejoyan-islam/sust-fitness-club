@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { AnimatedFadeIn } from "@/components/ui/page-animations";
 
 interface RegisterFormProps {
   lang: Locale;
@@ -95,6 +96,7 @@ export function RegisterForm({ lang, dictionary }: RegisterFormProps) {
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-[#1e3a5f]/20 to-[#5ce1e6]/10 dark:from-[#5ce1e6]/15 dark:to-[#2ecc71]/10 rounded-full blur-3xl animate-wave-reverse" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-[#2ecc71]/5 to-[#1e3a5f]/5 dark:from-[#5ce1e6]/5 dark:to-[#2ecc71]/5 rounded-full blur-3xl" />
 
+      <AnimatedFadeIn>
       <div className="relative w-full max-w-lg z-10">
         {/* Card with dashed border */}
         <div className="rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white dark:bg-[#161b22] p-8 sm:p-10 shadow-xl">
@@ -350,6 +352,7 @@ export function RegisterForm({ lang, dictionary }: RegisterFormProps) {
           </div>
         </div>
       </div>
+      </AnimatedFadeIn>
     </div>
   );
 }

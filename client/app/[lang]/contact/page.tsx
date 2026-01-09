@@ -1,4 +1,10 @@
 import {
+  AnimatedFadeIn,
+  AnimatedPageCards,
+  AnimatedPageHero,
+  AnimatedPageSection,
+} from "@/components/ui/page-animations";
+import {
   Calendar,
   Clock,
   Mail,
@@ -131,42 +137,44 @@ export default async function ContactPage({
         <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-[#2ecc71]/30 to-[#27ae60]/10 rounded-full blur-3xl animate-wave-slow" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-[#1e3a5f]/20 to-[#5ce1e6]/10 dark:from-[#5ce1e6]/15 dark:to-[#2ecc71]/10 rounded-full blur-3xl animate-wave-reverse" />
 
-        <div className="relative max-w-4xl mx-auto text-center z-10">
-          {/* Premium badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-gradient-to-r from-[#2ecc71]/10 to-[#1e3a5f]/10 dark:from-[#5ce1e6]/20 dark:to-[#2ecc71]/10 backdrop-blur-sm border border-[#2ecc71]/20 dark:border-[#5ce1e6]/30">
-            <span className="w-2 h-2 bg-[#2ecc71] dark:bg-[#5ce1e6] rounded-full animate-pulse" />
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#27ae60] dark:text-[#5ce1e6]">
-              {lang === "bn" ? "আমাদের সাথে যোগাযোগ করুন" : "Get in Touch"}
-            </span>
-          </div>
-
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-            <span className="text-gradient bg-gradient-to-r from-[#1e3a5f] via-[#2ecc71] to-[#1e3a5f] dark:from-[#5ce1e6] dark:via-[#2ecc71] dark:to-[#5ce1e6] bg-clip-text text-transparent bg-size-[200%_auto] animate-gradient">
-              {dict.contact.title}
-            </span>
-          </h1>
-
-          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed mb-8">
-            {lang === "bn"
-              ? "যেকোনো প্রশ্ন, পরামর্শ বা সহযোগিতার জন্য আমাদের সাথে যোগাযোগ করুন। আমরা আপনার কথা শুনতে আগ্রহী!"
-              : "Contact us for any questions, suggestions or collaboration. We are eager to hear from you!"}
-          </p>
-
-          {/* Contact badge */}
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-gradient-to-r from-white to-gray-50 dark:from-[#1a2332] dark:to-[#0d1117] border border-gray-200 dark:border-[#2d3f50] shadow-lg">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] flex items-center justify-center shadow-lg shadow-[#2ecc71]/30 dark:shadow-[#5ce1e6]/30">
-              <MessageCircle className="w-5 h-5 text-white dark:text-[#0d1117]" />
-            </div>
-            <div className="text-left">
-              <span className="block text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider">
-                {lang === "bn" ? "সোশ্যাল মিডিয়া" : "Social Media"}
-              </span>
-              <span className="block text-sm font-bold text-gray-900 dark:text-white">
-                {lang === "bn" ? "ফেসবুকে যুক্ত হন" : "Connect on Facebook"}
+        <AnimatedPageHero>
+          <div className="relative max-w-4xl mx-auto text-center z-10">
+            {/* Premium badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-gradient-to-r from-[#2ecc71]/10 to-[#1e3a5f]/10 dark:from-[#5ce1e6]/20 dark:to-[#2ecc71]/10 backdrop-blur-sm border border-[#2ecc71]/20 dark:border-[#5ce1e6]/30">
+              <span className="w-2 h-2 bg-[#2ecc71] dark:bg-[#5ce1e6] rounded-full animate-pulse" />
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#27ae60] dark:text-[#5ce1e6]">
+                {lang === "bn" ? "আমাদের সাথে যোগাযোগ করুন" : "Get in Touch"}
               </span>
             </div>
+
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+              <span className="text-gradient bg-gradient-to-r from-[#1e3a5f] via-[#2ecc71] to-[#1e3a5f] dark:from-[#5ce1e6] dark:via-[#2ecc71] dark:to-[#5ce1e6] bg-clip-text text-transparent bg-size-[200%_auto] animate-gradient">
+                {dict.contact.title}
+              </span>
+            </h1>
+
+            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed mb-8">
+              {lang === "bn"
+                ? "যেকোনো প্রশ্ন, পরামর্শ বা সহযোগিতার জন্য আমাদের সাথে যোগাযোগ করুন। আমরা আপনার কথা শুনতে আগ্রহী!"
+                : "Contact us for any questions, suggestions or collaboration. We are eager to hear from you!"}
+            </p>
+
+            {/* Contact badge */}
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-gradient-to-r from-white to-gray-50 dark:from-[#1a2332] dark:to-[#0d1117] border border-gray-200 dark:border-[#2d3f50] shadow-lg">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] flex items-center justify-center shadow-lg shadow-[#2ecc71]/30 dark:shadow-[#5ce1e6]/30">
+                <MessageCircle className="w-5 h-5 text-white dark:text-[#0d1117]" />
+              </div>
+              <div className="text-left">
+                <span className="block text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider">
+                  {lang === "bn" ? "সোশ্যাল মিডিয়া" : "Social Media"}
+                </span>
+                <span className="block text-sm font-bold text-gray-900 dark:text-white">
+                  {lang === "bn" ? "ফেসবুকে যুক্ত হন" : "Connect on Facebook"}
+                </span>
+              </div>
+            </div>
           </div>
-        </div>
+        </AnimatedPageHero>
       </section>
 
       {/* Section Divider */}
@@ -175,21 +183,23 @@ export default async function ContactPage({
       {/* Contact Info Cards Section */}
       <section className="relative py-4 px-4 bg-gray-50 dark:bg-[#0d1117]">
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
-              {lang === "bn" ? "যোগাযোগের তথ্য" : "Contact Information"}
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              {dict.contact.info.title}
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400">
-              {lang === "bn"
-                ? "বিভিন্ন মাধ্যমে আমাদের সাথে যোগাযোগ করুন"
-                : "Reach out to us through various channels"}
-            </p>
-          </div>
+          <AnimatedPageSection>
+            <div className="text-center mb-12">
+              <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
+                {lang === "bn" ? "যোগাযোগের তথ্য" : "Contact Information"}
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                {dict.contact.info.title}
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400">
+                {lang === "bn"
+                  ? "বিভিন্ন মাধ্যমে আমাদের সাথে যোগাযোগ করুন"
+                  : "Reach out to us through various channels"}
+              </p>
+            </div>
+          </AnimatedPageSection>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <AnimatedPageCards className="grid md:grid-cols-3 gap-6">
             {contactInfo.map((info, index) => (
               <div key={index} className="relative pt-3">
                 {/* Dashed border outer container for each card */}
@@ -216,7 +226,7 @@ export default async function ContactPage({
                 </div>
               </div>
             ))}
-          </div>
+          </AnimatedPageCards>
         </div>
       </section>
 

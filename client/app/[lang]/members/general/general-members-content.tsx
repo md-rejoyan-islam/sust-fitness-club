@@ -12,6 +12,11 @@ import {
   ChevronDown,
 } from "lucide-react";
 import type { Locale } from "@/lib/i18n/config";
+import {
+  AnimatedFadeIn,
+  AnimatedPageCards,
+  AnimatedPageHero,
+} from "@/components/ui/page-animations";
 
 interface Member {
   id: string;
@@ -269,25 +274,27 @@ export function GeneralMembersContent({
         <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-[#2ecc71]/30 to-[#27ae60]/10 rounded-full blur-3xl animate-wave-slow" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-[#1e3a5f]/20 to-[#5ce1e6]/10 dark:from-[#5ce1e6]/15 dark:to-[#2ecc71]/10 rounded-full blur-3xl animate-wave-reverse" />
 
-        <div className="relative max-w-4xl mx-auto text-center z-10">
-          {/* Premium badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-gradient-to-r from-[#2ecc71]/10 to-[#1e3a5f]/10 dark:from-[#5ce1e6]/20 dark:to-[#2ecc71]/10 backdrop-blur-sm border border-[#2ecc71]/20 dark:border-[#5ce1e6]/30">
-            <span className="w-2 h-2 bg-[#2ecc71] dark:bg-[#5ce1e6] rounded-full animate-pulse" />
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#27ae60] dark:text-[#5ce1e6]">
-              {lang === "bn" ? "সদস্যবৃন্দ" : "Members"}
-            </span>
+        <AnimatedPageHero>
+          <div className="relative max-w-4xl mx-auto text-center z-10">
+            {/* Premium badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-gradient-to-r from-[#2ecc71]/10 to-[#1e3a5f]/10 dark:from-[#5ce1e6]/20 dark:to-[#2ecc71]/10 backdrop-blur-sm border border-[#2ecc71]/20 dark:border-[#5ce1e6]/30">
+              <span className="w-2 h-2 bg-[#2ecc71] dark:bg-[#5ce1e6] rounded-full animate-pulse" />
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#27ae60] dark:text-[#5ce1e6]">
+                {lang === "bn" ? "সদস্যবৃন্দ" : "Members"}
+              </span>
+            </div>
+
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+              <span className="text-gradient bg-gradient-to-r from-[#1e3a5f] via-[#2ecc71] to-[#1e3a5f] dark:from-[#5ce1e6] dark:via-[#2ecc71] dark:to-[#5ce1e6] bg-clip-text text-transparent bg-size-[200%_auto] animate-gradient">
+                {dictionary.title}
+              </span>
+            </h1>
+
+            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+              {dictionary.subtitle}
+            </p>
           </div>
-
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-            <span className="text-gradient bg-gradient-to-r from-[#1e3a5f] via-[#2ecc71] to-[#1e3a5f] dark:from-[#5ce1e6] dark:via-[#2ecc71] dark:to-[#5ce1e6] bg-clip-text text-transparent bg-size-[200%_auto] animate-gradient">
-              {dictionary.title}
-            </span>
-          </h1>
-
-          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            {dictionary.subtitle}
-          </p>
-        </div>
+        </AnimatedPageHero>
       </section>
 
       {/* Section Divider */}
@@ -297,6 +304,7 @@ export function GeneralMembersContent({
       <section className="relative pb-16 px-4 bg-gray-50 dark:bg-[#0d1117]">
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Search and Filter */}
+          <AnimatedFadeIn>
           <div className="flex flex-col sm:flex-row gap-4 mb-12 max-w-3xl mx-auto">
             {/* Search */}
             <div className="flex-1 relative">
@@ -378,10 +386,11 @@ export function GeneralMembersContent({
               )}
             </div>
           </div>
+          </AnimatedFadeIn>
 
           {/* Members Grid */}
           {filteredMembers.length > 0 ? (
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <AnimatedPageCards className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {filteredMembers.map((member) => (
                 <div
                   key={member.id}
@@ -449,7 +458,7 @@ export function GeneralMembersContent({
                   <div className="absolute inset-0 bg-gradient-to-t from-[#2ecc71]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none rounded-2xl" />
                 </div>
               ))}
-            </div>
+            </AnimatedPageCards>
           ) : (
             <div className="text-center py-20">
               <div className="w-20 h-20 mx-auto rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white dark:bg-[#161b22] flex items-center justify-center mb-4">

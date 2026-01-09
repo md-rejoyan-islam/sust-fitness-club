@@ -1,5 +1,11 @@
 "use client";
 
+import {
+  AnimatedFadeIn,
+  AnimatedPageCards,
+  AnimatedPageHero,
+  AnimatedPageSection,
+} from "@/components/ui/page-animations";
 import { Camera, Images, Play, Video, X, ChevronLeft, ChevronRight } from "lucide-react";
 import type { Locale } from "@/lib/i18n/config";
 import { useState, useCallback, useEffect } from "react";
@@ -268,42 +274,44 @@ export function GalleryContent({ lang }: GalleryContentProps) {
         <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-[#2ecc71]/30 to-[#27ae60]/10 rounded-full blur-3xl animate-wave-slow" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-[#1e3a5f]/20 to-[#5ce1e6]/10 dark:from-[#5ce1e6]/15 dark:to-[#2ecc71]/10 rounded-full blur-3xl animate-wave-reverse" />
 
-        <div className="relative max-w-4xl mx-auto text-center z-10">
-          {/* Premium badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-gradient-to-r from-[#2ecc71]/10 to-[#1e3a5f]/10 dark:from-[#5ce1e6]/20 dark:to-[#2ecc71]/10 backdrop-blur-sm border border-[#2ecc71]/20 dark:border-[#5ce1e6]/30">
-            <span className="w-2 h-2 bg-[#2ecc71] dark:bg-[#5ce1e6] rounded-full animate-pulse" />
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#27ae60] dark:text-[#5ce1e6]">
-              {lang === "bn" ? "ছবি ও ভিডিও" : "Photos & Videos"}
-            </span>
-          </div>
-
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-            <span className="text-gradient bg-gradient-to-r from-[#1e3a5f] via-[#2ecc71] to-[#1e3a5f] dark:from-[#5ce1e6] dark:via-[#2ecc71] dark:to-[#5ce1e6] bg-clip-text text-transparent bg-size-[200%_auto] animate-gradient">
-              {lang === "bn" ? "গ্যালারি" : "Gallery"}
-            </span>
-          </h1>
-
-          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed mb-8">
-            {lang === "bn"
-              ? "আমাদের ম্যারাথন, ফিটনেস সেশন এবং বিভিন্ন ইভেন্টের স্মৃতিময় মুহূর্তগুলো দেখুন।"
-              : "Explore memorable moments from our marathons, fitness sessions and various events."}
-          </p>
-
-          {/* Stats badge */}
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-gradient-to-r from-white to-gray-50 dark:from-[#1a2332] dark:to-[#0d1117] border border-gray-200 dark:border-[#2d3f50] shadow-lg">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] flex items-center justify-center shadow-lg shadow-[#2ecc71]/30 dark:shadow-[#5ce1e6]/30">
-              <Images className="w-5 h-5 text-white dark:text-[#0d1117]" />
-            </div>
-            <div className="text-left">
-              <span className="block text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider">
-                {lang === "bn" ? "মোট মিডিয়া" : "Total Media"}
-              </span>
-              <span className="block text-sm font-bold text-gray-900 dark:text-white">
-                {lang === "bn" ? "৫০+ ছবি ও ভিডিও" : "50+ Photos & Videos"}
+        <AnimatedPageHero>
+          <div className="relative max-w-4xl mx-auto text-center z-10">
+            {/* Premium badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-gradient-to-r from-[#2ecc71]/10 to-[#1e3a5f]/10 dark:from-[#5ce1e6]/20 dark:to-[#2ecc71]/10 backdrop-blur-sm border border-[#2ecc71]/20 dark:border-[#5ce1e6]/30">
+              <span className="w-2 h-2 bg-[#2ecc71] dark:bg-[#5ce1e6] rounded-full animate-pulse" />
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#27ae60] dark:text-[#5ce1e6]">
+                {lang === "bn" ? "ছবি ও ভিডিও" : "Photos & Videos"}
               </span>
             </div>
+
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+              <span className="text-gradient bg-gradient-to-r from-[#1e3a5f] via-[#2ecc71] to-[#1e3a5f] dark:from-[#5ce1e6] dark:via-[#2ecc71] dark:to-[#5ce1e6] bg-clip-text text-transparent bg-size-[200%_auto] animate-gradient">
+                {lang === "bn" ? "গ্যালারি" : "Gallery"}
+              </span>
+            </h1>
+
+            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed mb-8">
+              {lang === "bn"
+                ? "আমাদের ম্যারাথন, ফিটনেস সেশন এবং বিভিন্ন ইভেন্টের স্মৃতিময় মুহূর্তগুলো দেখুন।"
+                : "Explore memorable moments from our marathons, fitness sessions and various events."}
+            </p>
+
+            {/* Stats badge */}
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-gradient-to-r from-white to-gray-50 dark:from-[#1a2332] dark:to-[#0d1117] border border-gray-200 dark:border-[#2d3f50] shadow-lg">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] flex items-center justify-center shadow-lg shadow-[#2ecc71]/30 dark:shadow-[#5ce1e6]/30">
+                <Images className="w-5 h-5 text-white dark:text-[#0d1117]" />
+              </div>
+              <div className="text-left">
+                <span className="block text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider">
+                  {lang === "bn" ? "মোট মিডিয়া" : "Total Media"}
+                </span>
+                <span className="block text-sm font-bold text-gray-900 dark:text-white">
+                  {lang === "bn" ? "৫০+ ছবি ও ভিডিও" : "50+ Photos & Videos"}
+                </span>
+              </div>
+            </div>
           </div>
-        </div>
+        </AnimatedPageHero>
       </section>
 
       {/* Section Divider */}
@@ -312,14 +320,16 @@ export function GalleryContent({ lang }: GalleryContentProps) {
       {/* Filter Section */}
       <section className="relative py-4 px-4 bg-gray-50 dark:bg-[#0d1117]">
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-8">
-            <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
-              {lang === "bn" ? "ক্যাটাগরি" : "Categories"}
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              {lang === "bn" ? "ফটো গ্যালারি" : "Photo Gallery"}
-            </h2>
-          </div>
+          <AnimatedPageSection>
+            <div className="text-center mb-8">
+              <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
+                {lang === "bn" ? "ক্যাটাগরি" : "Categories"}
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                {lang === "bn" ? "ফটো গ্যালারি" : "Photo Gallery"}
+              </h2>
+            </div>
+          </AnimatedPageSection>
 
           {/* Category Filter */}
           <div className="flex flex-wrap justify-center gap-3 mb-12">
@@ -398,21 +408,23 @@ export function GalleryContent({ lang }: GalleryContentProps) {
       {/* Featured Videos Section */}
       <section className="relative py-4 px-4 bg-white dark:bg-[#0d1117]">
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
-              {lang === "bn" ? "ভিডিও" : "Videos"}
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              {lang === "bn" ? "ফিচার্ড ভিডিও" : "Featured Videos"}
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400">
-              {lang === "bn"
-                ? "আমাদের ইভেন্ট ও সেশনের ভিডিও দেখুন"
-                : "Watch videos of our events and sessions"}
-            </p>
-          </div>
+          <AnimatedPageSection>
+            <div className="text-center mb-12">
+              <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
+                {lang === "bn" ? "ভিডিও" : "Videos"}
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                {lang === "bn" ? "ফিচার্ড ভিডিও" : "Featured Videos"}
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400">
+                {lang === "bn"
+                  ? "আমাদের ইভেন্ট ও সেশনের ভিডিও দেখুন"
+                  : "Watch videos of our events and sessions"}
+              </p>
+            </div>
+          </AnimatedPageSection>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <AnimatedPageCards className="grid md:grid-cols-3 gap-6">
             {featuredVideos.map((video, index) => (
               <div key={index} className="relative pt-3">
                 {/* Dashed border outer container for each card */}
@@ -457,7 +469,7 @@ export function GalleryContent({ lang }: GalleryContentProps) {
                 </div>
               </div>
             ))}
-          </div>
+          </AnimatedPageCards>
         </div>
       </section>
 
@@ -467,6 +479,7 @@ export function GalleryContent({ lang }: GalleryContentProps) {
       {/* Call to Action */}
       <section className="relative py-4 pb-16 px-4 bg-slate-100/50 dark:bg-[#0d1117]">
         <div className="max-w-4xl mx-auto relative z-10">
+          <AnimatedFadeIn>
           <div className="p-6 sm:p-8 rounded-2xl border bg-white dark:bg-[#161b22]">
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] flex items-center justify-center">
@@ -484,6 +497,7 @@ export function GalleryContent({ lang }: GalleryContentProps) {
               </div>
             </div>
           </div>
+          </AnimatedFadeIn>
         </div>
       </section>
     </div>

@@ -1,3 +1,9 @@
+import {
+  AnimatedFadeIn,
+  AnimatedPageCards,
+  AnimatedPageHero,
+  AnimatedPageSection,
+} from "@/components/ui/page-animations";
 import type { Locale } from "@/lib/i18n/config";
 import {
   Award,
@@ -184,44 +190,46 @@ export default async function AboutPage({
         <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-[#2ecc71]/30 to-[#27ae60]/10 rounded-full blur-3xl animate-wave-slow" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-[#1e3a5f]/20 to-[#5ce1e6]/10 dark:from-[#5ce1e6]/15 dark:to-[#2ecc71]/10 rounded-full blur-3xl animate-wave-reverse" />
 
-        <div className="relative max-w-4xl mx-auto text-center z-10">
-          {/* Premium badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-gradient-to-r from-[#2ecc71]/10 to-[#1e3a5f]/10 dark:from-[#5ce1e6]/20 dark:to-[#2ecc71]/10 backdrop-blur-sm border border-[#2ecc71]/20 dark:border-[#5ce1e6]/30">
-            <span className="w-2 h-2 bg-[#2ecc71] dark:bg-[#5ce1e6] rounded-full animate-pulse" />
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#27ae60] dark:text-[#5ce1e6]">
+        <AnimatedPageHero>
+          <div className="relative max-w-4xl mx-auto text-center z-10">
+            {/* Premium badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-gradient-to-r from-[#2ecc71]/10 to-[#1e3a5f]/10 dark:from-[#5ce1e6]/20 dark:to-[#2ecc71]/10 backdrop-blur-sm border border-[#2ecc71]/20 dark:border-[#5ce1e6]/30">
+              <span className="w-2 h-2 bg-[#2ecc71] dark:bg-[#5ce1e6] rounded-full animate-pulse" />
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#27ae60] dark:text-[#5ce1e6]">
+                {lang === "bn"
+                  ? "অফিসিয়াল ফিটনেস ক্লাব"
+                  : "Official Fitness Club"}
+              </span>
+            </div>
+
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+              <span className="text-gradient bg-gradient-to-r from-[#1e3a5f] via-[#2ecc71] to-[#1e3a5f] dark:from-[#5ce1e6] dark:via-[#2ecc71] dark:to-[#5ce1e6] bg-clip-text text-transparent bg-size-[200%_auto] animate-gradient">
+                {lang === "bn" ? "সাস্ট ফিটনেস ক্লাব" : "SUST Fitness Club"}
+              </span>
+            </h1>
+
+            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed mb-8">
               {lang === "bn"
-                ? "অফিসিয়াল ফিটনেস ক্লাব"
-                : "Official Fitness Club"}
-            </span>
-          </div>
+                ? "শাহজালাল বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয় (সাস্ট), সিলেট-এর একটি ছাত্র-পরিচালিত ফিটনেস এবং স্বাস্থ্য সচেতনতামূলক ক্লাব যা শিক্ষার্থী এবং কমিউনিটির মধ্যে শারীরিক সুস্থতা এবং সক্রিয় জীবনধারা প্রচারে নিবেদিত।"
+                : "A student-led fitness and health awareness club at Shahjalal University of Science & Technology (SUST), Sylhet focused on promoting physical well-being and active lifestyles among students and community."}
+            </p>
 
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-            <span className="text-gradient bg-gradient-to-r from-[#1e3a5f] via-[#2ecc71] to-[#1e3a5f] dark:from-[#5ce1e6] dark:via-[#2ecc71] dark:to-[#5ce1e6] bg-clip-text text-transparent bg-size-[200%_auto] animate-gradient">
-              {lang === "bn" ? "সাস্ট ফিটনেস ক্লাব" : "SUST Fitness Club"}
-            </span>
-          </h1>
-
-          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed mb-8">
-            {lang === "bn"
-              ? "শাহজালাল বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয় (সাস্ট), সিলেট-এর একটি ছাত্র-পরিচালিত ফিটনেস এবং স্বাস্থ্য সচেতনতামূলক ক্লাব যা শিক্ষার্থী এবং কমিউনিটির মধ্যে শারীরিক সুস্থতা এবং সক্রিয় জীবনধারা প্রচারে নিবেদিত।"
-              : "A student-led fitness and health awareness club at Shahjalal University of Science & Technology (SUST), Sylhet focused on promoting physical well-being and active lifestyles among students and community."}
-          </p>
-
-          {/* Founded badge with premium styling */}
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-gradient-to-r from-white to-gray-50 dark:from-[#1a2332] dark:to-[#0d1117] border border-gray-200 dark:border-[#2d3f50] shadow-lg">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] flex items-center justify-center shadow-lg shadow-[#2ecc71]/30 dark:shadow-[#5ce1e6]/30">
-              <Calendar className="w-5 h-5 text-white dark:text-[#0d1117]" />
-            </div>
-            <div className="text-left">
-              <span className="block text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider">
-                {lang === "bn" ? "প্রতিষ্ঠিত" : "Founded"}
-              </span>
-              <span className="block text-sm font-bold text-gray-900 dark:text-white">
-                {lang === "bn" ? "জানুয়ারি ২০২৫" : "January 2025"}
-              </span>
+            {/* Founded badge with premium styling */}
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-gradient-to-r from-white to-gray-50 dark:from-[#1a2332] dark:to-[#0d1117] border border-gray-200 dark:border-[#2d3f50] shadow-lg">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] flex items-center justify-center shadow-lg shadow-[#2ecc71]/30 dark:shadow-[#5ce1e6]/30">
+                <Calendar className="w-5 h-5 text-white dark:text-[#0d1117]" />
+              </div>
+              <div className="text-left">
+                <span className="block text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider">
+                  {lang === "bn" ? "প্রতিষ্ঠিত" : "Founded"}
+                </span>
+                <span className="block text-sm font-bold text-gray-900 dark:text-white">
+                  {lang === "bn" ? "জানুয়ারি ২০২৫" : "January 2025"}
+                </span>
+              </div>
             </div>
           </div>
-        </div>
+        </AnimatedPageHero>
       </section>
 
       {/* Section Divider */}
@@ -230,21 +238,23 @@ export default async function AboutPage({
       {/* Purpose Section */}
       <section className="relative py-4 px-4 bg-gray-50 dark:bg-[#0d1117]">
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
-              {lang === "bn" ? "আমাদের লক্ষ্য" : "Our Goals"}
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              {lang === "bn" ? "ক্লাবের উদ্দেশ্য" : "Club Purpose"}
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400">
-              {lang === "bn" ? "আমরা কি চাই?" : "What do we want?"}
-            </p>
-          </div>
+          <AnimatedPageSection>
+            <div className="text-center mb-12">
+              <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
+                {lang === "bn" ? "আমাদের লক্ষ্য" : "Our Goals"}
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                {lang === "bn" ? "ক্লাবের উদ্দেশ্য" : "Club Purpose"}
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400">
+                {lang === "bn" ? "আমরা কি চাই?" : "What do we want?"}
+              </p>
+            </div>
+          </AnimatedPageSection>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <AnimatedPageCards className="grid md:grid-cols-3 gap-6">
             {purposes.map((purpose, index) => (
-              <div key={index} className="relative pt-3">
+              <div key={index} className="relative pt-3 h-full">
                 {/* Dashed border outer container for each card */}
                 <div className="relative p-4 h-full rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white dark:bg-[#0d1117]/30">
                   {/* Title label - floating centered green pill badge */}
@@ -261,7 +271,7 @@ export default async function AboutPage({
                 </div>
               </div>
             ))}
-          </div>
+          </AnimatedPageCards>
         </div>
       </section>
 
@@ -280,7 +290,8 @@ export default async function AboutPage({
               }}
             />
           </div>
-          <div className="py-8 px-4 sm:p-8 md:p-12 rounded-3xl bg-gray-50 dark:bg-[#161b22] border border-gray-100 dark:border-[#2d3f50]">
+          <AnimatedPageSection>
+            <div className="py-8 px-4 sm:p-8 md:p-12 rounded-3xl bg-gray-50 dark:bg-[#161b22] border border-gray-100 dark:border-[#2d3f50]">
             <div className="text-center">
               <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
                 {lang === "bn" ? "দৃষ্টিভঙ্গি" : "Vision"}
@@ -329,7 +340,8 @@ export default async function AboutPage({
                 ))}
               </div>
             </div>
-          </div>
+            </div>
+          </AnimatedPageSection>
         </div>
       </section>
 
@@ -339,19 +351,21 @@ export default async function AboutPage({
       {/* Activities Section */}
       <section className="relative  py-4 px-4 bg-gray-50 dark:bg-[#161b22]">
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
-              {lang === "bn" ? "কার্যক্রম" : "Activities"}
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              {lang === "bn" ? "আমাদের কার্যক্রম" : "Our Activities"}
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400">
-              {lang === "bn" ? "আমরা কি কি করে থাকি?" : "What do we do?"}
-            </p>
-          </div>
+          <AnimatedPageSection>
+            <div className="text-center mb-12">
+              <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
+                {lang === "bn" ? "কার্যক্রম" : "Activities"}
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                {lang === "bn" ? "আমাদের কার্যক্রম" : "Our Activities"}
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400">
+                {lang === "bn" ? "আমরা কি কি করে থাকি?" : "What do we do?"}
+              </p>
+            </div>
+          </AnimatedPageSection>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <AnimatedPageCards className="grid md:grid-cols-3 gap-6">
             {activities.map((activity, index) => (
               <div key={index} className="relative  pt-3">
                 {/* Dashed border outer container for each card */}
@@ -370,7 +384,7 @@ export default async function AboutPage({
                 </div>
               </div>
             ))}
-          </div>
+          </AnimatedPageCards>
         </div>
       </section>
 
@@ -380,39 +394,37 @@ export default async function AboutPage({
       {/* How We Help Students */}
       <section className="relative py-4 pb-16 px-4 bg-slate-100/50 dark:bg-[#0d1117]">
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
-              {lang === "bn" ? "সহায়তা" : "Support"}
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              {lang === "bn" ? "শিক্ষার্থীদের সাহায্য" : "How We Help Students"}
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400">
-              {lang === "bn"
-                ? "আমরা কিভাবে শিক্ষার্থীদের সাহায্য করি?"
-                : "How do we help students?"}
-            </p>
-          </div>
+          <AnimatedPageSection>
+            <div className="text-center mb-12">
+              <span className="inline-block px-4 py-1 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 text-[#27ae60] dark:text-[#5ce1e6] text-sm font-medium mb-4">
+                {lang === "bn" ? "সহায়তা" : "Support"}
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                {lang === "bn" ? "শিক্ষার্থীদের সাহায্য" : "How We Help Students"}
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400">
+                {lang === "bn"
+                  ? "আমরা কিভাবে শিক্ষার্থীদের সাহায্য করি?"
+                  : "How do we help students?"}
+              </p>
+            </div>
+          </AnimatedPageSection>
 
           {/* Outer dashed container with section title */}
-          <div className="relative    dark:border-slate-600  mb-8">
+          <div className="relative dark:border-slate-600 mb-8">
             {/* Inner cards with dashed border design */}
-            <div className="grid md:grid-cols-3 gap-6 mt-2">
+            <AnimatedPageCards className="grid md:grid-cols-3 gap-6 mt-2">
               {studentHelp.map((help, index) => (
                 <div key={index} className="relative pt-3">
                   {/* Dashed border outer container for each card */}
                   <div className="relative p-4 rounded-2xl border-2 border-dashed border-gray-300 dark:border-slate-600 bg-white dark:bg-[#0d1117]/30">
                     {/* Title label - shows the actual title */}
                     <div className="absolute w-fit -top-3.5 left-0 right-0 mx-auto px-3 py-0.5 bg-[#2ecc7072] dark:bg-[#0d1117] flex gap-2 items-center rounded-md">
-                      {/* <help.Icon className="w-6 h-6 text-[#2ecc71] dark:text-[#5ce1e6]" /> */}
                       <span className=" font-semibold ">{help.title}</span>
                     </div>
 
                     {/* Inner card with solid border - only icon and description */}
-                    <div className="text-center p-5 rounded-xl bg-white dark:bg-[#161b22]  dark:border-[#30363d]">
-                      {/* <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#2ecc71]/10 dark:bg-[#5ce1e6]/10 mb-4">
-                        <help.Icon className="w-6 h-6 text-[#2ecc71] dark:text-[#5ce1e6]" />
-                      </div> */}
+                    <div className="text-center p-5 rounded-xl bg-white dark:bg-[#161b22] dark:border-[#30363d]">
                       <p className="text-gray-600 text-lg dark:text-gray-400 ">
                         {help.description}
                       </p>
@@ -420,27 +432,29 @@ export default async function AboutPage({
                   </div>
                 </div>
               ))}
-            </div>
+            </AnimatedPageCards>
           </div>
 
           {/* Content box with normal border */}
-          <div className="p-6 sm:p-8 rounded-2xl border bg-white dark:bg-[#161b22]">
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] flex items-center justify-center">
-                <Heart className="w-5 h-5 text-white dark:text-[#0d1117]" />
-              </div>
-              <div>
-                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                  {lang === "bn" ? "আমাদের প্রতিশ্রুতি" : "Our Commitment"}
-                </h4>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                  {lang === "bn"
-                    ? "সাস্ট ফিটনেস ক্লাব প্রতিটি শিক্ষার্থীর শারীরিক ও মানসিক সুস্থতার জন্য প্রতিশ্রুতিবদ্ধ। আমরা বিশ্বাস করি যে একটি সুস্থ শরীর এবং মন শিক্ষার্থীদের একাডেমিক সাফল্য এবং সামগ্রিক জীবনমানের জন্য অপরিহার্য।"
-                    : "SUST Fitness Club is committed to the physical and mental well-being of every student. We believe that a healthy body and mind are essential for students' academic success and overall quality of life."}
-                </p>
+          <AnimatedFadeIn delay={200}>
+            <div className="p-6 sm:p-8 rounded-2xl border bg-white dark:bg-[#161b22]">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-[#2ecc71] to-[#27ae60] dark:from-[#5ce1e6] dark:to-[#4fd1d9] flex items-center justify-center">
+                  <Heart className="w-5 h-5 text-white dark:text-[#0d1117]" />
+                </div>
+                <div>
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                    {lang === "bn" ? "আমাদের প্রতিশ্রুতি" : "Our Commitment"}
+                  </h4>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    {lang === "bn"
+                      ? "সাস্ট ফিটনেস ক্লাব প্রতিটি শিক্ষার্থীর শারীরিক ও মানসিক সুস্থতার জন্য প্রতিশ্রুতিবদ্ধ। আমরা বিশ্বাস করি যে একটি সুস্থ শরীর এবং মন শিক্ষার্থীদের একাডেমিক সাফল্য এবং সামগ্রিক জীবনমানের জন্য অপরিহার্য।"
+                      : "SUST Fitness Club is committed to the physical and mental well-being of every student. We believe that a healthy body and mind are essential for students' academic success and overall quality of life."}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          </AnimatedFadeIn>
         </div>
       </section>
     </div>
