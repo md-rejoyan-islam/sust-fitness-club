@@ -5,8 +5,14 @@ import { ThemeProvider } from "@/components/theme/theme-provider";
 import { i18n, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Hind_Siliguri } from "next/font/google";
 import "./globals.css";
+
+const hindSiliguri = Hind_Siliguri({
+  variable: "--font-hind-siliguri",
+  subsets: ["latin", "bengali"],
+  weight: ["300", "400", "500", "600", "700"],
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -151,13 +157,13 @@ export default async function RootLayout({
   params: Promise<{ lang: string }>;
 }) {
   const { lang: langParam } = await params;
-  const lang = langParam as Locale;
+  const lang = (langParam as Locale) || i18n.defaultLocale || "en";
   const dict = await getDictionary(lang);
 
   return (
     <html lang={lang} suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${hindSiliguri.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"

@@ -1,8 +1,22 @@
-@import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"); */
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+
+/* Font Family Configuration */
+body {
+  font-family: var(--font-geist-sans), var(--font-hind-siliguri), system-ui,
+    sans-serif;
+}
+
+/* Bengali text will use Hind Siliguri */
+:lang(bn),
+[lang="bn"],
+html[lang="bn"] body {
+  font-family: var(--font-hind-siliguri), var(--font-geist-sans), system-ui,
+    sans-serif;
+}
 
 :root {
   /* Brand Colors - SUST Fitness Club */
