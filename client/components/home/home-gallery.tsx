@@ -13,28 +13,34 @@ interface HomeGalleryProps {
 export function HomeGallery({ lang }: HomeGalleryProps) {
   const galleryImages = [
     {
-      src: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=400&fit=crop",
-      alt: lang === "bn" ? "জিম সেশন ১" : "Gym Session 1",
+      src: "/gallery/IMG-20260108-WA0056.jpg",
+      alt:
+        lang === "bn" ? "ফিটনেস ক্লাব কার্যক্রম ১" : "Fitness Club Activity 1",
     },
     {
-      src: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&h=400&fit=crop",
-      alt: lang === "bn" ? "জিম সেশন ২" : "Gym Session 2",
+      src: "/gallery/IMG_20260109_185048_222.jpg",
+      alt:
+        lang === "bn" ? "ফিটনেস ক্লাব কার্যক্রম ২" : "Fitness Club Activity 2",
     },
     {
-      src: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&h=400&fit=crop",
-      alt: lang === "bn" ? "ওয়ার্কআউট" : "Workout",
+      src: "/gallery/IMG_20260109_185048_815.jpg",
+      alt:
+        lang === "bn" ? "ফিটনেস ক্লাব কার্যক্রম ৩" : "Fitness Club Activity 3",
     },
     {
-      src: "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=600&h=400&fit=crop",
-      alt: lang === "bn" ? "রানিং" : "Running",
+      src: "/gallery/IMG_20260109_180157_908.jpg",
+      alt:
+        lang === "bn" ? "ফিটনেস ক্লাব কার্যক্রম ৪" : "Fitness Club Activity 4",
     },
     {
-      src: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&h=400&fit=crop",
-      alt: lang === "bn" ? "ফিটনেস" : "Fitness",
+      src: "/gallery/IMG_20260109_185028_745.jpg",
+      alt:
+        lang === "bn" ? "ফিটনেস ক্লাব কার্যক্রম ৫" : "Fitness Club Activity 5",
     },
     {
-      src: "https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&h=400&fit=crop",
-      alt: lang === "bn" ? "ট্রেনিং" : "Training",
+      src: "/gallery/IMG_20260109_185028_866.jpg",
+      alt:
+        lang === "bn" ? "ফিটনেস ক্লাব কার্যক্রম ৬" : "Fitness Club Activity 6",
     },
   ];
 

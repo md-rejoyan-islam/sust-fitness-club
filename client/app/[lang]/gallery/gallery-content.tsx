@@ -25,73 +25,180 @@ export function GalleryContent({ lang }: GalleryContentProps) {
 
   const categories =
     lang === "bn"
-      ? [
-          { id: "all", label: "সব" },
-          { id: "marathon", label: "ম্যারাথন" },
-          { id: "session", label: "সেশন" },
-          { id: "events", label: "ইভেন্ট" },
-        ]
-      : [
-          { id: "all", label: "All" },
-          { id: "marathon", label: "Marathon" },
-          { id: "session", label: "Session" },
-          { id: "events", label: "Events" },
-        ];
+      ? [{ id: "all", label: "সব" }]
+      : [{ id: "all", label: "All" }];
 
   const galleryImages = [
     {
-      src: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=800&h=600&fit=crop",
+      src: "/gallery/IMG-20260108-WA0056.jpg",
       span: "col-span-2 row-span-2",
-      alt: lang === "bn" ? "ম্যারাথন ইভেন্ট" : "Marathon Event",
-      category: "marathon",
+      alt:
+        lang === "bn" ? "ফিটনেস ক্লাব কার্যক্রম ১" : "Fitness Club Activity 1",
+      category: "all",
     },
     {
-      src: "https://images.unsplash.com/photo-1571008887538-b36bb32f4571?w=600&h=400&fit=crop",
+      src: "/gallery/IMG_20260109_180117_398.jpg",
       span: "",
-      alt: lang === "bn" ? "ফিটনেস সেশন" : "Fitness Session",
-      category: "session",
+      alt:
+        lang === "bn" ? "ফিটনেস ক্লাব কার্যক্রম ২" : "Fitness Club Activity 2",
+      category: "all",
     },
     {
-      src: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop",
+      src: "/gallery/IMG_20260109_180144_974.jpg",
       span: "",
-      alt: lang === "bn" ? "গ্রুপ ওয়ার্কআউট" : "Group Workout",
-      category: "session",
+      alt:
+        lang === "bn" ? "ফিটনেস ক্লাব কার্যক্রম ৩" : "Fitness Club Activity 3",
+      category: "all",
     },
     {
-      src: "https://images.unsplash.com/photo-1594882645126-14020914d58d?w=600&h=400&fit=crop",
+      src: "/gallery/IMG_20260109_180157_908.jpg",
       span: "",
-      alt: lang === "bn" ? "রানিং ইভেন্ট" : "Running Event",
-      category: "marathon",
+      alt:
+        lang === "bn" ? "ফিটনেস ক্লাব কার্যক্রম ৪" : "Fitness Club Activity 4",
+      category: "all",
     },
     {
-      src: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=400&fit=crop",
+      src: "/gallery/IMG_20260109_185028_745.jpg",
       span: "col-span-2",
-      alt: lang === "bn" ? "মর্নিং সেশন" : "Morning Session",
-      category: "session",
+      alt:
+        lang === "bn" ? "ফিটনেস ক্লাব কার্যক্রম ৫" : "Fitness Club Activity 5",
+      category: "all",
     },
     {
-      src: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&h=400&fit=crop",
+      src: "/gallery/IMG_20260109_185028_866.jpg",
       span: "",
-      alt: lang === "bn" ? "স্ট্রেচিং" : "Stretching",
-      category: "session",
+      alt:
+        lang === "bn" ? "ফিটনেস ক্লাব কার্যক্রম ৬" : "Fitness Club Activity 6",
+      category: "all",
     },
     {
-      src: "https://images.unsplash.com/photo-1571008887538-b36bb32f4571?w=600&h=400&fit=crop",
+      src: "/gallery/IMG_20260109_185029_060.jpg",
       span: "",
-      alt: lang === "bn" ? "ক্যাম্পাস ইভেন্ট" : "Campus Event",
-      category: "events",
+      alt:
+        lang === "bn" ? "ফিটনেস ক্লাব কার্যক্রম ৭" : "Fitness Club Activity 7",
+      category: "all",
     },
     {
-      src: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&h=400&fit=crop",
+      src: "/gallery/IMG_20260109_185029_117.jpg",
       span: "",
-      alt: lang === "bn" ? "টিম ফটো" : "Team Photo",
-      category: "events",
+      alt:
+        lang === "bn" ? "ফিটনেস ক্লাব কার্যক্রম ৮" : "Fitness Club Activity 8",
+      category: "all",
     },
     {
-      src: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=800&h=400&fit=crop",
+      src: "/gallery/IMG_20260109_185029_131.jpg",
       span: "col-span-2",
-      alt: lang === "bn" ? "হাফ ম্যারাথন" : "Half Marathon",
-      category: "marathon",
+      alt:
+        lang === "bn" ? "ফিটনেস ক্লাব কার্যক্রম ৯" : "Fitness Club Activity 9",
+      category: "all",
+    },
+    {
+      src: "/gallery/IMG_20260109_185029_301.jpg",
+      span: "",
+      alt:
+        lang === "bn"
+          ? "ফিটনেস ক্লাব কার্যক্রম ১০"
+          : "Fitness Club Activity 10",
+      category: "all",
+    },
+    {
+      src: "/gallery/IMG_20260109_185029_377.jpg",
+      span: "",
+      alt:
+        lang === "bn"
+          ? "ফিটনেস ক্লাব কার্যক্রম ১১"
+          : "Fitness Club Activity 11",
+      category: "all",
+    },
+    {
+      src: "/gallery/IMG_20260109_185029_516.jpg",
+      span: "col-span-2 row-span-2",
+      alt:
+        lang === "bn"
+          ? "ফিটনেস ক্লাব কার্যক্রম ১২"
+          : "Fitness Club Activity 12",
+      category: "all",
+    },
+    {
+      src: "/gallery/IMG_20260109_185029_650.jpg",
+      span: "",
+      alt:
+        lang === "bn"
+          ? "ফিটনেস ক্লাব কার্যক্রম ১৩"
+          : "Fitness Club Activity 13",
+      category: "all",
+    },
+    {
+      src: "/gallery/IMG_20260109_185029_663.jpg",
+      span: "",
+      alt:
+        lang === "bn"
+          ? "ফিটনেস ক্লাব কার্যক্রম ১৪"
+          : "Fitness Club Activity 14",
+      category: "all",
+    },
+    {
+      src: "/gallery/IMG_20260109_185048_222.jpg",
+      span: "",
+      alt:
+        lang === "bn"
+          ? "ফিটনেস ক্লাব কার্যক্রম ১৫"
+          : "Fitness Club Activity 15",
+      category: "all",
+    },
+    {
+      src: "/gallery/IMG_20260109_185048_493.jpg",
+      span: "col-span-2",
+      alt:
+        lang === "bn"
+          ? "ফিটনেস ক্লাব কার্যক্রম ১৬"
+          : "Fitness Club Activity 16",
+      category: "all",
+    },
+    {
+      src: "/gallery/IMG_20260109_185048_641.jpg",
+      span: "",
+      alt:
+        lang === "bn"
+          ? "ফিটনেস ক্লাব কার্যক্রম ১৭"
+          : "Fitness Club Activity 17",
+      category: "all",
+    },
+    {
+      src: "/gallery/IMG_20260109_185048_815.jpg",
+      span: "",
+      alt:
+        lang === "bn"
+          ? "ফিটনেস ক্লাব কার্যক্রম ১৮"
+          : "Fitness Club Activity 18",
+      category: "all",
+    },
+    {
+      src: "/gallery/IMG_20260109_185048_875.jpg",
+      span: "",
+      alt:
+        lang === "bn"
+          ? "ফিটনেস ক্লাব কার্যক্রম ১৯"
+          : "Fitness Club Activity 19",
+      category: "all",
+    },
+    {
+      src: "/gallery/IMG_20260109_185049_099.jpg",
+      span: "col-span-2",
+      alt:
+        lang === "bn"
+          ? "ফিটনেস ক্লাব কার্যক্রম ২০"
+          : "Fitness Club Activity 20",
+      category: "all",
+    },
+    {
+      src: "/gallery/IMG_20260109_185049_231.jpg",
+      span: "",
+      alt:
+        lang === "bn"
+          ? "ফিটনেস ক্লাব কার্যক্রম ২১"
+          : "Fitness Club Activity 21",
+      category: "all",
     },
   ];
 
@@ -276,12 +383,12 @@ export function GalleryContent({ lang }: GalleryContentProps) {
           )}
 
           {/* Load More Button */}
-          <div className="mt-12 text-center">
+          {/* <div className="mt-12 text-center">
             <button className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-white dark:bg-[#161b22] border border-gray-200 dark:border-[#2d3f50] text-gray-700 dark:text-gray-300 font-medium hover:border-[#2ecc71] dark:hover:border-[#5ce1e6] hover:text-[#2ecc71] dark:hover:text-[#5ce1e6] transition-all">
               <Images className="w-5 h-5" />
               {lang === "bn" ? "আরও দেখুন" : "Load More"}
             </button>
-          </div>
+          </div> */}
         </div>
       </section>
 

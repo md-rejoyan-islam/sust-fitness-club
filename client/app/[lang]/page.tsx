@@ -51,36 +51,36 @@ export default async function HomePage({
     lang === "bn"
       ? [
           {
-            name: "সকালের সেশন",
-            time: "সকাল ৬:০০ - ৯:০০",
-            programs: ["ওয়েট ট্রেনিং", "কার্ডিও", "যোগব্যায়াম"],
+            name: "সাপ্তাহিক ফিটনেস সেশন",
+            time: "প্রতি শুক্রবার সকাল ৫:৪৫",
+            programs: ["গ্রুপ ওয়ার্কআউট", "স্ট্রেচিং", "রানিং"],
           },
           {
-            name: "দুপুরের সেশন",
-            time: "দুপুর ১২:০০ - ৩:০০",
-            programs: ["স্ট্রেংথ ট্রেনিং", "ক্রসফিট"],
+            name: "সাইক্লিং ইভেন্ট",
+            time: "বিশেষ তারিখে",
+            programs: ["গ্রুপ রাইড", "ক্যাম্পাস সাইক্লিং"],
           },
           {
-            name: "সন্ধ্যার সেশন",
-            time: "বিকাল ৫:০০ - ১০:০০",
-            programs: ["ওয়েট ট্রেনিং", "কার্ডিও", "জুম্বা"],
+            name: "স্পোর্টস ম্যাচ",
+            time: "সাপ্তাহিক",
+            programs: ["ফুটবল ম্যাচ", "টিম স্পোর্টস"],
           },
         ]
       : [
           {
-            name: "Morning Session",
-            time: "6:00 AM - 9:00 AM",
-            programs: ["Weight Training", "Cardio", "Yoga"],
+            name: "Weekly Fitness Session",
+            time: "Every Friday 5:45 AM",
+            programs: ["Group Workout", "Stretching", "Running"],
           },
           {
-            name: "Afternoon Session",
-            time: "12:00 PM - 3:00 PM",
-            programs: ["Strength Training", "CrossFit"],
+            name: "Cycling Events",
+            time: "Special Dates",
+            programs: ["Group Rides", "Campus Cycling"],
           },
           {
-            name: "Evening Session",
-            time: "5:00 PM - 10:00 PM",
-            programs: ["Weight Training", "Cardio", "Zumba"],
+            name: "Sports Matches",
+            time: "Weekly",
+            programs: ["Football Matches", "Team Sports"],
           },
         ];
 
@@ -92,15 +92,21 @@ export default async function HomePage({
             description: "সাস্ট শিক্ষার্থীদের জন্য সম্পূর্ণ ফ্রি",
           },
           {
-            title: "প্রশিক্ষিত প্রশিক্ষক",
-            description: "অভিজ্ঞ ট্রেইনারদের তত্ত্বাবধান",
+            title: "ম্যারাথন ইভেন্ট",
+            description: "হাফ ম্যারাথন ও বিভিন্ন রানিং ইভেন্টে অংশগ্রহণ",
           },
-          { title: "পুষ্টি পরামর্শ", description: "সঠিক খাদ্যাভ্যাস গাইডেন্স" },
           {
-            title: "প্রতিযোগিতা",
-            description: "আন্তঃবিভাগীয় ফিটনেস প্রতিযোগিতা",
+            title: "ক্লাব জার্সি",
+            description: "ব্র্যান্ডেড ফিটনেস গিয়ার ও জার্সি",
           },
-          { title: "সার্টিফিকেট", description: "প্রশিক্ষণ সমাপনী সার্টিফিকেট" },
+          {
+            title: "সাইক্লিং ইভেন্ট",
+            description: "গ্রুপ রাইড ও সাইক্লিং কার্যক্রম",
+          },
+          {
+            title: "স্পোর্টস ম্যাচ",
+            description: "ফুটবল ও অন্যান্য টিম স্পোর্টস",
+          },
           {
             title: "কমিউনিটি",
             description: "সমমনা ফিটনেস উৎসাহীদের সাথে যুক্ত হন",
@@ -112,20 +118,20 @@ export default async function HomePage({
             description: "Completely free for SUST students",
           },
           {
-            title: "Expert Trainers",
-            description: "Supervision by experienced trainers",
+            title: "Marathon Events",
+            description: "Participate in half marathon & running events",
           },
           {
-            title: "Nutrition Guidance",
-            description: "Proper diet planning advice",
+            title: "Club Gear",
+            description: "Branded fitness gear and jerseys",
           },
           {
-            title: "Competitions",
-            description: "Inter-department fitness competitions",
+            title: "Cycling Events",
+            description: "Group rides and cycling activities",
           },
           {
-            title: "Certification",
-            description: "Training completion certificates",
+            title: "Sports Matches",
+            description: "Football and other team sports",
           },
           {
             title: "Community",
@@ -137,46 +143,46 @@ export default async function HomePage({
     lang === "bn"
       ? [
           {
-            name: "আহমেদ হাসান",
-            role: "সিএসই শিক্ষার্থী",
-            text: "সাস্ট ফিটনেস ক্লাব আমার জীবন বদলে দিয়েছে। ৬ মাসে ১৫ কেজি ওজন কমিয়েছি!",
+            name: "ক্লাব সদস্য",
+            role: "সাস্ট শিক্ষার্থী",
+            text: "প্রতি শুক্রবার সকালে ফিটনেস সেশনে যোগ দিয়ে আমার দিন শুরু হয়। অসাধারণ এনার্জি পাই!",
           },
           {
-            name: "ফাতিমা আক্তার",
-            role: "ইইই শিক্ষার্থী",
-            text: "এখানকার ট্রেইনাররা অসাধারণ। প্রতিদিন নতুন কিছু শিখছি।",
+            name: "ম্যারাথন অংশগ্রহণকারী",
+            role: "রানার",
+            text: "SUST হাফ ম্যারাথনে অংশ নেওয়া আমার জীবনের সেরা অভিজ্ঞতাগুলোর একটি।",
           },
           {
-            name: "রাশেদ করিম",
-            role: "বিবিএ শিক্ষার্থী",
-            text: "ফ্রি মেম্বারশিপ হলেও সার্ভিস একদম প্রিমিয়াম মানের।",
+            name: "ফিটনেস উৎসাহী",
+            role: "নিয়মিত সদস্য",
+            text: "ক্লাবের কমিউনিটি অনেক সাপোর্টিভ। সবাই মিলে একসাথে ফিট থাকার চেষ্টা করি।",
           },
           {
-            name: "নুসরাত জাহান",
-            role: "ফার্মেসি শিক্ষার্থী",
-            text: "যোগব্যায়াম ক্লাস আমার স্ট্রেস কমাতে অনেক সাহায্য করেছে।",
+            name: "সাইক্লিস্ট",
+            role: "সদস্য",
+            text: "সাইক্লিং ইভেন্টগুলো অসাধারণ! ক্যাম্পাসে গ্রুপ রাইড করতে খুব ভালো লাগে।",
           },
         ]
       : [
           {
-            name: "Ahmed Hasan",
-            role: "CSE Student",
-            text: "SUST Fitness Club changed my life. Lost 15kg in 6 months!",
+            name: "Club Member",
+            role: "SUST Student",
+            text: "My day starts with the Friday morning fitness session. I get amazing energy!",
           },
           {
-            name: "Fatima Akter",
-            role: "EEE Student",
-            text: "The trainers here are amazing. Learning something new every day.",
+            name: "Marathon Participant",
+            role: "Runner",
+            text: "Participating in SUST Half Marathon was one of the best experiences of my life.",
           },
           {
-            name: "Rashed Karim",
-            role: "BBA Student",
-            text: "Even though membership is free, the service is premium quality.",
+            name: "Fitness Enthusiast",
+            role: "Regular Member",
+            text: "The club community is very supportive. We all try to stay fit together.",
           },
           {
-            name: "Nusrat Jahan",
-            role: "Pharmacy Student",
-            text: "The yoga classes have helped me reduce stress significantly.",
+            name: "Cyclist",
+            role: "Member",
+            text: "The cycling events are amazing! I love group rides around the campus.",
           },
         ];
 

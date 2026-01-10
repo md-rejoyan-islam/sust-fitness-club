@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/css-modules": "^1.0.5",
     "@types/negotiator": "^0.6.4",
     "@types/node": "^20",
     "@types/react": "^19",

@@ -29,49 +29,49 @@
     "subtitle": "What you get at our club",
     "items": [
       {
-        "title": "Modern Gym Facilities",
-        "description": "Well-equipped gym with modern equipment"
+        "title": "Community Events",
+        "description": "Half marathons, runs, and fitness events for everyone"
       },
       {
-        "title": "Expert Trainers",
-        "description": "Supervision by skilled and experienced trainers"
+        "title": "Weekly Sessions",
+        "description": "Free Friday morning fitness sessions at 5:45 AM"
       },
       {
-        "title": "Group Workouts",
-        "description": "Exercise together, get motivated"
+        "title": "Outdoor Activities",
+        "description": "Running, cycling, and sports in the fresh air"
       },
       {
-        "title": "Nutrition Advice",
-        "description": "Proper diet and nutrition planning"
+        "title": "Free for Students",
+        "description": "Completely free membership for all SUST students"
       }
     ]
   },
   "programs": {
-    "title": "Our Programs",
-    "subtitle": "Choose a program according to your goals",
+    "title": "Our Events",
+    "subtitle": "Join our exciting fitness activities",
     "items": [
       {
-        "title": "Weight Training",
-        "description": "Build strength and muscle",
-        "duration": "60 min"
+        "title": "SUST Half Marathon",
+        "description": "21.1 km running challenge for endurance",
+        "duration": "Annual Event"
       },
       {
-        "title": "Cardio",
-        "description": "Keep your heart healthy and burn calories",
-        "duration": "45 min"
+        "title": "Language Legacy Run",
+        "description": "7.5K run on Mother Language Day",
+        "duration": "Special Event"
       },
       {
-        "title": "Yoga",
-        "description": "Achieve mental peace and flexibility",
-        "duration": "60 min"
+        "title": "Weekly Fitness Session",
+        "description": "Group workout every Friday morning",
+        "duration": "Every Friday"
       },
       {
-        "title": "CrossFit",
-        "description": "Full body workout",
-        "duration": "50 min"
+        "title": "Cycling Events",
+        "description": "Group rides around campus",
+        "duration": "Monthly"
       }
     ],
-    "viewAll": "View All Programs"
+    "viewAll": "View All Events"
   },
   "trainers": {
     "title": "Our Trainers",
@@ -97,9 +97,9 @@
   },
   "stats": {
     "members": "Active Members",
-    "trainers": "Trainers",
-    "programs": "Programs",
-    "years": "Years of Experience"
+    "trainers": "Organizers",
+    "programs": "Events",
+    "years": "Year of Journey"
   },
   "cta": {
     "title": "Start Your Fitness Journey Today",
@@ -113,8 +113,8 @@
     "followUs": "Follow Us",
     "rights": "All rights reserved",
     "address": "Shahjalal University of Science and Technology, Sylhet",
-    "email": "fitness@sust.edu",
-    "phone": "+880 1712-345678"
+    "email": "fitnessclubsust@gmail.com",
+    "phone": "+8801604-047097"
   },
   "about": {
     "title": "About Us",

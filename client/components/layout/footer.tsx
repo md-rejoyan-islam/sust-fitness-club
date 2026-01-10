@@ -39,8 +39,16 @@ export function Footer({ locale, dictionary }: FooterProps) {
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
-    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+    {
+      icon: Facebook,
+      href: "https://www.facebook.com/sustfitnessclub",
+      label: "Facebook",
+    },
+    {
+      icon: Linkedin,
+      href: "https://www.linkedin.com/company/sust-fitness-club",
+      label: "LinkedIn",
+    },
     { icon: Youtube, href: "https://youtube.com", label: "YouTube" },
   ];
 

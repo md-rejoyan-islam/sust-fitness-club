@@ -63,14 +63,14 @@ export default async function ContactPage({
       ? [
           {
             title: "ইমেইল",
-            value: "sustfitnessclub@gmail.com",
-            link: "mailto:sustfitnessclub@gmail.com",
+            value: "fitnessclubsust@gmail.com",
+            link: "mailto:fitnessclubsust@gmail.com",
             Icon: Mail,
           },
           {
             title: "ফোন",
-            value: "+880 1712-345678",
-            link: "tel:+8801712345678",
+            value: "+৮৮০১৬০৪-০৪৭০৯৭",
+            link: "tel+৮৮০১৬০৪০৪৭০৯৭",
             Icon: Phone,
           },
           {
@@ -83,14 +83,14 @@ export default async function ContactPage({
       : [
           {
             title: "Email",
-            value: "sustfitnessclub@gmail.com",
-            link: "mailto:sustfitnessclub@gmail.com",
+            value: "fitnessclubsust@gmail.com",
+            link: "mailto:fitnessclubsust@gmail.com",
             Icon: Mail,
           },
           {
             title: "Phone",
-            value: "+880 1712-345678",
-            link: "tel:+8801712345678",
+            value: "+8801604-047097",
+            link: "tel:+8801604047097",
             Icon: Phone,
           },
           {
