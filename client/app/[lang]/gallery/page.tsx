@@ -2,7 +2,8 @@ import type { Locale } from "@/lib/i18n/config";
 import type { Metadata } from "next";
 import { GalleryContent } from "./gallery-content";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://sustfitnessclub.com';
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://sustfitnessclub.org";
 
 export async function generateMetadata({
   params,
@@ -13,15 +14,18 @@ export async function generateMetadata({
   const lang = langParam as Locale;
 
   const title = lang === "bn" ? "গ্যালারি" : "Gallery";
-  const description = lang === "bn"
-    ? "সাস্ট ফিটনেস ক্লাবের ম্যারাথন, ফিটনেস সেশন এবং বিভিন্ন ইভেন্টের ছবি ও ভিডিও দেখুন।"
-    : "View photos and videos of SUST Fitness Club marathons, fitness sessions and various events.";
+  const description =
+    lang === "bn"
+      ? "সাস্ট ফিটনেস ক্লাবের ম্যারাথন, ফিটনেস সেশন এবং বিভিন্ন ইভেন্টের ছবি ও ভিডিও দেখুন।"
+      : "View photos and videos of SUST Fitness Club marathons, fitness sessions and various events.";
 
   return {
     title,
     description,
     openGraph: {
-      title: `${title} | ${lang === "bn" ? "সাস্ট ফিটনেস ক্লাব" : "SUST Fitness Club"}`,
+      title: `${title} | ${
+        lang === "bn" ? "সাস্ট ফিটনেস ক্লাব" : "SUST Fitness Club"
+      }`,
       description,
       url: `${siteUrl}/${lang}/gallery`,
       images: [
@@ -34,8 +38,10 @@ export async function generateMetadata({
       ],
     },
     twitter: {
-      card: 'summary_large_image',
-      title: `${title} | ${lang === "bn" ? "সাস্ট ফিটনেস ক্লাব" : "SUST Fitness Club"}`,
+      card: "summary_large_image",
+      title: `${title} | ${
+        lang === "bn" ? "সাস্ট ফিটনেস ক্লাব" : "SUST Fitness Club"
+      }`,
       description,
       images: [`${siteUrl}/og-gallery.jpg`],
     },

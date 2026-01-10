@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 
 // Base URL for the site
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://sustfitnessclub.com";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://sustfitnessclub.org";
 
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
