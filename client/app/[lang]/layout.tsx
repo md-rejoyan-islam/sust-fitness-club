@@ -103,7 +103,7 @@ export async function generateMetadata({
       description: siteDescription,
       images: [
         {
-          url: `${siteUrl}/logo-white.jpg`,
+          url: `${siteUrl}/og-image.png`,
           width: 1200,
           height: 630,
           alt: siteName,
@@ -114,7 +114,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: dict.metadata.title,
       description: siteDescription,
-      images: [`${siteUrl}/logo-white.jpg`],
+      images: [`${siteUrl}/og-image.png`],
       creator: "@sustfitnessclub",
     },
     robots: {
