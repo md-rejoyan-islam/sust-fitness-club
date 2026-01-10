@@ -4,10 +4,10 @@ import {
   AnimatedPageCards,
   AnimatedPageHero,
 } from "@/components/ui/page-animations";
-import { useState } from "react";
-import Image from "next/image";
-import { Quote, Building, Mail, Phone } from "lucide-react";
 import type { Locale } from "@/lib/i18n/config";
+import { Mail, Phone, Quote } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
 
 interface Advisor {
   id: string;
@@ -30,15 +30,15 @@ interface Advisor {
 const advisors: Advisor[] = [
   {
     id: "1",
-    name: "Dr. Mohammad Rahman",
-    nameBn: "ড. মোহাম্মদ রহমান",
+    name: "Dr. Md. Mozammel Hoque",
+    nameBn: "ড. মো. মোজাম্মেল হক",
     designation: "Professor",
     designationBn: "অধ্যাপক",
     department: "Department of Physical Education",
     departmentBn: "শারীরিক শিক্ষা বিভাগ",
     image: "/placeholder-user.jpg",
-    email: "mrahman@sust.edu",
-    phone: "+880 1712-000001",
+    email: "hoque-fet@sust.edu",
+    phone: "+8801715492961",
     isCurrent: true,
     isChief: true,
     message:
@@ -48,15 +48,15 @@ const advisors: Advisor[] = [
   },
   {
     id: "2",
-    name: "Dr. Fatema Begum",
-    nameBn: "ড. ফাতেমা বেগম",
-    designation: "Associate Professor",
-    designationBn: "সহযোগী অধ্যাপক",
-    department: "Department of Chemistry",
-    departmentBn: "রসায়ন বিভাগ",
+    name: "Dr Md Tamez Uddin",
+    nameBn: "ড. মো. তামেজ উদ্দিন",
+    designation: "Professor",
+    designationBn: "অধ্যাপক",
+    department: "Department of Chemical Engineering & Polymer Science",
+    departmentBn: "কেমিক্যাল ইঞ্জিনিয়ারিং এন্ড পলিমার সায়েন্স বিভাগ",
     image: "/placeholder-user.jpg",
-    email: "fbegum@sust.edu",
-    phone: "+880 1712-000002",
+    email: "mtuddin-cep@sust.edu",
+    phone: "+8801798699800",
     isCurrent: true,
     message:
       "A healthy mind resides in a healthy body. I encourage all students to make fitness a part of their daily routine. The discipline learned through physical training extends to all aspects of life.",
@@ -65,15 +65,15 @@ const advisors: Advisor[] = [
   },
   {
     id: "3",
-    name: "Dr. Kamal Uddin",
-    nameBn: "ড. কামাল উদ্দিন",
-    designation: "Professor",
-    designationBn: "অধ্যাপক",
-    department: "Department of Computer Science & Engineering",
-    departmentBn: "কম্পিউটার সায়েন্স অ্যান্ড ইঞ্জিনিয়ারিং বিভাগ",
+    name: "Mohammad Samiul Islam, M.Phil.",
+    nameBn: "মোহাম্মদ সামিউল ইসলাম, এম.ফিল.",
+    designation: "Associate Professor",
+    designationBn: "সহযোগী অধ্যাপক",
+    department: "Department of Public Administration",
+    departmentBn: "লোক প্রশাসন বিভাগ",
     image: "/placeholder-user.jpg",
-    email: "kuddin@sust.edu",
-    phone: "+880 1712-000003",
+    email: "samiul-pad@sust.edu",
+    phone: "+8801716072978",
     isCurrent: true,
     message:
       "In today's technology-driven world, it's easy to become sedentary. SUST Fitness Club reminds us of the importance of physical activity. Keep moving, stay healthy!",
@@ -82,37 +82,58 @@ const advisors: Advisor[] = [
   },
   {
     id: "4",
-    name: "Dr. Nasreen Akter",
-    nameBn: "ড. নাসরীন আক্তার",
-    designation: "Professor (Retired)",
-    designationBn: "অধ্যাপক (অবসরপ্রাপ্ত)",
-    department: "Department of Physics",
-    departmentBn: "পদার্থবিজ্ঞান বিভাগ",
+    name: "Dr. Muhammad Shahidul Islam",
+    nameBn: "ড. মুহাম্মদ শাহিদুল ইসলাম",
+    designation:
+      "M.P.Ed., Gold Medal, BHU, India & M.S.S., JU, Diploma in Sports Management",
+    designationBn:
+      "এম.পি.এড., গোল্ড মেডেল, বিএইচইউ, ভারত এবং এম.এস.এস., জেইউ, স্পোর্টস ম্যানেজমেন্টে ডিপ্লোমা",
+    department: "Department of Physical Education",
+    departmentBn: "শারীরিক শিক্ষা বিভাগ",
     image: "/placeholder-user.jpg",
-    email: "nakter@sust.edu",
-    phone: "+880 1712-000004",
-    isCurrent: false,
+    email: "Jewel.soccer@yahoo.com",
+    phone: "+8801712806484",
+    isCurrent: true,
     message:
-      "I had the privilege of being one of the first advisors of SUST Fitness Club. Watching it grow from a small group to a thriving community has been incredibly rewarding.",
+      "Sports and fitness shape character and build discipline. I am proud to be part of SUST Fitness Club's journey towards a healthier campus.",
     messageBn:
-      "সাস্ট ফিটনেস ক্লাবের প্রথম উপদেষ্টাদের একজন হওয়ার সৌভাগ্য আমার হয়েছিল। একটি ছোট দল থেকে একটি সমৃদ্ধ সম্প্রদায়ে এটি বেড়ে উঠতে দেখা অবিশ্বাস্যভাবে ফলপ্রসূ হয়েছে।",
+      "খেলাধুলা এবং ফিটনেস চরিত্র গঠন করে এবং শৃঙ্খলা তৈরি করে। একটি স্বাস্থ্যকর ক্যাম্পাসের দিকে সাস্ট ফিটনেস ক্লাবের যাত্রার অংশ হতে পেরে আমি গর্বিত।",
   },
   {
     id: "5",
-    name: "Dr. Abdul Hamid",
-    nameBn: "ড. আবদুল হামিদ",
-    designation: "Professor (Retired)",
-    designationBn: "অধ্যাপক (অবসরপ্রাপ্ত)",
-    department: "Department of Mathematics",
-    departmentBn: "গণিত বিভাগ",
+    name: "Sharif Ahmed",
+    nameBn: "শরিফ আহমেদ",
+    designation: "Physical Instructor",
+    designationBn: "শারীরিক প্রশিক্ষক",
+    department: "Department of Physical Education",
+    departmentBn: "শারীরিক শিক্ষা বিভাগ",
     image: "/placeholder-user.jpg",
-    email: "ahamid@sust.edu",
-    phone: "+880 1712-000005",
-    isCurrent: false,
+    email: "sharif1992-ped@sust.edu",
+    phone: "+8801747883994",
+    isCurrent: true,
     message:
-      "The enthusiasm and dedication of our student fitness enthusiasts always inspired me. The club's growth is a testament to the hard work of many generations of students.",
+      "Physical education is not just about exercise, it's about building a lifestyle. Join us and transform your life through fitness.",
     messageBn:
-      "আমাদের ছাত্র ফিটনেস উৎসাহীদের উৎসাহ এবং নিষ্ঠা সবসময় আমাকে অনুপ্রাণিত করেছে। ক্লাবের বৃদ্ধি অনেক প্রজন্মের শিক্ষার্থীদের কঠোর পরিশ্রমের প্রমাণ।",
+      "শারীরিক শিক্ষা শুধু ব্যায়াম নয়, এটি একটি জীবনধারা গড়ে তোলা। আমাদের সাথে যোগ দিন এবং ফিটনেসের মাধ্যমে আপনার জীবন পরিবর্তন করুন।",
+  },
+  {
+    id: "6",
+    name: "Md. Rashidul Hasan",
+    nameBn: "মো. রশিদুল হাসান",
+    designation:
+      "LL.M., RU & M.P.Ed., UU, Diploma in Handball Coaching, Leipzig University",
+    designationBn:
+      "এলএল.এম., আরইউ এবং এম.পি.এড., ইউইউ, হ্যান্ডবল কোচিং ডিপ্লোমা, লিপজিগ বিশ্ববিদ্যালয়",
+    department: "Department of Physical Education",
+    departmentBn: "শারীরিক শিক্ষা বিভাগ",
+    image: "/placeholder-user.jpg",
+    email: "rashed-ped@sust.edu",
+    phone: "+8801715435365",
+    isCurrent: true,
+    message:
+      "Fitness is a journey, not a destination. SUST Fitness Club provides the perfect platform for students to embark on this journey.",
+    messageBn:
+      "ফিটনেস একটি যাত্রা, গন্তব্য নয়। সাস্ট ফিটনেস ক্লাব শিক্ষার্থীদের এই যাত্রা শুরু করার জন্য নিখুঁত প্ল্যাটফর্ম প্রদান করে।",
   },
 ];
 
@@ -258,14 +279,14 @@ export function AdvisorsContent({ lang, dictionary }: AdvisorsContentProps) {
                       ? advisor.designationBn
                       : advisor.designation}
                   </p>
-                  <div className="flex items-center justify-center gap-2 text-gray-600 dark:text-gray-400 text-sm mb-4">
+                  {/* <div className="flex items-center justify-center gap-2 text-gray-600 dark:text-gray-400 text-sm mb-4">
                     <Building className="w-4 h-4 text-[#2ecc71] dark:text-[#5ce1e6]" />
                     <span>
                       {lang === "bn"
                         ? advisor.departmentBn
                         : advisor.department}
                     </span>
-                  </div>
+                  </div>  */}
 
                   {/* Quote */}
                   <div className="relative pt-4 border-t border-dashed border-gray-200 dark:border-slate-600 mb-4">
